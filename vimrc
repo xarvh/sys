@@ -8,7 +8,7 @@ set textwidth=0
 set number                      " display line number
 
 set cursorline
-hi CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
+hi CursorLine cterm=NONE ctermbg=darkblue guibg=darkred guifg=white
 
 
 
