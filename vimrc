@@ -4,6 +4,11 @@
 set nocompatible               " be iMproved
 set wildmode=longest,list
 set scrolloff=3
+set textwidth=0
+set number                      " display line number
+
+set cursorline
+hi CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
 
 
 
@@ -13,7 +18,6 @@ set scrolloff=3
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set textwidth=80
 set smarttab
 set expandtab
 
@@ -36,8 +40,10 @@ autocmd BufWrite        *.rb,*.py,*.sh  !chmod +x %
 
 
 "===============================================================
-" MINI BUF EXPLORER
+" BUFFERS
 "
+set hidden
+
 nnoremap <M-`> :b#<CR>
 nnoremap <M-space> :bnext<CR>
 nnoremap <M-1> :1b<CR>
