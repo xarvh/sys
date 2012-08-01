@@ -7,6 +7,8 @@ set scrolloff=3
 set textwidth=0
 set number                      " display line number
 
+set mouse=a                     " enable mouse scrolling
+
 set cursorline
 hi CursorLine cterm=NONE ctermbg=darkblue guibg=darkred guifg=white
 
