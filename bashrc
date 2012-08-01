@@ -31,7 +31,6 @@ alias pp="python -B"
 alias ack='ack-grep -a'
 alias v='vim'
 alias b='bundle exec'
-alias 192='rvm use 1.9.2'
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
