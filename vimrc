@@ -2,6 +2,8 @@
 " GENERAL
 "
 set nocompatible               " be iMproved
+set directory=/tmp             " put swapfiles away
+
 set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
@@ -10,7 +12,7 @@ set number                      " display line number
 set mouse=a                     " enable mouse scrolling
 
 set cursorline
-hi CursorLine cterm=NONE ctermbg=darkblue guibg=darkred guifg=white
+highlight CursorLine cterm=NONE ctermbg=none 
 
 
 
