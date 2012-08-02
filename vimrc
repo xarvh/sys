@@ -39,7 +39,7 @@ set smartcase
 "===============================================================
 " AUTOCOMMANDS
 "
-autocmd BufWrite        *.rb,*.py,*.sh  !chmod +x %
+autocmd BufWrite        *.py,*.sh  !chmod +x %
 
 
 
