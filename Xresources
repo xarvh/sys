@@ -1,0 +1,6 @@
+*customization: -color
+xterm*termName:  xterm-256color
+xterm*background: black
+xterm*foreground: white
+xterm*font: *-fixed-*-*-*-20-*
+
