@@ -12,7 +12,7 @@ set number                      " display line number
 set mouse=a                     " enable mouse scrolling
 
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=none 
+highlight CursorLine cterm=NONE ctermbg=blue 
 
 
 
