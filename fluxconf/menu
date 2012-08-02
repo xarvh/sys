@@ -1,0 +1,62 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Toast)
+#    [exec] (Chrome) {google-chrome}
+    [exec] (Chromium) {chromium-browser}
+    [exec] (Evince) {evince}
+    [exec] (Gedit) {gedit}
+    [exec] (GIMP) {gimp}
+    [exec] (Inkscape) {inkscape}
+    [exec] (Firefox) {firefox}
+
+    [submenu] (Fluxbox) {}
+	[config] (Configuration)
+	[commanddialog] (Fluxbox Command)
+	[exec] (About) {(fluxbox -v; fluxbox -info | sed 1d) 2> /dev/null | xmessage -file - -center}
+	[submenu] (Styles) {}
+    	    [stylesdir] (/usr/share/fluxbox/styles)
+    	    [stylesdir] (~/.fluxbox/styles)
+	[end]
+        [exec] (fluxconf) {/usr/bin/fluxbare}
+	[reconfig] (Reload Config)
+	[restart] (Restart)
+    [end]
+
+    [submenu] (X) {}
+	[exec] (xclock) {xclock}
+	[exec] (Window name) {xprop WM_CLASS|cut -d \" -f 2|xmessage -file - -center}
+#	[exec] (Screenshot - JPG) {import screenshot.jpg && display -resize 50% screenshot.jpg}
+	[exec] (Screenshot - PNG) {import screenshot.png && display -resize 50% screenshot.png}
+
+	[exec] (XTerm (Unicode\)) {uxterm}
+        [exec] (Editres) {editres}
+        [exec] (Oclock) {oclock}
+        [exec] (TeXfind) {/usr/bin/texfind}
+        [exec] (Xclipboard) {xclipboard}
+        [exec] (Xcutsel) {xcutsel}
+        [exec] (Xev) {x-terminal-emulator -e xev}
+        [exec] (Xfontsel) {xfontsel}
+        [exec] (Xkill) {xkill}
+        [exec] (Xrefresh) {xrefresh}
+        [exec] (X Window Snapshot) {xwd | xwud}
+	[exec] (xfontsel) {xfontsel}
+	[exec] (xman) {xman}
+	[exec] (xload) {xload}
+	[exec] (xbiff) {xbiff}
+	[exec] (editres) {editres}
+	[exec] (viewres) {viewres}
+	[exec] (xclock) {xclock}
+	[exec] (xmag) {xmag}
+	[exec] (Reload .Xdefaults) {xrdb -load /home/nw/.Xdefaults}
+   [end]
+
+#   [workspaces] (Workspaces)
+    [exit] (Exit)
+#    [exec] (Text2BT) {_text2bluetooth}
+#    [exec] (Shot2BT) {_shot2bluetooth}
+[end]
+

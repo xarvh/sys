@@ -1,0 +1,17 @@
+[startup] {nm-applet}
+[startup] {blueman-applet}
+[startup] {gnome-power-manager}
+
+[startup] {/usr/bin/mono /usr/bin/jupiter.exe}
+[startup] {eeepc-tray.exe}
+
+[startup] {fbsetbg -a ~/.fluxbox/bg.jpg}
+
+#[startup] {xcompmgr -c}
+
+[app] (name=Pidgin)
+  [Workspace]	{3}
+[end]
+[app] (name=amule)
+  [Workspace]	{3}
+[end]
