@@ -7,7 +7,9 @@ set directory=/tmp             " put swapfiles away
 set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
+
 set number                      " display line number
+nnoremap <F2> :set nonumber!<CR>
 
 set mouse=a                     " enable mouse scrolling
 
