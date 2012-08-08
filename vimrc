@@ -2,7 +2,7 @@
 " GENERAL
 "
 set nocompatible               " be iMproved
-set directory=/tmp             " put swapfiles away
+set directory=$HOME/.vim/tmp   " put swapfiles away
 
 set wildmode=longest,list
 set scrolloff=3
@@ -66,7 +66,7 @@ nnoremap <M-0> :10b<CR>
 ":MiniBufExplorer
 ":CMiniBufExplorer
 ":UMiniBufExplorer
-nnoremap <M-m> :TMiniBufExplorer<CR>
+nnoremap <F3> :TMiniBufExplorer<CR>
 
 let g:miniBufExplSplitBelow=0
 let g:miniBufExplVSplit = 20
