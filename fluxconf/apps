@@ -7,11 +7,11 @@
 
 [startup] {fbsetbg -a ~/.fluxbox/bg.jpg}
 
-#[startup] {xcompmgr -c}
+[startup] {pidgin}
 
 [app] (name=Pidgin)
-  [Workspace]	{3}
+  [Workspace]	{1}
 [end]
-[app] (name=amule)
-  [Workspace]	{3}
-[end]
+#[app] (class=Firefox)
+#  [Workspace]	{3}
+#[end]
