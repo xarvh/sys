@@ -10,10 +10,8 @@ PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed":"$Blue"\w"$DRed"\$"$Norm" "
 unset DRed LRed Blue Norm
 
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias me='vim'
 alias yd='youtube-dl -t'
-alias t='less -Q $HOME/dati/tel/telefoni'
+alias grep='grep --color=auto'
 
 alias mp='m_playlist.sh'
 alias md='m_playlist.sh --sort'
@@ -27,6 +25,12 @@ alias premove='sudo apt-get --purge remove'
 alias rmrm="rm -r"
 alias dd="du -sh"
 alias pp="python -B"
+
+alias ga='git add'
+alias gst='git status'
+alias gbr='git branch'
+alias gco='git checkout'
+alias gcm='git commit -m'
 
 alias ack='ack-grep -a'
 alias v='vim'
