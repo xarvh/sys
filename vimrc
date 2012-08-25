@@ -1,6 +1,8 @@
 "===============================================================
 " GENERAL
 "
+colorscheme darkblue
+
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
