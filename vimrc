@@ -16,7 +16,7 @@ nnoremap <F2> :set nonumber!<CR>
 set mouse=a                     " enable mouse scrolling
 
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=blue 
+highlight CursorLine cterm=NONE ctermbg=darkblue 
 
 
 
@@ -28,6 +28,14 @@ set softtabstop=2
 set shiftwidth=2
 set smarttab
 set expandtab
+
+
+
+"==============================================================
+" COMMENTS
+"map :s/^/\#:s/^\#\#/
+map ,# :call CommentLineToEnd('#')<CR>+
+map ,, :call CommentLineToEnd('#')<CR>+
 
 
 
