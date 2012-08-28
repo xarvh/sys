@@ -32,6 +32,27 @@ set expandtab
 
 
 "==============================================================
+" NAVIGATION
+"
+map ê <C-D>
+map ë <C-U>
+map <M-j> <C-D>
+map <M-k> <C-U>
+
+map ì $
+map è ^ 
+
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc> 
+
+
+"==============================================================
 " COMMENTS
 "map :s/^/\#:s/^\#\#/
 map ,# :call CommentLineToEnd('#')<CR>+
