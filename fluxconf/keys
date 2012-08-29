@@ -50,12 +50,17 @@ Mod1 F4         :Workspace 4
 
 Mod1 Right      :NextWorkspace
 Mod1 Left       :PrevWorkspace
+Mod4 l          :NextWorkspace
+Mod4 h          :PrevWorkspace
 
 #
 # WINDOWS
 #
 Mod1 Tab        :NextWindow (workspace=[current]) FBCV13 !!
 Mod1 slash      :NextWindow (workspace=[current]) FBCV13 !!
+Mod4 k          :NextWindow (workspace=[current])
+Mod4 j          :PrevWindow (workspace=[current])
+
 Mod1 Up         :Maximize
 Mod1 Down       :Minimize
 Mod4 Mouse4     :Maximize
@@ -71,7 +76,7 @@ OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 #
 Mod4 q          :Close
 Mod4 w          :Close
-Mod4 k          :KillWindow
+Mod1 Mod4 k     :KillWindow
 Mod4 a          :ArrangeWindowsVertical
 Mod4 r          :ExecCommand
 chromium-browser "http://apidock.com/rails/search?query="$(xsel)
@@ -81,7 +86,6 @@ Mod4 F11        :Fullscreen
 Mod4 s          :ExecCommand setxkbmap -layout "se"
 Mod4 g          :ExecCommand setxkbmap -layout "gr"
 Mod4 i          :ExecCommand setxkbmap -layout "it"
-Mod4 u          :ExecCommand setxkbmap -layout "us"
 Mod4 0          :ExecCommand setxkbmap -layout "us"
 
 
