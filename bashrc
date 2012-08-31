@@ -32,7 +32,8 @@ alias gbr='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
 
-alias ack='ack-grep -a'
+alias ack='ack-grep'
+alias ff='find * |grep --ignore-case'
 alias v='vim'
 alias b='bundle exec'
 
