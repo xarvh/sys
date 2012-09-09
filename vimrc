@@ -18,6 +18,9 @@ set mouse=a                     " enable mouse scrolling
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue 
 
+set clipboard=unnamedplus       " copy to clipboard
+
+
 
 
 "==============================================================

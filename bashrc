@@ -22,6 +22,7 @@ alias pinstall='sudo apt-get install'
 alias psearch='apt-cache search'
 alias premove='sudo apt-get --purge remove'
 
+alias xselswitch="xsel --primary |xsel --input --clipboard"
 alias rmrm="rm -r"
 alias dd="du -sh"
 alias pp="python -B"
@@ -34,7 +35,7 @@ alias gcm='git commit -m'
 
 alias ack='ack-grep'
 alias ff='find * |grep --ignore-case'
-alias v='vim'
+alias v='gvim'
 alias b='bundle exec'
 
 
