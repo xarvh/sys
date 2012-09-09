@@ -1,7 +1,7 @@
 [startup] {nm-applet}
 [startup] {blueman-applet}
-[startup] {gnome-power-manager}
 
+[startup] {gnome-power-manager}
 [startup] {/usr/bin/mono /usr/bin/jupiter.exe}
 [startup] {eeepc-tray.exe}
 
@@ -9,7 +9,7 @@
 
 [startup] {fbsetbg -a ~/.fluxbox/bg.jpg}
 
-[startup] {pidgin}
+#[startup] {pidgin}
 
 [app] (name=Pidgin)
   [Workspace]	{1}
