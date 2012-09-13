@@ -68,7 +68,7 @@ session.menuFile:	~/.fluxbox/menu
 session.keyFile:	~/.fluxbox/keys
 session.doubleClickInterval:	250
 session.appsFile:	~/.fluxbox/apps
-session.styleFile:	/home/nw/usr/CityOfDreams/
+session.styleFile:	/home/nw/.usr/CityOfDreams/
 session.slitlistFile:	~/.fluxbox/slitlist
 session.cacheMax:	200l
 session.tabsAttachArea:	Window
