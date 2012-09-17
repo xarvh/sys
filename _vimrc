@@ -4,6 +4,7 @@
 colorscheme darkblue
 
 set guioptions=acegi
+set gfn=Monospace\ Bold\ 11
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
