@@ -33,10 +33,11 @@ alias gbr='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
 
+alias homebrowser='env HOME=$(pwd) chromium-browser &'
 alias ack='ack-grep'
 alias ff='find * |grep --ignore-case'
 alias v='gvim'
-alias b='bundle exec'
+alias q='qiv --scale_down *.{png,jpg,JPG}'
 
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
