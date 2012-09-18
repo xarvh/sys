@@ -1,0 +1,11 @@
+
+--ignore-dir=node_modules
+
+--type-set=coffee=.coffee
+--coffee
+
+--type-set=jade=.jade
+--jade
+
+--smart-case
+--sort-files
