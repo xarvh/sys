@@ -65,6 +65,6 @@ session.tabPadding:	0
 session.cacheLife:	5l
 session.configVersion:	13
 session.keyFile:	~/.fluxbox/keys
-session.styleFile:	/home/nw/.usr/CityOfDreams/
+session.styleFile:	/home/nw/.usr/GUI/CityOfDreams/
 session.doubleClickInterval:	250
 session.cacheMax:	200l
