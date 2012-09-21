@@ -58,14 +58,22 @@ map è ^
 
 "==============================================================
 " COMMENTS
-function! DoComment(key, comment)
-  let c=a:comment 
-  execute "map <silent> ,".a:key." :s/^/".l:c."/<CR>:s/^".l:c.l:c."//e<CR>+"
+
+
+function! MultiComment()
+      if 0
+  elseif &filetype == 'jade' | let c='\/\/'
+  elseif &filetype == 'vim' | let c='"'
+  else | let c='#'
+  endif
+
+  execute "s/^/".c."/"
+  execute "s/^".c.c."//e"
 endfunction
 
-call DoComment(',', '#')
-call DoComment('5', '%')
-call DoComment('/', '\/\/')
+map <silent> , :call MultiComment()<CR>+
+
+
 
 
 "==============================================================
