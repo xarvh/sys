@@ -8,7 +8,7 @@
 #    [exec] (Chrome) {google-chrome}
     [exec] (Chromium) {chromium-browser}
     [exec] (Evince) {evince}
-    [exec] (GVim) {gvim}
+#    [exec] (GVim) {gvim}
     [exec] (GIMP) {gimp}
     [exec] (Inkscape) {inkscape}
     [exec] (Firefox) {firefox}
