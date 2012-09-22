@@ -59,21 +59,21 @@ map è ^
 "==============================================================
 " COMMENTS
 
-
-function! MultiComment()
+function! MultiComment(after_spaces)
       if 0
-  elseif &filetype == 'jade' | let c='\/\/'
-  elseif &filetype == 'vim' | let c='"'
-  else | let c='#'
+  elseif &filetype == 'jade' | let c = '\/\/'
+  elseif &filetype == 'vim' | let c = '"'
+  else | let c = '#'
   endif
 
-  execute "s/^/".c."/"
-  execute "s/^".c.c."//e"
+  let s = a:after_spaces ? "\\(\\s*\\)" : ""
+
+  execute "s/^".s."/\\1".c."/"
+  execute "s/^".s.c.c."/\\1/e"
 endfunction
 
-map <silent> , :call MultiComment()<CR>+
-
-
+map <silent> , :call MultiComment(0)<CR>+
+map <silent> ; :call MultiComment(1)<CR>+
 
 
 "==============================================================
