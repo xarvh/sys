@@ -5,7 +5,7 @@ None F12        :ExecCommand key_u_all
 Shift F12       :ExecCommand _shot2bluetooth
 Control F12     :ExecCommand _text2bluetooth
 Control F1      :ExecCommand xterm
-Control F2      :ExecCommand gvim
+Control F2      :ExecCommand gvim -c startinsert
 #Control F3      :ExecCommand gnome-volume-control
 Control F3      :ExecCommand xterm -e alsamixer
 Control F4      :ExecCommand env PYTHONSTARTUP=/home/nw/dati/sys/pythonstartup.py xterm -e python
