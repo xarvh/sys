@@ -15,7 +15,7 @@ for i in $DIR/_*; do
 done
 
 
-chmod -w -R $DIR/_fluxbox
+#chmod -w -R $DIR/_fluxbox
 
 
 
