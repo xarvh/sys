@@ -12,10 +12,7 @@ inkscape
 audacious
 
 fluxbox
-evince
 
-texlive-latex-extra
-texlive-fonts-recommended
 qiv
 feh
 mpg321
@@ -25,7 +22,7 @@ cdparanoia
 rar
 unrar
 unzip
-imagemagick
+graphicsmagick
 lame
 vlc
 mplayer

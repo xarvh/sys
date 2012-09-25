@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd $HOME
-rm -fr Templates Video Documents
+rm -fr Music Pictures Public Templates Videos Documents
 mkdir -p .usr
 
 
