@@ -36,6 +36,7 @@ set expandtab
 "==============================================================
 " NAVIGATION
 "
+set whichwrap+=h,l,<,>,[,]
 set mouse=a                    " enable mouse scrolling
 
 map ê <C-D>
