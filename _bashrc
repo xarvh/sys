@@ -21,18 +21,19 @@ alias ml='playlist.player $HOME/.playlist'
 alias pinstall='sudo apt-get install'
 alias psearch='apt-cache search'
 alias premove='sudo apt-get --purge remove'
+alias pupgrade='sudo apt-get update; sudo apt-get upgrade'
 
-alias xselswitch="xsel --primary |xsel --input --clipboard"
 alias rmrm="rm -r"
 alias dd="du -sh"
 alias pp="python -B"
 
 alias ga='git add'
+alias gd='git diff'
 alias gst='git status'
 alias gbr='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
-alias gdf='git diff'
+alias gpo='git push origin'
 
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
 alias ack='ack-grep'
@@ -40,6 +41,3 @@ alias ff='find * |grep --ignore-case'
 alias v='gvim'
 alias q='qiv --scale_down *.{png,jpg,JPG}'
 
-
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

@@ -21,6 +21,7 @@ set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue 
 
 nnoremap <F2> :set nonumber!<CR>  " toggle line number
+nnoremap <F3> :set wrap!<CR>
 
 
 "==============================================================
