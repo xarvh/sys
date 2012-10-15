@@ -9,9 +9,32 @@ Norm="\[\033[00m\]"
 PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed":"$Blue"\w"$DRed"\$"$Norm" "
 unset DRed LRed Blue Norm
 
+
+#===================================================================
+# CLIPBOARD / SELECTION
+#
+function clipboard_files {
+  for i in $(xsel --clipboard) $(xsel --primary); do
+    if [ -f $i ]; then
+      echo "$i"
+    fi
+  done
+}
+
+function arg_or_clipboard {
+  if [ "$1" == "" ]
+  then echo "$(xsel --clipboard)"
+  else echo $1
+  fi
+}
+
+
+#===================================================================
+# ALIASES
+#
 alias ls='ls --color=auto'
-alias yd='youtube-dl -t'
 alias grep='grep --color=auto'
+alias yd='youtube-dl -t'
 
 alias mp='m_playlist.sh'
 alias md='m_playlist.sh --sort'
@@ -36,8 +59,11 @@ alias gcm='git commit -m'
 alias gpo='git push origin'
 
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
-alias ack='ack-grep'
+
 alias ff='find * |grep --ignore-case'
-alias v='gvim'
+alias v='gvim $(clipboard_files)'
 alias q='qiv --scale_down *.{png,jpg,JPG}'
+
+function ack { ack-grep $(arg_or_clipboard $1) $2 ;}
+function www { wget $(arg_or_clipboard $1) ;}
 
