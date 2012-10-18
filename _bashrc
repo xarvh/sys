@@ -59,6 +59,7 @@ alias gco='git checkout'
 alias gcm='git commit -m'
 alias gpo='git push origin'
 
+alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
 alias ff='find * |grep --ignore-case'
