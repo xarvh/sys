@@ -35,6 +35,13 @@ set expandtab
 
 
 "==============================================================
+" BEAUTIFICATION
+"
+"json only for now!
+nnoremap <F5> :%!python -mjson.tool<CR>
+
+
+"==============================================================
 " NAVIGATION
 "
 set whichwrap+=h,l,<,>,[,]
