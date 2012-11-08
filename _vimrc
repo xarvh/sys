@@ -47,13 +47,13 @@ nnoremap <F5> :%!python -mjson.tool<CR>
 set whichwrap+=h,l,<,>,[,]
 set mouse=a                    " enable mouse scrolling
 
-map ê <C-D>
-map ë <C-U>
-map <M-j> <C-D>
-map <M-k> <C-U>
+"map ê <C-D>
+"map ë <C-U>
+"map <M-j> <C-D>
+"map <M-k> <C-U>
 
-map ì $
-map è ^ 
+"map ì $
+"map è ^ 
 
 "noremap  <Up> ""
 "noremap! <Up> <Esc>
@@ -81,8 +81,8 @@ function! MultiComment(after_spaces)
   execute "s/^".s.c.c."/\\1/e"
 endfunction
 
-map <silent> , :call MultiComment(0)<CR>+
-map <silent> ; :call MultiComment(1)<CR>+
+map <silent> ; :call MultiComment(0)<CR>+
+"map <silent> ; :call MultiComment(1)<CR>+
 
 
 "==============================================================

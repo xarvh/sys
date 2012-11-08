@@ -64,7 +64,7 @@ alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
 alias ff='find * |grep --ignore-case'
 alias v='gvim $(clipboard_files)'
-alias q='qiv --scale_down *.{png,jpg,JPG}'
+alias q='qiv --scale_down *.{png,jpg,JPG} &'
 
 function ack { ack-grep "$(arg_or_clipboard $1)" $2 ;}
 function www { wget $(arg_or_clipboard $1) ;}
