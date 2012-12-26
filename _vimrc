@@ -1,14 +1,19 @@
 "===============================================================
 " GENERAL
 "
+let mapleader = ' '
+
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
 set clipboard=unnamedplus       " copy to clipboard
+set mouse=a
 
 set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
+
+set shortmess=atI
 
 
 "===============================================================
@@ -20,8 +25,8 @@ set gfn=Monospace\ Bold\ 11
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue 
 
-nnoremap <F2> :set nonumber!<CR>  " toggle line number
-nnoremap <F3> :set wrap!<CR>
+nnoremap <leader>l :set nonumber!<CR>  " toggle line number
+nnoremap <leader>w :set wrap!<CR>
 
 
 "==============================================================
@@ -38,7 +43,7 @@ set expandtab
 " BEAUTIFICATION
 "
 "json only for now!
-nnoremap <F5> :%!python -mjson.tool<CR>
+nnoremap <leader>b :%!python -mjson.tool<CR>
 
 
 "==============================================================
@@ -52,17 +57,17 @@ set mouse=a                    " enable mouse scrolling
 "map <M-j> <C-D>
 "map <M-k> <C-U>
 
-"map ì $
-"map è ^ 
+map L $
+map H ^
 
-"noremap  <Up> ""
-"noremap! <Up> <Esc>
-"noremap  <Down> ""
-"noremap! <Down> <Esc>
-"noremap  <Left> ""
-"noremap! <Left> <Esc>
-"noremap  <Right> ""
-"noremap! <Right> <Esc> 
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
 
 
 "==============================================================
@@ -88,23 +93,22 @@ map <silent> ; :call MultiComment(0)<CR>+
 "==============================================================
 " SEARCH
 "
-nnoremap <F4> :%s/
+nnoremap <leader>r :%s/
 set incsearch
 set ignorecase
 set smartcase
 
+map <leader>f :AckFile!<space>
+map <leader>a :Ack!<space>
+map <leader>8 :Ack! <cword><cr>
 
 
 "===============================================================
-" AUTOCOMMANDS
-"
-"autocmd BufWrite        *.py,*.sh  !chmod +x %
-
-
-"===============================================================
-" BUFFERS
+" BUFFERS and WINDOWS
 "
 set hidden
+
+nnoremap <tab> <C-w>w
 
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
