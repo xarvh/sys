@@ -1,19 +1,13 @@
 [startup] {nm-applet}
-[startup] {blueman-applet}
 
+[startup] {blueman-applet}
 [startup] {gnome-power-manager}
 [startup] {/usr/bin/mono /usr/bin/jupiter.exe}
 [startup] {eeepc-tray.exe}
 
 [startup] {setxkbmap -option ctrl:nocaps}
-
 [startup] {fbsetbg -a ~/.usr/GUI/bg.jpg}
 
-#[startup] {pidgin}
-
-[app] (name=Pidgin)
-  [Workspace]	{1}
+[app] (gvim)
+    [Maximized]	{yes}
 [end]
-#[app] (class=Firefox)
-#  [Workspace]	{3}
-#[end]

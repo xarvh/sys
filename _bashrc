@@ -29,6 +29,7 @@ function arg_or_clipboard {
 }
 
 
+
 #===================================================================
 # ALIASES
 #
@@ -63,7 +64,7 @@ alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
 alias ff='find * |grep --ignore-case'
-alias v='gvim $(clipboard_files)'
+alias v='gvim'
 alias q='qiv --scale_down *.{png,jpg,JPG} &'
 
 function ack { ack-grep "$(arg_or_clipboard $1)" $2 ;}

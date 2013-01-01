@@ -6,8 +6,10 @@ let mapleader = ' '
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
-set clipboard=unnamedplus       " copy to clipboard
-set mouse=a
+set clipboard=unnamedplus      " copy to clipboard
+noremap! <C-i> <C-r>+
+
+set mouse=a                    " enable mouse scrolling
 
 set wildmode=longest,list
 set scrolloff=3
@@ -50,7 +52,6 @@ nnoremap <leader>b :%!python -mjson.tool<CR>
 " NAVIGATION
 "
 set whichwrap+=h,l,<,>,[,]
-set mouse=a                    " enable mouse scrolling
 
 "map ê <C-D>
 "map ë <C-U>
@@ -86,7 +87,7 @@ function! MultiComment(after_spaces)
   execute "s/^".s.c.c."/\\1/e"
 endfunction
 
-map <silent> ; :call MultiComment(0)<CR>+
+map <silent> - :call MultiComment(0)<CR>+
 "map <silent> ; :call MultiComment(1)<CR>+
 
 
@@ -108,7 +109,8 @@ map <leader>8 :Ack! <cword><cr>
 "
 set hidden
 
-nnoremap <tab> <C-w>w
+nnoremap ' <C-w>w
+nnoremap <leader>n :tabnew<cr>
 
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
