@@ -7,7 +7,7 @@ set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
 set clipboard=unnamedplus      " copy to clipboard
-noremap! <C-i> <C-r>+
+"noremap! <C-i> <C-r>+
 
 set mouse=a                    " enable mouse scrolling
 
