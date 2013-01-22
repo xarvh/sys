@@ -2,21 +2,20 @@
 " GENERAL
 "
 let mapleader = ' '
-
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
 set clipboard=unnamedplus      " copy to clipboard
-"noremap! <C-i> <C-r>+
-
 set mouse=a                    " enable mouse scrolling
+set shortmess=atI
 
 set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
-set shortmess=atI
-
+nnoremap <F9> :source $MYVIMRC<cr>
+filetype plugin on
+filetype indent on
 
 "===============================================================
 " APPEARANCE
@@ -62,13 +61,51 @@ map L $
 map H ^
 
 noremap  <Up> ""
-noremap! <Up> <Esc>
 noremap  <Down> ""
-noremap! <Down> <Esc>
 noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+
+"==============================================================
+" EXALTED DOTS
+function! AddDot()
+
+"  while getline(".")[col(".")-1] == '1'
+"    normal l
+"  endwhile
+
+  execute "/\\s"
+"  while getline(".")[col(".")-2] == '0'
+"    normal h
+"  endwhile
+
+"  let c = getline(".")[col(".")-1]
+"
+"  if c == '0'
+"
+"    normal yyp
+"  normal dawPbyl
+"  echo getline(".")[col(".")-1] 
+"  if getline(".")[col(".")-1] == '0'
+"    normal r1
+"  elseif @ == '1'
+"    echo 'hello'
+"  else
+"    normal rx
+"  endif
+
+"echo @
+
+endfunction
+
+map <F6> :call AddDot()<cr>
+
+"map <F5> /$\\|[ ○]<cr>:s?●?○<cr>
+"map <F6> ?^\\|[ ●]<cr>:s/○/●<cr>
+"map <F5> /$\|[0 ]/<cr>:s?1/0<cr>
+"map <F6> ?^\\|[ 1]<cr><cr>:s/0/1<cr>
 
 
 "==============================================================
@@ -88,7 +125,6 @@ function! MultiComment(after_spaces)
 endfunction
 
 map <silent> - :call MultiComment(0)<CR>+
-"map <silent> ; :call MultiComment(1)<CR>+
 
 
 "==============================================================
