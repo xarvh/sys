@@ -17,6 +17,8 @@ set textwidth=0
 
 set shortmess=atI
 
+nnoremap <f9> :source $MYVIMRC<cr>
+
 
 "===============================================================
 " APPEARANCE
@@ -69,6 +71,43 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+
+"==============================================================
+" 
+function! CountInBf(what)
+  echo a:what
+
+
+  return 9
+endfunction
+
+
+
+
+function! HandleDots(delta)
+
+"  echo a:delta
+
+"  normal daw
+"  echo @
+
+   echo CountInBf('0')
+
+"      if 0
+"  elseif &filetype == 'jade' | let c = '\/\/'
+"  elseif &filetype == 'vim' | let c = '"'
+"  else | let c = '#'
+"  endif
+"
+"  let s = a:after_spaces ? "\\(\\s*\\)" : ""
+"
+"  execute "s/^".s."/\\1".c."/"
+"  execute "s/^".s.c.c."/\\1/e"
+endfunction
+
+map <silent> <f5> :call HandleDots(-1)<cr>
+map <silent> <f6> :call HandleDots(+1)<cr>
 
 
 "==============================================================
