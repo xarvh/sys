@@ -2,23 +2,20 @@
 " GENERAL
 "
 let mapleader = ' '
-
 set nocompatible               " be iMproved
 set directory=$HOME/.vim/tmp   " put swapfiles away
 
 set clipboard=unnamedplus      " copy to clipboard
-"noremap! <C-i> <C-r>+
-
 set mouse=a                    " enable mouse scrolling
+set shortmess=atI
 
 set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
-set shortmess=atI
-
-nnoremap <f9> :source $MYVIMRC<cr>
-
+nnoremap <F9> :source $MYVIMRC<cr>
+filetype plugin on
+filetype indent on
 
 "===============================================================
 " APPEARANCE
@@ -64,9 +61,7 @@ map L $
 map H ^
 
 noremap  <Up> ""
-noremap! <Up> <Esc>
 noremap  <Down> ""
-noremap! <Down> <Esc>
 noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
@@ -74,40 +69,43 @@ noremap! <Right> <Esc>
 
 
 "==============================================================
-" 
-function! CountInBf(what)
-  echo a:what
+" EXALTED DOTS
+function! AddDot()
 
+"  while getline(".")[col(".")-1] == '1'
+"    normal l
+"  endwhile
 
-  return 9
-endfunction
+  execute "/\\s"
+"  while getline(".")[col(".")-2] == '0'
+"    normal h
+"  endwhile
 
-
-
-
-function! HandleDots(delta)
-
-"  echo a:delta
-
-"  normal daw
-"  echo @
-
-   echo CountInBf('0')
-
-"      if 0
-"  elseif &filetype == 'jade' | let c = '\/\/'
-"  elseif &filetype == 'vim' | let c = '"'
-"  else | let c = '#'
+"  let c = getline(".")[col(".")-1]
+"
+"  if c == '0'
+"
+"    normal yyp
+"  normal dawPbyl
+"  echo getline(".")[col(".")-1] 
+"  if getline(".")[col(".")-1] == '0'
+"    normal r1
+"  elseif @ == '1'
+"    echo 'hello'
+"  else
+"    normal rx
 "  endif
-"
-"  let s = a:after_spaces ? "\\(\\s*\\)" : ""
-"
-"  execute "s/^".s."/\\1".c."/"
-"  execute "s/^".s.c.c."/\\1/e"
+
+"echo @
+
 endfunction
 
-map <silent> <f5> :call HandleDots(-1)<cr>
-map <silent> <f6> :call HandleDots(+1)<cr>
+map <F6> :call AddDot()<cr>
+
+"map <F5> /$\\|[ ○]<cr>:s?●?○<cr>
+"map <F6> ?^\\|[ ●]<cr>:s/○/●<cr>
+"map <F5> /$\|[0 ]/<cr>:s?1/0<cr>
+"map <F6> ?^\\|[ 1]<cr><cr>:s/0/1<cr>
 
 
 "==============================================================
@@ -127,7 +125,6 @@ function! MultiComment(after_spaces)
 endfunction
 
 map <silent> - :call MultiComment(0)<CR>+
-"map <silent> ; :call MultiComment(1)<CR>+
 
 
 "==============================================================
