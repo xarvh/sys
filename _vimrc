@@ -17,6 +17,16 @@ nnoremap <F9> :source $MYVIMRC<cr>
 filetype plugin on
 filetype indent on
 
+" Block mouse middle click
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
+
 "===============================================================
 " APPEARANCE
 "
@@ -41,10 +51,15 @@ set expandtab
 
 
 "==============================================================
-" BEAUTIFICATION
+" LANGUAGE SPECIFICS
 "
-"json only for now!
+" Beautify JSON
 nnoremap <leader>b :%!python -mjson.tool<CR>
+
+" Compile Coffee
+vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
+map <leader>c :CoffeeCompile<CR>
+command -nargs=1 C CoffeeCompile | :<args>
 
 
 "==============================================================
