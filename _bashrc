@@ -60,6 +60,9 @@ alias gco='git checkout'
 alias gcm='git commit -m'
 alias gpo='git push origin'
 
+alias cpu_performance='sudo scale_cpu performance'
+alias cpu_conservative='sudo scale_cpu conservative'
+
 alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
 

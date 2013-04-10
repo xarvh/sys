@@ -1,5 +1,7 @@
 
 git
+vim-gnome
+
 g++
 manpages-dev
 valgrind
@@ -13,6 +15,7 @@ inkscape
 audacious
 
 fluxbox
+qtile
 
 qiv
 feh
@@ -40,6 +43,6 @@ xsel
 acpi
 pmount
 blueman
-pidgin
 chromium-browser
 ffmpeg
+
