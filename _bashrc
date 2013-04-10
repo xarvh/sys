@@ -67,8 +67,6 @@ alias ff='find * |grep --ignore-case'
 alias v='gvim'
 alias q='qiv --scale_down *.{png,jpg,JPG} &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
-
-
-function ack { ack-grep "$(arg_or_clipboard $1)" $2 ;}
+alias ack='ack-grep'
 function www { wget $(arg_or_clipboard $1) ;}
 
