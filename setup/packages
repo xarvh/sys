@@ -1,4 +1,5 @@
 
+vim-gnome
 git
 g++
 manpages-dev
@@ -11,6 +12,7 @@ gimp
 inkscape
     python-lxml
 audacious
+audacity
 
 fluxbox
 
