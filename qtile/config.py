@@ -45,7 +45,7 @@ commands = {
   'i': 'setxkbmap -layout it',
   '0': 'setxkbmap -layout us',
   'b': 'chromium-browser',
-  'B': 'firefox',
+  'v': 'gvim',
   'Return': 'xterm',
 
   'equal': 'amixer -c 0 -q set Master 2dB+',
