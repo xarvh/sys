@@ -69,7 +69,7 @@ OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 #
 # SPECIALS
 #
-Mod4 q          :Close
+Mod4 q          :Exit
 Mod4 w          :Close
 Mod4 Mod1 k     :KillWindow
 Mod4 a          :ArrangeWindowsVertical
