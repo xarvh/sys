@@ -1,12 +1,12 @@
 export HISTCONTROL=ignoreboth
 export PYTHONSTARTUP=$HOME/dati/sys/pythonstartup.py
 
-DRed="\[\033[00;31m\]"
-LRed="\[\033[01;31m\]"
-Blue="\[\033[01;34m\]"
-Norm="\[\033[00m\]"
+DRed=$'\e[00;31m'
+LRed=$'\e[01;31m'
+Blue=$'\e[01;34m'
+Norm=$'\e[00m'
 
-PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed":"$Blue"\w"$DRed"\$"$Norm" "
+PS1=$LRed"%n"$DRed" in "$Blue"%~"$DRed" "$Norm""
 unset DRed LRed Blue Norm
 
 
