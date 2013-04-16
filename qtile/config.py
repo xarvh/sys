@@ -3,14 +3,29 @@ from libqtile.manager import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
+#
+# Custom stuff
+#
+class CustomStack(layout.Stack):
+  def __self__(**args):
+    layout.Stack.__init__(self, args)
+
+  def cmd_switchdown(self, offset):
+    if self.currentStackOffset is offset:
+      self.cmd_down()
+    else:
+      self.group.focus(self.stacks[offset].cw, True)
 
 
+
+#
 # general
-mod = "mod4"
+#
+mod = 'mod4'
 
 layouts = [
   layout.Max(),
-  layout.Stack(stacks=2, border_width=1),
+  CustomStack(stacks=2, border_width=1),
 ]
 
 
@@ -46,32 +61,28 @@ commands = {
   '0': 'setxkbmap -layout us',
   'b': 'chromium-browser',
   'v': 'gvim',
+  'F12': 'key_u_all',
   'Return': 'xterm',
 
   'equal': 'amixer -c 0 -q set Master 2dB+',
   'minus': 'amixer -c 0 -q set Master 2dB-',
 }
 
-
-
 keys = [
-  Key([mod], "q",  lazy.shutdown()),
-
-  # layouts
-  Key([mod], "k",              lazy.layout.down()),
-  Key([mod], "j",              lazy.layout.up()),
-  Key([mod], "h",              lazy.layout.previous()),
-  Key([mod], "l",              lazy.layout.previous()),
-  Key([mod, "shift"], "space", lazy.layout.rotate()),
-  Key([mod, "shift"], "Return",lazy.layout.toggle_split()),
-  Key([mod], "space",         lazy.nextlayout()),
+  Key([mod], "q",              lazy.shutdown()),
+  Key([mod], "j",              lazy.layout.switchdown(0)),
+  Key([mod], "k",              lazy.layout.switchdown(1)),
+  Key([mod], "apostrophe",     lazy.layout.next()),
+  Key([mod], "h",              lazy.group.prevgroup()),
+  Key([mod], "l",              lazy.group.nextgroup()),
+  Key([mod], "space",          lazy.spawncmd()),
+  Key([mod], "t",              lazy.layout.toggle_split()),
+  Key([mod], "r",              lazy.layout.rotate()),
+  Key([mod], "Tab",            lazy.nextlayout()),
   Key([mod], "x",              lazy.window.kill()),
 
-  # prompts
-  Key([mod], "r",              lazy.spawncmd()),
-  Key([mod], "g",              lazy.switchgroup()),
-
 ] + [ Key([mod], k, lazy.spawn(v)) for k, v in commands.items()]
+
 
 
 groups = []
