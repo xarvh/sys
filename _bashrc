@@ -10,6 +10,7 @@ PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed":"$Blue"\w"$DRed"\$"$Norm" "
 unset DRed LRed Blue Norm
 
 
+
 #===================================================================
 # CLIPBOARD / SELECTION
 #
@@ -72,4 +73,12 @@ alias q='qiv --scale_down *.{png,jpg,JPG} &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
 alias ack='ack-grep'
 function www { wget $(arg_or_clipboard $1) ;}
+
+
+
+#===================================================================
+# GIT ALIASES
+#
+source $HOME/dati/sys/git-completion
+source $HOME/dati/sys/git-completion-aliases
 
