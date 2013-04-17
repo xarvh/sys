@@ -12,6 +12,7 @@ mod = 'mod4'
 #
 # keys and groups
 #
+xterm = 'xterm -fn "*-fixed-*-*-*-20-*" '
 commands = {
   's': 'setxkbmap -layout se',
   'g': 'setxkbmap -layout gr',
@@ -19,8 +20,11 @@ commands = {
   '0': 'setxkbmap -layout us',
   'b': 'chromium-browser',
   'v': 'gvim',
+  't': '_tango_newsletter',
+  'c': xterm + '-e coffee',
+  'a': xterm + '-e alsamixer',
   'F12': 'key_u_all',
-  'Return': 'xterm',
+  'Return': xterm,
 
   'equal': 'amixer -c 0 -q set Master 2dB+',
   'minus': 'amixer -c 0 -q set Master 2dB-',
