@@ -5,7 +5,9 @@ from libqtile.manager import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
-mod = 'mod4'
+normal = ['mod4']
+heavy = ['mod4', 'mod1']
+
 
 
 
@@ -14,10 +16,6 @@ mod = 'mod4'
 #
 xterm = 'xterm -fn "*-fixed-*-*-*-20-*" '
 commands = {
-  's': 'setxkbmap -layout se',
-  'g': 'setxkbmap -layout gr',
-  'i': 'setxkbmap -layout it',
-  '0': 'setxkbmap -layout us',
   'b': 'chromium-browser',
   'v': 'gvim',
   't': '_tango_newsletter',
@@ -30,19 +28,28 @@ commands = {
   'minus': 'amixer -c 0 -q set Master 2dB-',
 }
 
-keys = [
-  Key([mod], "q",              lazy.shutdown()),
-  Key([mod], "j",              lazy.layout.switchdown(0)),
-  Key([mod], "k",              lazy.layout.switchdown(1)),
-  Key([mod], "h",              lazy.group.prevgroup()),
-  Key([mod], "l",              lazy.group.nextgroup()),
-  Key([mod], "space",          lazy.spawncmd()),
-  Key([mod], "t",              lazy.layout.toggle_split()),
-  Key([mod], "r",              lazy.layout.rotate()),
-  Key([mod], "Tab",            lazy.nextlayout()),
-  Key([mod], "x",              lazy.window.kill()),
+heavy_commands = {
+  's': 'setxkbmap -layout se',
+  'g': 'setxkbmap -layout gr',
+  'i': 'setxkbmap -layout it',
+  '0': 'setxkbmap -layout us',
+}
 
+keys = [
+  Key(heavy,  "q",              lazy.shutdown()),
+  Key(normal, "j",              lazy.layout.switchdown(0)),
+  Key(normal, "k",              lazy.layout.switchdown(1)),
+  Key(normal, "h",              lazy.group.prevgroup()),
+  Key(normal, "l",              lazy.group.nextgroup()),
+  Key(normal, "semicolon",      lazy.group.group_toggle(True)),
+  Key(normal, "space",          lazy.spawncmd()),
+  Key(normal, "t",              lazy.layout.toggle_split()),
+  Key(normal, "r",              lazy.layout.rotate()),
+  Key(normal, "apostrophe",     lazy.nextlayout()),
+  Key(normal, "x",              lazy.window.kill()),
 ]
+
+
 
 
 
@@ -60,24 +67,24 @@ main_bar = bar.Bar([
   widget.Sep(),
   widget.WindowName(),
   widget.Sep(),
-  widget.Notify(),
+#  widget.Notify(),
   widget.Prompt(),
   widget.Volume(),
   widget.Systray(),
   widget.Clock('%m%d %a %I:%M%P'),
 ], 20)
 
-screens = [ Screen(bottom = main_bar) ]
+screens = [ Screen(top = main_bar) ]
 
 
 
 # mouse
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
+    Drag(normal, "Button1", lazy.window.set_position_floating(),
         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
+    Drag(normal, "Button3", lazy.window.set_size_floating(),
         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click(normal, "Button2", lazy.window.bring_to_front())
 ]
 
 
@@ -86,25 +93,27 @@ mouse = [
 # Groups
 #
 class CustomGroup(Group):
-  def cmd_screentoggle(self):
+
+  def cmd_group_toggle(self, force_previous=False):
     screen = self.qtile.currentScreen
-    group = self
-    if screen.group is self:
-      try: group = screen.previous_group
+    target_group = self
+    if screen.group is self or force_previous:
+      try: target_group = screen.previous_group
       except AttributeError: pass
 
     screen.previous_group = screen.group
-    screen.setGroup(group)
+    screen.setGroup(target_group)
 
 
 groups = []
 for key in 'n m comma period u i o p'.split():
   name = key.upper() if len(key) is 1 else key[0]
   groups.append(CustomGroup(name))
-  keys.append( Key([mod], key, lazy.group[name].screentoggle()) )
-  keys.append( Key([mod, "mod1"], key, lazy.window.togroup(name)) )
+  keys.append( Key(normal, key, lazy.group[name].group_toggle()) )
+  keys.append( Key(heavy, key, lazy.window.togroup(name)) )
 
-keys += [ Key([mod], k, lazy.spawn(v)) for k, v in commands.items()]
+keys += [ Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
+keys += [ Key(heavy, k, lazy.spawn(v)) for k, v in heavy_commands.items()]
 
 
 
@@ -123,4 +132,12 @@ layouts = [
   CustomStack(stacks=1, border_width=0),
   CustomStack(stacks=2, border_width=1),
 ]
+
+
+
+#
+# init commands
+#
+from os import system
+system('setxkbmap -option ctrl:nocaps')
 
