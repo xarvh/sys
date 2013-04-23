@@ -17,15 +17,6 @@ nnoremap <F9> :source $MYVIMRC<cr>
 filetype plugin on
 filetype indent on
 
-" Block mouse middle click
-"map <MiddleMouse> <Nop>
-"imap <MiddleMouse> <Nop>
-"map <2-MiddleMouse> <Nop>
-"imap <2-MiddleMouse> <Nop>
-"map <3-MiddleMouse> <Nop>
-"imap <3-MiddleMouse> <Nop>
-"map <4-MiddleMouse> <Nop>
-"imap <4-MiddleMouse> <Nop>
 
 "===============================================================
 " APPEARANCE
@@ -67,20 +58,17 @@ command -nargs=1 C CoffeeCompile | :<args>
 "
 set whichwrap+=h,l,<,>,[,]
 
-"map ê <C-D>
-"map ë <C-U>
-"map <M-j> <C-D>
-"map <M-k> <C-U>
-
+map <C-k> <C-U>
+map <C-j> <C-D>
 map L $
 map H ^
 
-noremap  <Up> ""
-noremap  <Down> ""
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
+"noremap  <Up> ""
+"noremap  <Down> ""
+"noremap  <Left> ""
+"noremap! <Left> <Esc>
+"noremap  <Right> ""
+"noremap! <Right> <Esc>
 
 
 "==============================================================

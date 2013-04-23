@@ -56,6 +56,23 @@ keys = [
 #
 # Screens and bars
 #
+class CustomWindowName(widget.WindowName):
+  pass
+#  def __init__(self):
+#    super(CustomWindowName, self).__init__()
+#
+#  def button_press(self, x, y, button):
+#    f = open('qtile.xxx', 'at')
+#    f.write("%d %d %d" % (x, y, button))
+#    f.close()
+#    group = self.qtile.currentGroup
+#    if button == 5:
+#      group.cmd_prevgroup()
+#    elif button == 4:
+#      group.cmd_nextgroup()
+
+
+
 main_bar = bar.Bar([
   widget.GroupBox(
     urgent_alert_method='text',
@@ -65,7 +82,7 @@ main_bar = bar.Bar([
     active='0000FF',
     inactive='CCCCCC'),
   widget.Sep(),
-  widget.WindowName(),
+  CustomWindowName(),
   widget.Sep(),
 #  widget.Notify(),
   widget.Prompt(),
