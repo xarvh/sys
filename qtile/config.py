@@ -1,9 +1,9 @@
 #
 #
 #
-from libqtile.manager import Key, Screen, Group, Drag, Click
+from libqtile.config import Key, Screen, Group
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget
 
 normal = ['mod4']
 heavy = ['mod4', 'mod1']
@@ -39,10 +39,10 @@ keys = [
   Key(heavy,  "q",              lazy.shutdown()),
   Key(normal, "j",              lazy.layout.switchdown(0)),
   Key(normal, "k",              lazy.layout.switchdown(1)),
-  Key(normal, "h",              lazy.group.prevgroup()),
-  Key(normal, "l",              lazy.group.nextgroup()),
-  Key(normal, "semicolon",      lazy.group.group_toggle(True)),
-  Key(normal, "space",          lazy.spawncmd()),
+  Key(normal, "h",              lazy.screen.prevgroup()),
+  Key(normal, "l",              lazy.screen.nextgroup()),
+  Key(normal, "space",          lazy.screen.grouptoggle()),
+  Key(normal, "semicolon",      lazy.spawncmd()),
   Key(normal, "t",              lazy.layout.toggle_split()),
   Key(normal, "r",              lazy.layout.rotate()),
   Key(normal, "apostrophe",     lazy.nextlayout()),
@@ -84,7 +84,7 @@ main_bar = bar.Bar([
   widget.Sep(),
   CustomWindowName(),
   widget.Sep(),
-#  widget.Notify(),
+  widget.Notify(),
   widget.Prompt(),
   widget.Volume(),
   widget.Systray(),
@@ -95,38 +95,14 @@ screens = [ Screen(top = main_bar) ]
 
 
 
-# mouse
-mouse = [
-    Drag(normal, "Button1", lazy.window.set_position_floating(),
-        start=lazy.window.get_position()),
-    Drag(normal, "Button3", lazy.window.set_size_floating(),
-        start=lazy.window.get_size()),
-    Click(normal, "Button2", lazy.window.bring_to_front())
-]
-
-
-
 #
 # Groups
 #
-class CustomGroup(Group):
-
-  def cmd_group_toggle(self, force_previous=False):
-    screen = self.qtile.currentScreen
-    target_group = self
-    if screen.group is self or force_previous:
-      try: target_group = screen.previous_group
-      except AttributeError: pass
-
-    screen.previous_group = screen.group
-    screen.setGroup(target_group)
-
-
 groups = []
 for key in 'n m comma period u i o p'.split():
   name = key.upper() if len(key) is 1 else key[0]
-  groups.append(CustomGroup(name))
-  keys.append( Key(normal, key, lazy.group[name].group_toggle()) )
+  groups.append(Group(name))
+  keys.append( Key(normal, key, lazy.screen.grouptoggle(name)) )
   keys.append( Key(heavy, key, lazy.window.togroup(name)) )
 
 keys += [ Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
@@ -157,4 +133,6 @@ layouts = [
 #
 from os import system
 system('setxkbmap -option ctrl:nocaps')
+system('fbsetbg -a ~/.usr/GUI/bg.jpg') 
+system('xsetroot -cursor_name left_ptr')
 
