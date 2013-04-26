@@ -1,6 +1,9 @@
 
 --ignore-dir=node_modules
 
+--type-set=python=.py
+--python
+
 --type-set=coffee=.coffee
 --coffee
 
