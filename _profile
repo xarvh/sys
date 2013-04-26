@@ -3,6 +3,9 @@ source .bashrc
 PATH=~/dati/bin:~/.usr/bin:$PATH
 export PATH
 
+PYTHONPATH=~/qtile:$PYTHONPATH
+export PYTHONPATH
+
 if [ `tty` = "/dev/tty6" ]; then
     rm .bash_history 2>/dev/null
     startx

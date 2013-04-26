@@ -41,7 +41,7 @@ keys = [
   Key(normal, "k",              lazy.layout.switchdown(1)),
   Key(normal, "h",              lazy.screen.prevgroup()),
   Key(normal, "l",              lazy.screen.nextgroup()),
-  Key(normal, "space",          lazy.screen.grouptoggle()),
+  Key(normal, "space",          lazy.screen.togglegroup()),
   Key(normal, "semicolon",      lazy.spawncmd()),
   Key(normal, "t",              lazy.layout.toggle_split()),
   Key(normal, "r",              lazy.layout.rotate()),
@@ -102,7 +102,7 @@ groups = []
 for key in 'n m comma period u i o p'.split():
   name = key.upper() if len(key) is 1 else key[0]
   groups.append(Group(name))
-  keys.append( Key(normal, key, lazy.screen.grouptoggle(name)) )
+  keys.append( Key(normal, key, lazy.screen.togglegroup(name)) )
   keys.append( Key(heavy, key, lazy.window.togroup(name)) )
 
 keys += [ Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
