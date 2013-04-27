@@ -1,6 +1,16 @@
-#
-#
-#
+"""
+
+Guidelines:
+
+  1) ALL WM keyboard commands use the Win mod.
+  2) Alt can be used in conjunction with Win to
+    - Avoid accidentally issuing especially disruptive commands, or
+    - Issue a command related to the non-modified one.
+
+
+"""
+
+
 from libqtile.config import Key, Screen, Group
 from libqtile.command import lazy
 from libqtile import layout, bar, widget
@@ -51,35 +61,30 @@ keys = [
 
 
 
-
-
 #
 # Screens and bars
 #
 class CustomWindowName(widget.WindowName):
-  pass
-#  def __init__(self):
-#    super(CustomWindowName, self).__init__()
-#
-#  def button_press(self, x, y, button):
-#    f = open('qtile.xxx', 'at')
-#    f.write("%d %d %d" % (x, y, button))
-#    f.close()
-#    group = self.qtile.currentGroup
-#    if button == 5:
-#      group.cmd_prevgroup()
-#    elif button == 4:
-#      group.cmd_nextgroup()
-
+  def button_press(self, x, y, button):
+    screen = self.bar.screen
+    {
+      1: lambda: screen.group.layout.cmd_switchdown(0), # left mouse, left pane
+      3: lambda: screen.group.layout.cmd_switchdown(1), # right mouse, right pane
+      4: lambda: screen.cmd_nextgroup(), # wheel up
+      5: lambda: screen.cmd_prevgroup(), # wheel down
+    }.get(button, lambda: '')()
 
 
 main_bar = bar.Bar([
   widget.GroupBox(
     urgent_alert_method='text',
+    borderwidth=2,
     padding=1,
     margin_x=1,
     margin_y=1,
-    active='0000FF',
+    active='FF0000',
+    this_current_screen_border='CC0000',
+    disable_drag=True,
     inactive='CCCCCC'),
   widget.Sep(),
   CustomWindowName(),

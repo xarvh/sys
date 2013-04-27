@@ -32,11 +32,11 @@ session.screen0.toolbar.layer:	Dock
 session.screen0.toolbar.placement:	BottomCenter
 session.screen0.toolbar.widthPercent:	100
 session.screen0.noFocusWhileTypingDelay:	0l
-session.screen0.workspaces:	4
+session.screen0.workspaces:	8
 session.screen0.defaultDeco:	NORMAL
 session.screen0.workspacewarping:	true
 session.screen0.menuDelay:	200
-session.screen0.workspaceNames:	I,II,III,IV,
+session.screen0.workspaceNames:	I,II,III,IV,5,6,7,8,
 session.screen0.allowRemoteActions:	false
 session.screen0.tabFocusModel:	ClickToTabFocus
 session.screen0.rowPlacementDirection:	LeftToRight
