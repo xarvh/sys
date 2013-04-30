@@ -10,3 +10,9 @@
 
 [rerere]
 	enabled = 1
+
+[merge]
+    tool = mymeld
+[mergetool "mymeld"]
+    cmd = $HOME/dati/bin/gitmerge $BASE $LOCAL $REMOTE $MERGED
+
