@@ -1,0 +1,15 @@
+#!/bin/sh
+HOST="www.4orsi.it"
+PORT="2002"
+DIR="bk/"
+NAME=$1
+
+FN=$(echo "ls $DIR |grep $NAME[0-9] |tail -n1" |ssh -p$PORT $HOST)
+scp -P$PORT $HOST:$DIR/$FN $HOME/Desktop/
+
+
+if [ -d $NAME ]; then
+    echo updating...
+    mv $NAME $HOME/_dabuttare/$(date +$NAME%y%m%d_%H%M)
+    tar -xjf $HOME/Desktop/$FN
+fi

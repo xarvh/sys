@@ -1,0 +1,4 @@
+#!/bin/bash
+for domain in $@; do
+  sudo sh -c "echo 0.0.0.0 $domain >>/etc/hosts"
+done

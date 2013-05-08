@@ -1,6 +1,6 @@
 source .bashrc
 
-PATH=~/dati/bin:~/.usr/bin:$PATH
+PATH=~/.dati/scripts:~/.usr/bin:$PATH
 export PATH
 
 PYTHONPATH=~/qtile:$PYTHONPATH

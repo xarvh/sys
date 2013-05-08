@@ -1,0 +1,2 @@
+#!/bin/sh
+gs -dDELAYBIND -o S_"$1" -sDEVICE=pdfwrite -c "/image{pop}bind def .bindnow " -f "$1"

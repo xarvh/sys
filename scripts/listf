@@ -1,0 +1,44 @@
+#!/usr/bin/python
+DefaultExts = "flv,mpg,avi,wmv,mp4"
+Separators = ("'",'"','=')
+
+
+
+# find_ext
+def find_ext(file, exts):
+    for e in exts:
+       if file.find("."+e) > 0:
+        return e
+    return
+
+
+# main
+def main():
+    import urllib
+    import sys
+    exts = DefaultExts
+    if len(sys.argv) > 2:
+        exts = sys.argv[2]
+    extentions = exts.split(",")
+
+    f = urllib.urlopen(sys.argv[1])
+    src = f.read()
+    f.close()
+
+    e = find_ext(src, extentions)
+    if not e :
+       return
+
+    for i in src.split("."+e)[:-1]:
+       for sep in Separators:
+          i = i.split(sep)[-1]
+       i.replace('[', '');
+       e.replace(']', '');
+       print "%s.%s" % (i, e)
+
+
+
+if __name__ == "__main__":
+    main()
+
+#eof

@@ -1,0 +1,11 @@
+#!/bin/bash
+cd
+cd $HOME/Magazzino/Foto
+FN=`date +%Y%m%d$1`
+mkdir $FN
+#mv -v /media/key/dcim/100msdcf/* $FN/
+mc $FN
+
+echo Ready to update to server.
+read -n 1 -s
+scp -rP2002 $(pwd)/$FN www.4orsi.it:Foto/

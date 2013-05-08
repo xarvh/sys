@@ -6,7 +6,7 @@
 [startup] {eeepc-tray.exe}
 
 [startup] {setxkbmap -option ctrl:nocaps}
-[startup] {fbsetbg -a ~/.usr/GUI/bg.jpg}
+[startup] {fbsetbg -a ~/.usr/gui/bg.jpg}
 
 [app] (gvim)
     [Maximized]	{yes}

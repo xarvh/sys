@@ -1,0 +1,11 @@
+#!/bin/bash
+
+FILES=~/.usr/ipno/*
+
+while true; do
+  PLAYLIST=$(ls $FILES |shuf)
+  mplayer $PLAYLIST
+done
+
+
+

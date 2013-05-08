@@ -138,6 +138,6 @@ layouts = [
 #
 from os import system
 system('setxkbmap -option ctrl:nocaps')
-system('fbsetbg -a ~/.usr/GUI/bg.jpg') 
+system('fbsetbg -a ~/.usr/gui/bg.jpg') 
 system('xsetroot -cursor_name left_ptr')
 

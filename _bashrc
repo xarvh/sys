@@ -1,5 +1,5 @@
 export HISTCONTROL=ignoreboth
-export PYTHONSTARTUP=$HOME/dati/sys/pythonstartup.py
+export PYTHONSTARTUP=$HOME/.dati/sys/pythonstartup.py
 
 DRed="\[\033[00;31m\]"
 LRed="\[\033[01;31m\]"
@@ -37,6 +37,10 @@ function arg_or_clipboard {
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias yd='youtube-dl -t'
+alias bk='tar -cjf `date +$1%Y%m%d$2.tbz` $1/'
+alias dos='dosbox -c MOUNT . c'
+alias s2b='ussp-push GT-I9300@ "$1" "$(basename $1)"'
+alias xcsf='echo "Job finished at\n$(pwd)" |xcowsay -t 99999'
 
 alias mp='m_playlist.sh'
 alias md='m_playlist.sh --sort'
@@ -79,6 +83,6 @@ function www { wget $(arg_or_clipboard $1) ;}
 #===================================================================
 # GIT ALIASES
 #
-source $HOME/dati/sys/git-completion
-source $HOME/dati/sys/git-completion-aliases
+source $HOME/.dati/sys/git-completion
+source $HOME/.dati/sys/git-completion-aliases
 

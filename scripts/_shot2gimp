@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#NAME=$(date +%d%H%M%S.jpg)
+NAME=$(date +%M%S.JPG)
+FULL="/tmp/$NAME"
+#DEST="DCIM/100MSDCF/DSC0$NAME"
+DEST="AA$NAME"
+
+
+import $FULL
+gimp $FULL
+#ERROR=$(ussp-push SanIgnazioBatrace@ $FULL $DEST 2>&1)
+#if [ $? != "0" ]; then
+#    xcowsay "$ERROR"
+#    exit
+#fi
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# pmounts a device, opens a MC terminal, then pumounts the device
+#
+
+DEV="sdb1"
+if [ "$1" != "" ]; then
+    DEV=$1
+fi
+
+
+pmount /dev/$DEV
+xterm -fn *-fixed-*-*-*-20-* -bg black -fg white -e mc /media/$DEV
+
+
+ERR=$(pumount $DEV)
+if [ $? != "0" ]; then
+    xcowsay "$ERR"
+else
+    xcowsay "$DEV smounted"
+fi
+

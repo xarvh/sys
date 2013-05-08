@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CMD="print ', '.join([l.strip() for l in open('/home/nw/tango/newsletter')])"
+
+python -c "$CMD" |xsel --input
+
+xcowsay "Tango Newsletter!"

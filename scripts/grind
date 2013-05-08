@@ -1,0 +1,4 @@
+#!/bin/bash
+export "__GL_FORCE_GENERIC_CPU=1"
+valgrind --tool=memcheck --error-limit=no $@ 2>$1grind.out
+

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# clean
+TARG=$1
+SUFFIX=$2
+OPTIONS=$3
+
+DIR=$(pwd)/$(dirname $TARG)
+NAME=$(basename $TARG)
+TARBZ=$HOME/Desktop/bk/$(date +$NAME%y%m%d_%H%M$SUFFIX$OPTIONS.tbz)
+
+#
+# clean
+#
+echo Cleaning...
+for i in $(find $TARG/* |grep Makefile); do
+    cd $(dirname $i)
+    pwd
+    make clean 2>/dev/null
+    cd $DIR
+done
+
+#
+# create backup
+#
+cd $DIR
+tar $OPTIONS -cjf $TARBZ $NAME/
+
+#
+# backup on remote server
+#
+echo Connecting to server...
+scp -P2002 $TARBZ www.4orsi.it:bk/

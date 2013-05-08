@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# calls key_open on pmountable devices
+#
+
+for i in $(ls /dev/sd* |grep -v sda |grep [0-9]); do
+    NAME=$(basename $i)
+    echo $NAME
+    if [ ! -d "/media/$NAME" ]; then
+        key_open $NAME &
+    fi
+done
+

@@ -1,0 +1,47 @@
+#!/bin/sh
+BELL="$HOME/usr/bell.ogg"
+SILENCE="$HOME/usr/silence.ogg"
+
+SRC="$HOME/.playlist"
+OUT="$HOME/.meditation"
+
+#m_playlist.sh --noplay tango
+
+
+
+#
+# meditation playlist
+#
+rm $OUT
+#head -n1 $SRC >>$OUT
+echo $BELL >>$OUT
+echo $BELL >>$OUT
+echo $BELL >>$OUT
+for i in $(seq 15); do
+    echo $SILENCE >>$OUT
+done
+#head -n4 $SRC >>$OUT
+echo $BELL >>$OUT
+echo $BELL >>$OUT
+echo $BELL >>$OUT
+
+
+
+#
+# play!
+#
+sleep 10
+START=$(date +%s)
+playlist.player $OUT 2>/dev/null
+END=$(date +%s)
+
+
+
+#
+# calculate total time
+#
+BELL_DURATION=27	#6 bells times 4.5" each
+DURATION=$(( $END - $START - $BELL_DURATION ))
+M=$(( $DURATION / 60 ))
+S=$(( $DURATION % 60 ))
+echo "Total time: $M:$S"

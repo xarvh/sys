@@ -1,0 +1,13 @@
+#!/bin/bash
+
+RADIO_FILE="$HOME/.dati/radios"
+
+
+if [ $(ps -e |grep mplayer) == ""]; then
+    RADIO=$(shuf $RADIO_FILE |head -n1   )
+
+    echo $RADIO
+    mplayer -really-quiet "$RADIO"
+else
+    killall mplayer
+fi

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+SRC=$HOME
+DEST="moho:/home/crono_bk/"
+
+EXCLUDE_FILE=$HOME/.dati/sys/rsync_exclude
+
+OP=""
+#OP=$OP --archive			# archive mode, preserves a lot of stuff
+OP=$OP" --links"			# preserve symlinks
+OP=$OP" --compress"			# compres data during transfer
+OP=$OP" --recursive"
+OP=$OP" --update"
+OP=$OP" --force"			# allow replace dirs with non-dirs
+OP=$OP" --max-size=10M"
+OP=$OP" --delete"			# allow deleting files
+OP=$OP" --stats"			# outputs statistics
+OP=$OP" --progress --human-readable"	# shows progress
+for e in $(cat $EXCLUDE_FILE); do OP=$OP" --exclude="$e; done
+
+echo $OP
+
+rsync --rsh="ssh -p2002" $OP $SRC $DEST

@@ -6,7 +6,7 @@ mkdir -p .usr
 
 
 cd
-DIR=dati/sys
+DIR=.dati/sys
 for i in $DIR/_*; do
   n=$(basename $i)
   t=.${n#_}
