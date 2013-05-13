@@ -69,6 +69,7 @@ class CustomWindowName(widget.WindowName):
     screen = self.bar.screen
     {
       1: lambda: screen.group.layout.cmd_switchdown(0), # left mouse, left pane
+      2: lambda: self.qtile.cmd_nextlayout(), # mid mouse, change layout
       3: lambda: screen.group.layout.cmd_switchdown(1), # right mouse, right pane
       4: lambda: screen.cmd_nextgroup(), # wheel up
       5: lambda: screen.cmd_prevgroup(), # wheel down
@@ -96,7 +97,13 @@ main_bar = bar.Bar([
   widget.Clock('%m%d %a %I:%M%P'),
 ], 20)
 
-screens = [ Screen(top = main_bar) ]
+
+lower_bar = bar.Bar([
+  CustomWindowName(),
+], 1)
+
+
+screens = [ Screen(top = main_bar, bottom = lower_bar) ]
 
 
 
