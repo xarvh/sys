@@ -6,7 +6,7 @@ LRed="\[\033[01;31m\]"
 Blue="\[\033[01;34m\]"
 Norm="\[\033[00m\]"
 
-PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed":"$Blue"\w"$DRed"\$"$Norm" "
+PS1=$LRed"\u"$DRed"@"$LRed"\h"$DRed" "$Blue"\w"$LRed"\$(__git_ps1)"$DRed"\$"$Norm" "
 unset DRed LRed Blue Norm
 
 
@@ -83,6 +83,7 @@ function www { wget $(arg_or_clipboard $1) ;}
 #===================================================================
 # GIT ALIASES
 #
+source $HOME/.dati/sys/git-prompt
 source $HOME/.dati/sys/git-completion
 source $HOME/.dati/sys/git-completion-aliases
 
