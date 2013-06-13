@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# prevent me from doing stupid things
+if [ "$(pwd)" = "$HOME" ]; then
+  echo 'Bad idea!'
+  exit
+fi
+
+
+# dev node
+NODE=9
+if [ "$1" != "" ]; then NODE=$1; fi
+
+
+# files to retrieve
+if [ "$2" = "" ]
+  then FILES=""
+  else FILES="$2-data.json"
+fi
+
+# remote shell
+RSH="ssh -i $HOME/.ssh/node.pem"
+SRC="node@ice.adslot.com:direct-web-dev$NODE/data"
+
+
+rsync -rv --exclude 'demo-*' -e"$RSH" $SRC/$FILES .
+
