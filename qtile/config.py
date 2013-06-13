@@ -41,14 +41,16 @@ commands = {
 heavy_commands = {
   's': 'setxkbmap -layout se',
   'g': 'setxkbmap -layout gr',
-  'i': 'setxkbmap -layout it',
+  '1': 'setxkbmap -layout it',
   '0': 'setxkbmap -layout us',
 }
 
 keys = [
   Key(heavy,  "q",              lazy.shutdown()),
   Key(normal, "j",              lazy.layout.switchdown(0)),
+  Key(heavy,  "j",              lazy.layout.client_to_stack(0)),
   Key(normal, "k",              lazy.layout.switchdown(1)),
+  Key(heavy,  "k",              lazy.layout.client_to_stack(1)),
   Key(normal, "h",              lazy.screen.prevgroup()),
   Key(normal, "l",              lazy.screen.nextgroup()),
   Key(normal, "space",          lazy.screen.togglegroup()),
