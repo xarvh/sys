@@ -31,6 +31,12 @@ nnoremap <leader>l :set nonumber!<CR>  " toggle line number
 nnoremap <leader>w :set wrap!<CR>
 
 
+"===============================================================
+" VISUAL MODE
+"
+vnoremap . :normal .<CR>
+
+
 "==============================================================
 " INDENTATION
 "
