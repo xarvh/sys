@@ -23,5 +23,5 @@ RSH="ssh -i $HOME/.ssh/node.pem"
 SRC="node@ice.adslot.com:direct-web-dev$NODE/data"
 
 
-rsync -rv --exclude 'demo-*' -e"$RSH" $SRC/$FILES .
+rsync -rv --exclude 'demo-*' --exclude '*swp' -e"$RSH" $SRC/$FILES .
 
