@@ -13,7 +13,7 @@ set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
-nnoremap <F9> :source $MYVIMRC<cr>
+nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
 
@@ -32,9 +32,11 @@ nnoremap <leader>w :set wrap!<CR>
 
 
 "===============================================================
-" VISUAL MODE
+" EDITING
 "
 vnoremap . :normal .<CR>
+nnoremap <leader>5 me%mw%r `wx`e
+
 
 
 "==============================================================
@@ -109,7 +111,7 @@ function! AddDot()
 
 endfunction
 
-map <F6> :call AddDot()<cr>
+map <F6> :call AddDot()<CR>
 
 "map <F5> /$\\|[ ○]<cr>:s?●?○<cr>
 "map <F6> ?^\\|[ ●]<cr>:s/○/●<cr>
@@ -146,7 +148,7 @@ set smartcase
 
 map <leader>f :AckFile!<space>
 map <leader>a :Ack!<space>
-map <leader>8 :Ack! <cword><cr>
+map <leader>8 :Ack! <cword><CR>
 
 
 "===============================================================
@@ -155,7 +157,7 @@ map <leader>8 :Ack! <cword><cr>
 set hidden
 
 nnoremap ' <C-w>w
-nnoremap <leader>n :tabnew<cr>
+nnoremap <leader>n :tabnew<CR>
 
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
