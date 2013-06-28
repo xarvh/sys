@@ -7,17 +7,15 @@ Guidelines:
     - Avoid accidentally issuing especially disruptive commands, or
     - Issue a command related to the non-modified one.
 
-
 """
 
-
-from libqtile.config import Key, Screen, Group
+from libqtile.config import Key, Screen, Group, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
+
 
 normal = ['mod4']
 heavy = ['mod4', 'mod1']
-
 
 
 
@@ -105,7 +103,7 @@ lower_bar = bar.Bar([
 ], 1)
 
 
-screens = [ Screen(top = main_bar, bottom = lower_bar) ]
+screens = [ Screen(top = main_bar, bottom = lower_bar), Screen() ]
 
 
 
@@ -113,15 +111,14 @@ screens = [ Screen(top = main_bar, bottom = lower_bar) ]
 # Groups
 #
 groups = []
-for key in 'n m comma period u i o p'.split():
+for key in 'n m comma period u i o p slash'.split():
   name = key.upper() if len(key) is 1 else key[0]
   groups.append(Group(name))
-  keys.append( Key(normal, key, lazy.screen.togglegroup(name)) )
-  keys.append( Key(heavy, key, lazy.window.togroup(name)) )
+  keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
+  keys.append(Key(heavy, key, lazy.window.togroup(name)))
 
-keys += [ Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
-keys += [ Key(heavy, k, lazy.spawn(v)) for k, v in heavy_commands.items()]
-
+keys += [Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
+keys += [Key(heavy, k, lazy.spawn(v)) for k, v in heavy_commands.items()]
 
 
 #
@@ -140,12 +137,38 @@ layouts = [
   CustomStack(stacks=2, border_width=1),
 ]
 
+#
+# Mouse
+#
+mouse = [
+#  Click(normal, "Button2", lazy.window.bring_to_front()),
+]
+
+
+#
+# Floats
+#
+floating_layout = layout.Floating(auto_float_types=[
+  "notification",
+  "toolbar",
+  "splash",
+  "dialog",
+])
+
+
+#
+# Hooks
+#
+@hook.subscribe.screen_change
+def restart_on_screen_change(qtile, ev):
+  qtile.cmd_restart()
 
 
 #
 # init commands
 #
 from os import system
+system('xrandr --output DVI-0 --preferred --primary --pos 0x0 --output DisplayPort-0 --preferred --right-of DVI-0')
 system('setxkbmap -option ctrl:nocaps')
 system('fbsetbg -a ~/.usr/gui/bg.jpg') 
 system('xsetroot -cursor_name left_ptr')
