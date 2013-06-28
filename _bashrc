@@ -73,7 +73,7 @@ alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
 alias ff='find * |grep --ignore-case'
 alias v='gvim'
-alias q='qiv --scale_down *.{png,jpg,JPG} &'
+alias s='sxiv -d * &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
 alias ack='ack-grep'
 function www { wget $(arg_or_clipboard $1) ;}
