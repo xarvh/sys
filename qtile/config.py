@@ -9,6 +9,8 @@ Guidelines:
 
 """
 
+from os import system, uname
+
 from libqtile.config import Key, Screen, Group, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
@@ -159,6 +161,11 @@ floating_layout = layout.Floating(auto_float_types=[
 #
 # Hooks
 #
+@hook.subscribe.startup
+def startup():
+  pass
+
+
 @hook.subscribe.screen_change
 def restart_on_screen_change(qtile, ev):
   qtile.cmd_restart()
@@ -167,8 +174,18 @@ def restart_on_screen_change(qtile, ev):
 #
 # init commands
 #
-from os import system
-system('xrandr --output DVI-0 --preferred --primary --pos 0x0 --output DisplayPort-0 --preferred --right-of DVI-0')
+screen_names = {
+  'pinky': ['LVDS1', 'VGA1'],
+  'salad': ['DVI-0', 'DisplayPort-0'],
+}.get(uname()[1], (0, 1))
+
+print screen_names
+system(' '.join((
+  'xrandr',
+  '--output {0} --preferred --primary',
+  '--output {1} --preferred --right-of {0}',
+  )).format(*screen_names))
+
 system('setxkbmap -option ctrl:nocaps')
 system('fbsetbg -a ~/.usr/gui/bg.jpg') 
 system('xsetroot -cursor_name left_ptr')
