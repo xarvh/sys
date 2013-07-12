@@ -113,8 +113,12 @@ screens = [ Screen(top = main_bar, bottom = lower_bar), Screen() ]
 # Groups
 #
 groups = []
-for key in 'n m comma period u i o p slash'.split():
-  name = key.upper() if len(key) is 1 else key[0]
+for key in 'n m comma:, period:. u i o p slash:/'.split():
+  if len(key) is 1:
+    name = key.upper()
+  else:
+    key, name = key.split(':')
+
   groups.append(Group(name))
   keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
   keys.append(Key(heavy, key, lazy.window.togroup(name)))
