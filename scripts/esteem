@@ -1,0 +1,13 @@
+#!/bin/sh
+
+NAME="esteem"
+FN=$HOME/psyco/esteem/$(date +$NAME%y%m%d_%H%M)
+
+gvim $FN
+
+
+#
+# backup on remote server
+#
+#echo Connecting to server...
+#scp -P2002 $TARBZ www.4orsi.it:bk/

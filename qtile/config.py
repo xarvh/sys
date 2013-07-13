@@ -61,6 +61,8 @@ keys = [
   Key(normal, "x",              lazy.window.kill()),
 ]
 
+keys += [Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
+keys += [Key(heavy, k, lazy.spawn(v)) for k, v in heavy_commands.items()]
 
 
 #
@@ -108,23 +110,30 @@ lower_bar = bar.Bar([
 screens = [ Screen(top = main_bar, bottom = lower_bar), Screen() ]
 
 
-
 #
 # Groups
 #
 groups = []
-for key in 'n m comma:, period:. u i o p slash:/'.split():
-  if len(key) is 1:
-    name = key.upper()
-  else:
-    key, name = key.split(':')
 
-  groups.append(Group(name))
-  keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
-  keys.append(Key(heavy, key, lazy.window.togroup(name)))
+def main(qtile):
+  dualscreen = len(qtile.conn.pseudoscreens) > 1
 
-keys += [Key(normal, k, lazy.spawn(v)) for k, v in commands.items()]
-keys += [Key(heavy, k, lazy.spawn(v)) for k, v in heavy_commands.items()]
+  group_def = 'n m comma:, period:. u i o p'
+  if dualscreen:
+    group_def += ' slash:/'
+
+  for key in group_def.split():
+    if len(key) is 1:
+      name = key.upper()
+    else:
+      key, name = key.split(':')
+
+    groups.append(Group(name))
+    keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
+    keys.append(Key(heavy, key, lazy.window.togroup(name)))
+
+  if dualscreen:
+    lazy.group['/'].toScreen(0)
 
 
 #
