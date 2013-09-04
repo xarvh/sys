@@ -62,10 +62,11 @@ system(' '.join((
   '--output {1} --preferred --right-of {0}',
   )).format(*screen_names))
 
-system('setxkbmap -option ctrl:nocaps')
+#system('setxkbmap -option ctrl:nocaps')
+system('xmodmap -e "keycode 66 = Super_L"')
+system('xmodmap -e "clear Lock"')
 system('fbsetbg -a ~/.usr/gui/bg.jpg') 
 system('xsetroot -cursor_name left_ptr')
-
 
 #
 # QTile initialization.
