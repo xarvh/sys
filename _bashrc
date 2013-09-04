@@ -10,7 +10,6 @@ PS1=$Red"\u"$LightRed"@"$Red"\h"$Red" "$Blue"\w"$Red"\$(__git_ps1)"$LightRed"\$"
 unset Red LightRed Blue Norm
 
 
-
 #===================================================================
 # CLIPBOARD / SELECTION
 #
@@ -28,7 +27,6 @@ function arg_or_clipboard {
   else echo $1
   fi
 }
-
 
 
 #===================================================================
@@ -57,14 +55,6 @@ alias dd="du -sh"
 alias pp="python -B"
 alias ..="cd .."
 
-alias ga='git add'
-alias gd='git diff'
-alias gst='git status'
-alias gbr='git branch'
-alias gco='git checkout'
-alias gcm='git commit -m'
-alias gpo='git push origin'
-
 alias cpu_performance='sudo $HOME/.dati/scripts/scale_cpu performance'
 alias cpu_conservative='sudo $HOME/.dati/scripts/scale_cpu conservative'
 
@@ -80,11 +70,28 @@ function www { wget $(arg_or_clipboard $1) ;}
 function show { cat $(which $1) ;}
 
 
-
 #===================================================================
 # GIT ALIASES
 #
+alias ga='git add'
+alias gd='git diff'
+alias gst='git status'
+alias gbr='git branch'
+alias gco='git checkout'
+alias gcm='git commit -m'
+alias gpo='git push origin'
+alias gpFo='git push origin'
 source $HOME/.dati/sys/git-prompt
 source $HOME/.dati/sys/git-completion
 source $HOME/.dati/sys/git-completion-aliases
+
+unalias gpFo
+function gpFo {
+  echo GPPPPFOO
+  if [ "$1" = 'master' ]; then
+    echo 'HELL NO'
+  else
+    git push -f origin $1
+  fi
+}
 
