@@ -87,7 +87,6 @@ source $HOME/.dati/sys/git-completion-aliases
 
 unalias gpFo
 function gpFo {
-  echo GPPPPFOO
   if [ "$1" = 'master' ]; then
     echo 'HELL NO'
   else
