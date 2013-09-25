@@ -74,10 +74,10 @@ function show { cat $(which $1) ;}
 #===================================================================
 # GIT ALIASES
 #
+alias gl='git diff-tree --no-commit-id --name-only -r HEAD~2'
 alias ga='git add'
 alias gd='git diff'
 alias gs='git status'
-alias gst='git status'
 alias gbr='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
@@ -91,6 +91,8 @@ unalias gpFo
 function gpFo {
   if [ "$1" = 'master' ]; then
     echo 'HELL NO'
+  elif [ "$1" != $(git rev-parse --abbrev-ref HEAD) ]; then
+    echo Wrong branch
   else
     git push -f origin $1
   fi
