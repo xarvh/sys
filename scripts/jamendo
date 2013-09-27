@@ -1,0 +1,31 @@
+#!/usr/bin/python
+
+import sys
+import os
+
+radios = [
+  'Lounge',
+  'Rock',
+  'Electro',
+  'World',
+  'Classical',
+  'Pop',
+]
+
+baseUrl = 'http://streaming.radionomy.com/Jam'
+
+def main():
+
+  if len(sys.argv) < 2:
+    for r in radios: print r
+    return
+
+  matches = [ r for r in radios if r.lower().startswith(sys.argv[1]) ]
+  if len(matches) is 0:
+    for r in radios: print r
+  elif len(matches) > 1:
+    for r in matches: print r
+  else:
+    os.system('mplayer %s%s' % (baseUrl, matches[0]))
+
+main()
