@@ -34,7 +34,7 @@ function arg_or_clipboard {
 #
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias yd='youtube-dl -t'
+alias yd='youtube-dl --prefer-free-formats -t'
 alias bk='tar -cjf `date +$1%Y%m%d$2.tbz` $1/'
 alias dos='dosbox -c MOUNT . c'
 alias s2b='ussp-push GT-I9300@ "$1" "$(basename $1)"'
