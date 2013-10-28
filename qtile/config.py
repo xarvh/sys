@@ -50,17 +50,14 @@ def restart_on_screen_change(qtile, ev):
 # Initialization commands.
 # (These run before the qtile instance is available.)
 #
-screen_names = {
-  'pinky': ['LVDS1', 'VGA1'],
-  'salad': ['DVI-0', 'DisplayPort-0'],
-  'trash': ['LVDS', 'DFP1'],
-}.get(uname()[1], [0, 1])
+screen_setup = {
+  'pinky': 'xrandr --output LVDS1 --preferred --primary --output VGA1 --preferred --right-of LVDS1',
+  'salad': 'xrandr --output DVI-0 --preferred --primary --output DisplayPort-0 --preferred --right-of DVI-0',
+  'trash': 'xrandr --output LVDS --mode 1280x720 --primary --output DFP1 --mode 640x480 --right-of LVDS',
+}.get(uname()[1])
 
-system(' '.join((
-  'xrandr',
-  '--output {0} --preferred --primary',
-  '--output {1} --preferred --right-of {0}',
-  )).format(*screen_names))
+if screen_setup:
+  system(screen_setup)
 
 #system('setxkbmap -option ctrl:nocaps')
 system('xmodmap -e "keycode 66 = Super_L"')
