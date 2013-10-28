@@ -54,6 +54,8 @@ alias rmrm="rm -r"
 alias dd="du -sh"
 alias pp="python -B"
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 alias cpu_performance='sudo $HOME/.dati/scripts/scale_cpu performance'
 alias cpu_conservative='sudo $HOME/.dati/scripts/scale_cpu conservative'
@@ -74,7 +76,7 @@ function show { cat $(which $1) ;}
 #===================================================================
 # GIT ALIASES
 #
-alias gl='git diff-tree --no-commit-id --name-only -r HEAD~2'
+alias gl='git log HEAD~2.. --pretty=format: --name-only | sort | uniq'
 alias ga='git add'
 alias gd='git diff'
 alias gs='git status'
@@ -83,6 +85,12 @@ alias gco='git checkout'
 alias gcm='git commit -m'
 alias gpo='git push origin'
 alias gpFo='git push origin'
+
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias grom='git rebase origin/master'
+alias gr-i='git rebase -i `git show :/^Merge --format=%H`'
+
 source $HOME/.dati/sys/git-prompt
 source $HOME/.dati/sys/git-completion
 source $HOME/.dati/sys/git-completion-aliases
