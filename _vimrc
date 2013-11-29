@@ -13,6 +13,7 @@ set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
+nnoremap <leader><leader> :
 nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
@@ -25,11 +26,13 @@ colorscheme darkblue
 set guioptions=acegi
 set gfn=Monospace\ Bold\ 11
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=darkblue 
+highlight CursorLine cterm=NONE ctermbg=darkblue
 
-nnoremap <leader>l :set nonumber!<CR>  " toggle line number
+nnoremap <leader>n :set nonumber!<CR>  " toggle line number
 nnoremap <leader>w :set wrap!<CR>
 
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
 
 "===============================================================
 " EDITING
@@ -37,7 +40,7 @@ nnoremap <leader>w :set wrap!<CR>
 inoremap <Tab> <C-N>
 vnoremap . :normal .<CR>
 nnoremap <leader>5 me%mw%r `wx`e
-
+nnoremap Y y$
 
 
 "==============================================================
@@ -140,9 +143,10 @@ map <silent> - :call MultiComment(0)<CR>+
 
 
 "==============================================================
-" SEARCH
+" SEARCH (& REPLACE)
 "
 nnoremap <leader>r :%s/
+vnoremap <leader>r "hy:%s/<C-r>h/
 set incsearch
 set ignorecase
 set smartcase
