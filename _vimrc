@@ -34,6 +34,7 @@ nnoremap <leader>w :set wrap!<CR>
 "===============================================================
 " EDITING
 "
+inoremap <Tab> <C-N>
 vnoremap . :normal .<CR>
 nnoremap <leader>5 me%mw%r `wx`e
 
