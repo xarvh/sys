@@ -80,7 +80,7 @@ alias gl='git log HEAD~2.. --pretty=format: --name-only | sort | uniq'
 alias ga='git add'
 alias gd='git diff'
 alias gs='git status'
-alias gbr='git branch'
+alias gb='git branch'
 alias gco='git checkout'
 alias gcm='git commit -m'
 alias gpo='git push origin'
@@ -89,7 +89,7 @@ alias gpFo='git push origin'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias grom='git rebase origin/master'
-alias gr-i='git rebase -i `git show :/^Merge --format=%H`'
+alias gr-i='git rebase -i `git log --oneline |grep "Merge pull request" |head -n1 | cut -f1 -d" "`'
 
 source $HOME/.dati/sys/git-prompt
 source $HOME/.dati/sys/git-completion
