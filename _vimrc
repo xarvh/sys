@@ -1,3 +1,15 @@
+
+python << endpy
+
+import sys
+import os
+sys.path.insert(0, "%s/.vim/" % os.getenv('HOME'))
+from vimrc import *
+
+endpy
+
+
+
 "===============================================================
 " GENERAL
 "
@@ -75,52 +87,12 @@ map <C-j> <C-D>
 map L $
 map H ^
 
-"noremap  <Up> ""
-"noremap  <Down> ""
-"noremap  <Left> ""
-"noremap! <Left> <Esc>
-"noremap  <Right> ""
-"noremap! <Right> <Esc>
-
 
 "==============================================================
 " EXALTED DOTS
-function! AddDot()
 
-"  while getline(".")[col(".")-1] == '1'
-"    normal l
-"  endwhile
-
-  execute "/\\s"
-"  while getline(".")[col(".")-2] == '0'
-"    normal h
-"  endwhile
-
-"  let c = getline(".")[col(".")-1]
-"
-"  if c == '0'
-"
-"    normal yyp
-"  normal dawPbyl
-"  echo getline(".")[col(".")-1] 
-"  if getline(".")[col(".")-1] == '0'
-"    normal r1
-"  elseif @ == '1'
-"    echo 'hello'
-"  else
-"    normal rx
-"  endif
-
-"echo @
-
-endfunction
-
-map <F6> :call AddDot()<CR>
-
-"map <F5> /$\\|[ ○]<cr>:s?●?○<cr>
-"map <F6> ?^\\|[ ●]<cr>:s/○/●<cr>
-"map <F5> /$\|[0 ]/<cr>:s?1/0<cr>
-"map <F6> ?^\\|[ 1]<cr><cr>:s/0/1<cr>
+map <F5> :python removeExaltedDot()<CR>
+map <F6> :python addExaltedDot()<CR>
 
 
 "==============================================================
