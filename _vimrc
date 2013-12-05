@@ -91,8 +91,8 @@ map H ^
 "==============================================================
 " EXALTED DOTS
 
-map <F5> :python removeExaltedDot()<CR>
-map <F6> :python addExaltedDot()<CR>
+map <silent> <F5> :python exaltedDot(False)<CR>
+map <silent> <F6> :python exaltedDot(True)<CR>
 
 
 "==============================================================
@@ -136,6 +136,6 @@ set hidden
 nnoremap ' <C-w>w
 nnoremap <leader>n :tabnew<CR>
 
-nnoremap <C-L> :bnext<CR>
-nnoremap <C-H> :bprev<CR>
+nnoremap <silent> <C-L> :bnext<CR>
+nnoremap <silent> <C-H> :bprev<CR>
 
