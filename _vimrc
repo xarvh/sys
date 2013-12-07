@@ -46,10 +46,21 @@ nnoremap <leader>w :set wrap!<CR>
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
 
+
 "===============================================================
 " EDITING
 "
-inoremap <Tab> <C-N>
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words"
+
 vnoremap . :normal .<CR>
 nnoremap <leader>5 me%mw%r `wx`e
 nnoremap Y y$
