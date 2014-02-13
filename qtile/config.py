@@ -54,6 +54,7 @@ screen_setup = {
   'pinky': 'xrandr --output LVDS1 --preferred --primary --output VGA1 --preferred --right-of LVDS1',
   'salad': 'xrandr --output DVI-0 --preferred --primary --output DisplayPort-0 --preferred --right-of DVI-0',
   'trash': 'xrandr --output LVDS --mode 1280x720 --primary --output DFP1 --mode 640x480 --right-of LVDS',
+  'iam':   'xrandr --output LVDS1 --primary --output HDMI1 --right-of LVDS1',
 }.get(uname()[1])
 
 if screen_setup:
@@ -63,7 +64,8 @@ if screen_setup:
 system('xmodmap -e "keycode 66 = Super_L"')
 system('xmodmap -e "keycode 135 = Super_R"')
 system('xmodmap -e "clear Lock"')
-system('fbsetbg -a ~/.usr/gui/bg.jpg') 
+system('fbsetbg -a ~/.usr/gui/bg.jpg')
+system('syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
 
 #
