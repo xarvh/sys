@@ -25,7 +25,7 @@ set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
-nnoremap <leader><leader> :
+nnoremap <CR> :
 nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
@@ -80,7 +80,7 @@ set expandtab
 " LANGUAGE SPECIFICS
 "
 " Beautify JSON
-nnoremap <leader>b :%!python -mjson.tool<CR>
+nnoremap <leader>j :%!python -mjson.tool<CR>
 
 " Compile Coffee
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
@@ -145,8 +145,14 @@ map <leader>8 :Ack! <cword><CR>
 set hidden
 
 nnoremap ' <C-w>w
-nnoremap <leader>n :tabnew<CR>
 
 nnoremap <silent> <C-L> :bnext<CR>
 nnoremap <silent> <C-H> :bprev<CR>
+
+"===============================================================
+" GIT
+"
+map <leader>l :Glog<CR>
+map <leader>b :Gblame<CR>
+vmap <leader>b <esc>:'<,'>:Gblame<CR>
 
