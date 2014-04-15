@@ -86,6 +86,8 @@ alias gco='git checkout'
 alias gcm='git commit -m'
 alias gpo='git push origin'
 alias gpFo='git push origin'
+alias gpr='git pull --rebase'
+alias gp='git push'
 
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
