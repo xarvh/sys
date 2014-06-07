@@ -71,6 +71,7 @@ alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases
 alias ack='ack-grep'
 function ev { evince "$@" & }
 function www { wget $(arg_or_clipboard $1) ;}
+function yo { youtube-dl -x --audio-format=wav $(arg_or_clipboard $1) ; lame -v *wav; }
 function show { cat $(which $1) ;}
 
 
