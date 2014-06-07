@@ -1,10 +1,10 @@
 
-electricsheep
 xaos
 
 xterm
 git
 vim-gnome
+ack-grep
 network-manager-gnome
 
 g++
@@ -39,16 +39,14 @@ mplayer
 xcowsay
 id3v2
 vorbis-tools
+libav-tools
 amule
 libfftw3-dev
-
 ussp-push
 xsel
 
 acpi
 pmount
-blueman
 chromium-browser
-ffmpeg
 
 deluge
