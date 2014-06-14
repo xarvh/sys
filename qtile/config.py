@@ -60,10 +60,6 @@ screen_setup = {
 if screen_setup:
   system(screen_setup)
 
-system('setxkbmap -option ctrl:nocaps')
-#system('xmodmap -e "keycode 66 = Super_L"')
-system('xmodmap -e "keycode 135 = Super_R"')
-#system('xmodmap -e "clear Lock"')
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
 system('syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
@@ -74,6 +70,8 @@ system('xsetroot -cursor_name left_ptr')
 # http://docs.qtile.org/en/latest/configuration.html#main
 #
 def main(qtile):
+
+  system('xmodmap .dati/sys/xmodmap')
 
   # TODO: extend for a generic number of screens?
   dualscreen = not qtile or len(qtile.conn.pseudoscreens) > 1

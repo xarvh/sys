@@ -1,0 +1,8 @@
+! Caps Lock to Left Control
+clear lock
+clear control
+keycode  66 = Control_L NoSymbol Control_L
+add control = Control_L Control_R
+
+! Menu to Right Window
+keycode 135 = Super_R NoSymbol Super_R
