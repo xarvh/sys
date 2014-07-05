@@ -1,13 +1,31 @@
-#!/bin/sh
-#
-# calls key_open on pmountable devices
-#
+#!/bin/bash
 
-for i in $(ls /dev/sd* |grep -v sda |grep [0-9]); do
-    NAME=$(basename $i)
-    echo $NAME
-    if [ ! -d "/media/$NAME" ]; then
-        key_open $NAME &
+open() {
+  DEV=$1
+  pmount /dev/$DEV
+  xterm -fn *-fixed-*-*-*-20-* -bg black -fg white -e mc /media/$DEV
+
+  ERR=$(pumount $DEV)
+  if [ $? != "0" ]; then
+      xcowsay "$ERR"
+  else
+      xcowsay "$DEV smounted"
+  fi
+}
+
+
+mount_all() {
+  IFS=$'\n'
+  for i in $(lsblk -rno NAME,RM,TYPE,MOUNTPOINT |grep '1 part'); do
+    NAME=$(echo $i |cut -f1 -d' ')
+    POINT=$(echo $i |cut -f4 -d' ')
+
+    if [ "$POINT" == "" ]; then
+      open $NAME &
     fi
-done
+  done
+}
+
+
+mount_all
 
