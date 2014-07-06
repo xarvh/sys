@@ -32,7 +32,6 @@ function arg_or_clipboard {
 #===================================================================
 # ALIASES
 #
-alias yymmdd_HHMMSS='date +%y%m%d_%H%M%S'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias yd='youtube-dl --prefer-free-formats -t'

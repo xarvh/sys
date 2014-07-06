@@ -91,6 +91,7 @@ def main(qtile):
     't': '_tango_newsletter',
     'c': term + '-e coffee',
     'a': term + '-e alsamixer',
+    'F10': 'import screenshot$(yymmdd_HHMMSS).png',
     'F12': 'key_u_all',
     'Return': term,
 
