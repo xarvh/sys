@@ -13,6 +13,7 @@ from os import system, uname
 
 from libqtile.config import Key, Screen, Group, Click
 from libqtile.command import lazy
+from libqtile.manager import Drag
 from libqtile import layout, bar, widget, hook
 
 
@@ -121,6 +122,7 @@ def main(qtile):
     Key(normal, 'r',              lazy.layout.rotate()),
     Key(normal, 'apostrophe',     lazy.nextlayout()),
     Key(normal, 'x',              lazy.window.kill()),
+    Key(normal, 'f',              lazy.window.toggle_floating()),
   ])
 
   keys.extend([Key(normal, k, lazy.spawn(v)) for k, v in normal_commands.items()])
@@ -206,6 +208,15 @@ def main(qtile):
   layouts.extend([
     CustomStack(stacks=1, border_width=0),
     CustomStack(stacks=2, border_width=1),
+  ])
+
+
+  #
+  # Mouse floats
+  #
+  mouse.extend([
+    Drag(normal, "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag(normal, "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size())
   ])
 
 
