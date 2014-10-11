@@ -1,0 +1,12 @@
+program_options:
+  tray: auto                # auto, true, false
+  automount: false
+  notify: true
+  file_manager: _file_manager
+
+notifications:
+  timeout: 5              # default timeout in seconds
+  device_mounted: false         # overwrite
+  device_unmounted: true   # disable
+  device_added: 5
+  device_removed: false

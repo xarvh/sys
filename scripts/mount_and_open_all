@@ -1,0 +1,29 @@
+#!/bin/bash
+
+open() {
+  NAME=$1
+  DIR=$2
+  _file_manager $DIR
+
+  ERR=$(udiskie-umount $DIR 2>&1)
+  if [ $? != "0" ]; then
+      xcowsay "$ERR"
+  else
+      xcowsay "$DEV smounted"
+  fi
+}
+
+
+mount_all() {
+  # Set Internal Field Separator
+  IFS=$'\n'
+  for i in $(udiskie-mount -a 2>&1 |grep ^mounted); do
+
+    NAME=$(basename $(echo $i |cut -f2 -d' '))
+    DIR=$(echo $i |cut -f4 -d' ')
+    open $NAME $DIR
+  done
+}
+
+
+mount_all

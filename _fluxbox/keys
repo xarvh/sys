@@ -1,7 +1,7 @@
 #
 # COMMANDS
 #
-None F12        :ExecCommand key_u_all
+None F12        :ExecCommand mount_and_open_all
 Shift F12       :ExecCommand _shot2bluetooth
 Control F12     :ExecCommand _text2bluetooth
 Control F1      :ExecCommand _terminal

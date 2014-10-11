@@ -63,6 +63,7 @@ if screen_setup:
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
 system('syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
+system('udiskie &')
 
 #
 # QTile initialization.
@@ -92,7 +93,7 @@ def main(qtile):
     'c': term + '-e coffee',
     'a': term + '-e alsamixer',
     'F10': 'import screenshot$(yymmdd_HHMMSS).png',
-    'F12': 'key_u_all',
+    'F12': 'mount_and_open_all',
     'Return': term,
 
     'equal': 'amixer -c 0 -q set Master 2dB+',
