@@ -3,14 +3,16 @@
 open() {
   NAME=$1
   DIR=$2
-  _file_manager $DIR
+  ln -s $DIR $NAME
+  _file_manager $NAME
 
   ERR=$(udiskie-umount $DIR 2>&1)
   if [ $? != "0" ]; then
       xcowsay "$ERR"
   else
-      xcowsay "$DEV smounted"
+      xcowsay "$NAME smounted"
   fi
+  rm $NAME
 }
 
 
@@ -21,7 +23,7 @@ mount_all() {
 
     NAME=$(basename $(echo $i |cut -f2 -d' '))
     DIR=$(echo $i |cut -f4 -d' ')
-    open $NAME $DIR
+    open $NAME $DIR &
   done
 }
 
