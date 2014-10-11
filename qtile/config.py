@@ -64,7 +64,8 @@ if screen_setup:
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
 system('syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
-system('udiskie &')
+system('killall udiskie; udiskie &')
+system('killall nm-applet; nm-applet &')
 
 #
 # QTile initialization.
