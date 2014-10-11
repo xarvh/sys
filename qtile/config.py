@@ -84,7 +84,7 @@ def main(qtile):
   #
   # commands
   #
-  term = 'xterm -fn "*-fixed-*-*-*-20-*" '
+  term = '_terminal '
   normal_commands = {
     'b': 'chromium-browser',
     'v': 'gvim',

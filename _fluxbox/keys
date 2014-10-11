@@ -4,13 +4,13 @@
 None F12        :ExecCommand key_u_all
 Shift F12       :ExecCommand _shot2bluetooth
 Control F12     :ExecCommand _text2bluetooth
-Control F1      :ExecCommand xterm -fn '*-fixed-*-*-*-20-*'
-Mod4 Enter      :ExecCommand xterm -fn '*-fixed-*-*-*-20-*'
+Control F1      :ExecCommand _terminal
+Mod4 Enter      :ExecCommand _terminal
 Control F2      :ExecCommand gvim
 #Control F3      :ExecCommand gnome-volume-control
-Control F3      :ExecCommand xterm -fn '*-fixed-*-*-*-20-*' -e alsamixer
+Control F3      :ExecCommand _terminal -e alsamixer
 #Control F4      :ExecCommand env PYTHONSTARTUP=/home/nw/.dati/sys/pythonstartup.py xterm -e python
-Control F4      :ExecCommand xterm -fn '*-fixed-*-*-*-20-*' -e coffee
+Control F4      :ExecCommand _terminal -e coffee
 Control F5      :ExecCommand fbrun
 
 #XF86AudioMute        :ExecCommand xcowsay Mute

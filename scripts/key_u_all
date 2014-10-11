@@ -3,7 +3,7 @@
 open() {
   DEV=$1
   pmount /dev/$DEV
-  xterm -fn *-fixed-*-*-*-20-* -bg black -fg white -e mc /media/$DEV
+  _terminal -e mc /media/$DEV
 
   ERR=$(pumount $DEV)
   if [ $? != "0" ]; then
