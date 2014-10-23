@@ -1,18 +1,18 @@
 #!/bin/bash
 
 open() {
-  NAME=$1
-  DIR=$2
-  ln -s $DIR $NAME
-  _file_manager $NAME
+  NAME="$1"
+  DIR="$2"
+  ln -s "$DIR" "$NAME"
+  _file_manager "$NAME"
 
-  ERR=$(udiskie-umount $DIR 2>&1)
+  ERR=$(udiskie-umount "$DIR" 2>&1)
   if [ $? != "0" ]; then
       xcowsay "$ERR"
   else
       xcowsay "$NAME smounted"
   fi
-  rm $NAME
+  rm "$NAME"
 }
 
 
@@ -22,8 +22,8 @@ mount_all() {
   for i in $(udiskie-mount -a 2>&1 |grep ^mounted); do
 
     NAME=$(basename $(echo $i |cut -f2 -d' '))
-    DIR=$(echo $i |cut -f4 -d' ')
-    open $NAME $DIR &
+    DIR=$(echo $i |sed 's/mounted [^ ]* on //')
+    open "$NAME" "$DIR" &
   done
 }
 
