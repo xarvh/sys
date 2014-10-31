@@ -65,6 +65,7 @@ vnoremap . :normal .<CR>
 nnoremap <leader>5 me%mw%r `wx`e
 nnoremap Y y$
 
+nnoremap <BS> @q
 
 "==============================================================
 " INDENTATION
