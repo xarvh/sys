@@ -1,5 +1,9 @@
 
 xaos
+cpufrequtils
+indicator-cpufreq
+qiv
+sxiv
 
 xterm
 git
@@ -48,7 +52,6 @@ graphicsmagick
 lame
 vlc
 mplayer
-    mencoder
 xcowsay
 id3v2
 vorbis-tools

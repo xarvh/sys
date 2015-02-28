@@ -27,6 +27,9 @@ groups = []
 keys = []
 mouse = []
 
+hostname = uname()[1]
+
+sound_card = 1
 
 #
 # Floats
@@ -56,16 +59,17 @@ screen_setup = {
   'salad': 'xrandr --output DVI-0 --preferred --primary --output DisplayPort-0 --preferred --right-of DVI-0',
   'trash': 'xrandr --output LVDS --mode 1280x720 --primary --output DFP1 --mode 640x480 --right-of LVDS',
   'dot':   'xrandr --output LVDS1 --primary --output HDMI1 --right-of LVDS1',
-}.get(uname()[1])
+}.get(hostname)
 
 if screen_setup:
   system(screen_setup)
 
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
-system('syndaemon -dt')
+system('killall syndaemon; syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
 system('killall udiskie; udiskie &')
 system('killall nm-applet; nm-applet &')
+system('killall indicator-cpufreq; indicator-cpufreq &')
 
 #
 # QTile initialization.
@@ -98,8 +102,8 @@ def main(qtile):
     'F12': 'mount_and_open_all',
     'Return': term,
 
-    'equal': 'amixer -c 0 -q set Master 2dB+',
-    'minus': 'amixer -c 0 -q set Master 2dB-',
+    'equal': 'amixer -c %d -q set Master 2dB+' % sound_card,
+    'minus': 'amixer -c %d -q set Master 2dB-' % sound_card,
   }
 
   strong_commands = {
@@ -161,10 +165,11 @@ def main(qtile):
     widget.Sep(),
     widget.Notify(),
     widget.Prompt(),
-    widget.Volume(),
-    widget.Systray(),
+    widget.Volume(cardid=sound_card, mute_command=''),
+    widget.BatteryIcon(),
+    widget.Systray(icon_size=25),
     widget.Clock('%m%d %a %I:%M%P'),
-  ], 20)
+  ], 25)
 
 
   lower_bar = bar.Bar([
@@ -177,7 +182,7 @@ def main(qtile):
   #
   # Groups
   #
-  group_def = 'n m comma:, period:. u i o p'
+  group_def = 'n m comma:c period:p u i o p'
   if dualscreen:
     group_def += ' slash:/'
 

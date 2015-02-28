@@ -1,6 +1,6 @@
+# coding=utf-8
 
 import vim
-
 
 def exaltedDot(add):
 
@@ -8,7 +8,7 @@ def exaltedDot(add):
   line = [None] + list(vim.current.buffer[row-1]) + [None]
   col += 1
 
-  try: pair = (p for p in ['xo', 'XO'] if line[col] in p).next()
+  try: pair = (p for p in ['xo', 'XO', u'●○'] if line[col] in p).next()
   except: return
 
   full, empty = list(pair)

@@ -16,7 +16,7 @@
 #include <termio.h>
 #include <unistd.h>
 
-#define COMMAND	"%s \"%s\" -q"
+#define COMMAND	"%s \"%s\""
 
 #define NONE	0
 #define QUIT	1
@@ -74,10 +74,10 @@ int loop()
  Cmd = NONE;
 
  // Scegli il decodificatore
- char* dec = "mplayer";
+ char* dec = "mplayer -noconsolecontrols";
  char* e = strrchr(Lista[Brano], '.');
-      if(e && !strcasecmp(e, ".mp3")) dec = "mpg123";
- else if(e && !strcasecmp(e, ".ogg")) dec = "ogg123";
+      if(e && !strcasecmp(e, ".mp3")) dec = "mplayer -really-quiet -noconsolecontrols";
+ else if(e && !strcasecmp(e, ".ogg")) dec = "ogg123 -q";
  else
  {
     printf("%4d# ? %s\n", Brano, Lista[Brano]);
@@ -172,7 +172,8 @@ int loop()
  if(Cmd != NEXTF)
  {
     //kill(child_pid, SIGTERM);
-    sprintf(Bf, "kill `pidof %s`", dec);
+    //sprintf(Bf, "kill `pidof %s`", dec);
+    sprintf(Bf, "killall mplayer ogg123", dec);
     int __r_system = system(Bf);
  }
 
