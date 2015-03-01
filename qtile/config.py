@@ -43,6 +43,8 @@ def guessAlsaSoundCard():
 
 sound_card = guessAlsaSoundCard()
 
+unmute_command='; '.join('amixer -c %d set %s unmute' % (sound_card, control) for control in ['Master', 'Headphone', 'Speaker'])
+
 
 #
 # Floats
@@ -127,6 +129,8 @@ def main(qtile):
   }
 
   keys.extend([
+    Key([],     'XF86MonBrightnessUp',   lazy.spawn('xbacklight -inc 12%')),
+    Key([],     'XF86MonBrightnessDown', lazy.spawn('xbacklight -dec 12%')),
     Key(strong, 'q',              lazy.shutdown()),
     Key(normal, 'j',              lazy.layout.switchdown(0)),
     Key(strong, 'j',              lazy.layout.client_to_stack(0)),
