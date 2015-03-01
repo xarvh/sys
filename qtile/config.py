@@ -10,6 +10,7 @@ Guidelines:
 """
 
 from os import system, uname
+import subprocess
 
 from libqtile.config import Key, Screen, Group, Click
 from libqtile.command import lazy
@@ -29,7 +30,19 @@ mouse = []
 
 hostname = uname()[1]
 
-sound_card = 1
+
+#
+# sound card
+#
+def guessAlsaSoundCard():
+  try:
+    return int(subprocess.check_output(['aplay -l |grep card |grep -vi hdmi'], shell=True).split('\n')[:-1][0][5])
+  except Error as e:
+    print e
+    return 0
+
+sound_card = guessAlsaSoundCard()
+
 
 #
 # Floats
@@ -97,7 +110,7 @@ def main(qtile):
     'v': 'gvim',
     't': '_tango_newsletter',
     'c': term + '-e coffee',
-    'a': term + '-e alsamixer',
+    'a': term + '-e alsamixer -c %d' % sound_card,
     'F10': 'import screenshot$(yymmdd_HHMMSS).png',
     'F12': 'mount_and_open_all',
     'Return': term,
@@ -165,7 +178,7 @@ def main(qtile):
     widget.Sep(),
     widget.Notify(),
     widget.Prompt(),
-    widget.Volume(cardid=sound_card, mute_command=''),
+    widget.Volume(cardid=sound_card, theme_path='/usr/share/icons/Humanity-Dark/status/24/'),
     widget.BatteryIcon(),
     widget.Systray(icon_size=25),
     widget.Clock('%m%d %a %I:%M%P'),
