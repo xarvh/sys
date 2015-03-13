@@ -113,6 +113,8 @@ def main(qtile):
     't': '_tango_newsletter',
     'c': term + '-e coffee',
     'a': term + '-e alsamixer -c %d' % sound_card,
+    'F5': 'brightness down',
+    'F6': 'brightness up',
     'F10': 'import screenshot$(yymmdd_HHMMSS).png',
     'F12': 'mount_and_open_all',
     'Return': term,
@@ -129,8 +131,8 @@ def main(qtile):
   }
 
   keys.extend([
-    Key([],     'XF86MonBrightnessUp',   lazy.spawn('xbacklight -inc 12%')),
-    Key([],     'XF86MonBrightnessDown', lazy.spawn('xbacklight -dec 12%')),
+    Key([],     'XF86MonBrightnessUp',   lazy.spawn('brightness up')),
+    Key([],     'XF86MonBrightnessDown', lazy.spawn('brightness down')),
     Key(strong, 'q',              lazy.shutdown()),
     Key(normal, 'j',              lazy.layout.switchdown(0)),
     Key(strong, 'j',              lazy.layout.client_to_stack(0)),
@@ -177,13 +179,13 @@ def main(qtile):
       this_current_screen_border='CC0000',
       disable_drag=True,
       inactive='CCCCCC'),
+    widget.Volume(cardid=sound_card),
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),
     widget.Notify(),
     widget.Prompt(),
-    widget.Volume(cardid=sound_card, theme_path='/usr/share/icons/Humanity-Dark/status/24/'),
-    widget.BatteryIcon(),
+    widget.Battery(),
     widget.Systray(icon_size=25),
     widget.Clock('%m%d %a %I:%M%P'),
   ], 25)

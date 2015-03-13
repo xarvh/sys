@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+import sys
+import subprocess
+
+
+scale = [1, 2, 4, 8, 16, 32, 48, 64, 80, 90, 100]
+
+
+def main():
+    try:
+        direction = { 'up': +1, 'down': -1 }[sys.argv[1]]
+    except:
+        print('Specify "up" or "down"')
+        return
+
+    initial_value = float(subprocess.check_output(['xbacklight']))
+
+    closest_index = min(range(len(scale)), key = lambda i: abs(scale[i] - initial_value))
+    new_index = sorted((0, closest_index + direction, len(scale) - 1))[1]
+
+    subprocess.check_output(['xbacklight', '-set', str(scale[new_index])])
+
+
+main()
