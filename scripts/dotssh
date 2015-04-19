@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+echo tmux / screen cheatsheet:
+echo http://www.dayid.org/os/notes/tm.html
+echo
+echo 'CTRL-b + d' to detatch
+echo
+
+ssh 192.168.1.5 -t "tmux attach || DISPLAY=':0' tmux new"
