@@ -8,5 +8,8 @@ apt-get upgrade
 
 pip install udiskie
 
+# Prevent power button from initiating shutdown
+echo HandlePowerKey=ignore >>/etc/systemd/logind.conf
+
 #copy pmount.allow
 cp pmount.allow /etc/
