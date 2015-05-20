@@ -12,3 +12,4 @@ export PYTHONPATH
 #fi
 
 rm -f .recently-used*
+ulimit -n 2048

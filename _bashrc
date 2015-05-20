@@ -66,6 +66,7 @@ alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
 alias ff='find * |grep -v node_modules/ |grep --ignore-case'
 alias v='gvim'
+alias vv='xargs gvim'
 alias s='sxiv * &'
 alias q='qiv -lmf * &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
