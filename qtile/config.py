@@ -37,7 +37,7 @@ hostname = uname()[1]
 def guessAlsaSoundCard():
   try:
     return int(subprocess.check_output(['aplay -l |grep card |grep -vi hdmi'], shell=True).split('\n')[:-1][0][5])
-  except Error as e:
+  except Exception as e:
     print e
     return 0
 

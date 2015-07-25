@@ -6,6 +6,7 @@ qiv
 sxiv
 
 xterm
+xbacklight
 tmux
 git
 vim-gnome

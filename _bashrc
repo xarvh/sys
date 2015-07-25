@@ -49,6 +49,7 @@ alias pinstall='sudo apt-get install'
 alias psearch='apt-cache search'
 alias premove='sudo apt-get --purge remove'
 alias pupgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt-get --purge autoremove'
+alias psizes='dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n'
 
 alias rmrm="rm -r"
 alias dd="du -sh"
@@ -75,6 +76,7 @@ function ev { evince "$@" & }
 function www { wget $(arg_or_clipboard $1) ;}
 function show { cat $(which $1) ;}
 function yo {
+  echo to upgrade: sudo pip install --upgrade youtube_dl
   NAME="$(arg_or_clipboard $1)"
   X=${NAME#*v=}
   CODE=${X%%&*}
