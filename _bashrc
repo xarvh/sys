@@ -104,6 +104,7 @@ alias gp='git push'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias grom='git rebase origin/master'
+alias grod='git rebase origin/develop'
 alias gr-i='git rebase -i `git log --oneline |grep "Merge pull request" |head -n1 | cut -f1 -d" "`'
 
 source $HOME/.dati/sys/git-prompt

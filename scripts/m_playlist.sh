@@ -25,7 +25,7 @@ SORT="$DIR/new/unsorted"
 PLAYDIRS="$CAT $NEW"
 NOPLAY=""
 GREPS=""
-TMP="/tmp/playlist.tmp"
+TMP="/tmp/playlist.$USER.tmp"
 
 
 
