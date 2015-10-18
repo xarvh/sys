@@ -4,6 +4,9 @@
 --type-set=python=.py
 --python
 
+--type-set=javascript=.js
+--javascript
+
 --type-set=coffee=.coffee
 --coffee
 
