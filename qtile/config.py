@@ -113,14 +113,14 @@ def main(qtile):
     't': '_tango_newsletter',
     'c': term + '-e coffee',
     'a': term + '-e alsamixer -c %d' % sound_card,
-    'F5': 'brightness down',
-    'F6': 'brightness up',
     'F10': 'import screenshot$(yymmdd_HHMMSS).png',
     'F12': 'mount_and_open_all',
     'Return': term,
 
     'equal': 'amixer -c %d -q set Master 2dB+' % sound_card,
     'minus': 'amixer -c %d -q set Master 2dB-' % sound_card,
+    'bracketleft': 'brightness down',
+    'bracketright': 'brightness up',
   }
 
   strong_commands = {
