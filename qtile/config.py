@@ -183,7 +183,7 @@ def main(qtile):
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),
-    widget.Notify(),
+    widget.Notify(default_timeout=1),
     widget.Prompt(),
     widget.Battery(),
     widget.Systray(icon_size=25),
