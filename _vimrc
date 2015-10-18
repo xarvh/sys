@@ -62,8 +62,15 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 set dictionary="/usr/dict/words"
 
 vnoremap . :normal .<CR>
-nnoremap <leader>5 me%mw%r `wx`e
+
+nnoremap <leader>z me%mw%r `wx`e
+
 nnoremap Y y$
+nnoremap z %
+
+"Paste from the yank register (pipe needs to be escaped, backslash doesn't)
+nnoremap \ "0p
+nnoremap \| "0P
 
 nnoremap <BS> @q
 
@@ -112,6 +119,7 @@ map <silent> <F6> :python exaltedDot(True)<CR>
 
 function! MultiComment(after_spaces)
       if 0
+  elseif &filetype == 'javascript' | let c = '\/\/'
   elseif &filetype == 'jade' | let c = '\/\/'
   elseif &filetype == 'vim' | let c = '"'
   else | let c = '#'
