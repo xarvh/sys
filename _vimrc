@@ -147,8 +147,9 @@ set hidden
 
 nnoremap ' <C-w>w
 
-nnoremap <silent> <C-L> :bnext<CR>
-nnoremap <silent> <C-H> :bprev<CR>
+"save position on old buffer, change buffer, move to saved position on new buffeer
+nnoremap <silent> <C-L> mt:bnext<CR>`t
+nnoremap <silent> <C-H> mt:bprev<CR>`t
 
 "===============================================================
 " GIT
