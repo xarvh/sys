@@ -67,6 +67,7 @@ nnoremap <leader>z me%mw%r `wx`e
 
 nnoremap Y y$
 nnoremap z %
+omap z %
 
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
 nnoremap \ "0p
