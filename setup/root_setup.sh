@@ -6,7 +6,7 @@ apt-get update
 apt-get install $(cat packages)
 apt-get upgrade
 
-pip install udiskie
+pip install --upgrade udiskie qtile
 
 # Prevent power button from initiating shutdown
 echo HandlePowerKey=ignore >>/etc/systemd/logind.conf

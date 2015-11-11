@@ -138,13 +138,13 @@ def main(qtile):
     Key(strong, 'j',              lazy.layout.client_to_stack(0)),
     Key(normal, 'k',              lazy.layout.switchdown(1)),
     Key(strong, 'k',              lazy.layout.client_to_stack(1)),
-    Key(normal, 'h',              lazy.screen.prevgroup()),
-    Key(normal, 'l',              lazy.screen.nextgroup()),
+    Key(normal, 'h',              lazy.screen.prev_group()),
+    Key(normal, 'l',              lazy.screen.next_group()),
     Key(normal, 'space',          lazy.screen.togglegroup()),
     Key(normal, 'semicolon',      lazy.spawncmd()),
     Key(normal, 't',              lazy.layout.toggle_split()),
     Key(normal, 'r',              lazy.layout.rotate()),
-    Key(normal, 'apostrophe',     lazy.nextlayout()),
+    Key(normal, 'apostrophe',     lazy.next_layout()),
     Key(normal, 'x',              lazy.window.kill()),
     Key(normal, 'f',              lazy.window.toggle_floating()),
   ])
@@ -161,10 +161,10 @@ def main(qtile):
       screen = self.bar.screen
       {
         1: lambda: screen.group.layout.cmd_switchdown(0), # left mouse, left pane
-        2: lambda: self.qtile.cmd_nextlayout(), # mid mouse, change layout
+        2: lambda: self.qtile.cmd_next_layout(), # mid mouse, change layout
         3: lambda: screen.group.layout.cmd_switchdown(1), # right mouse, right pane
-        4: lambda: screen.cmd_nextgroup(), # wheel up
-        5: lambda: screen.cmd_prevgroup(), # wheel down
+        4: lambda: screen.cmd_next_group(), # wheel up
+        5: lambda: screen.cmd_prev_group(), # wheel down
       }.get(button, lambda: '')()
 
 
@@ -179,7 +179,7 @@ def main(qtile):
       this_current_screen_border='CC0000',
       disable_drag=True,
       inactive='CCCCCC'),
-    widget.Volume(cardid=sound_card),
+    widget.Volume(cardid=sound_card, device=None),
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),
@@ -187,7 +187,7 @@ def main(qtile):
     widget.Prompt(),
     widget.Battery(),
     widget.Systray(icon_size=25),
-    widget.Clock('%m%d %a %I:%M%P'),
+    widget.Clock(format='%m%d %a %I:%M%P'),
   ], 25)
 
 
@@ -231,8 +231,8 @@ def main(qtile):
         self.group.focus(self.stacks[offset].cw, True)
 
   layouts.extend([
-    CustomStack(stacks=1, border_width=0),
-    CustomStack(stacks=2, border_width=1),
+    CustomStack(num_stacks=1, border_width=0),
+    CustomStack(num_stacks=2, border_width=1),
   ])
 
 
