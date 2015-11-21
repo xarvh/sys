@@ -120,6 +120,7 @@ map <silent> <F6> :python exaltedDot(True)<CR>
 
 function! MultiComment(after_spaces)
       if 0
+  elseif &filetype == 'haskell' | let c = '-- '
   elseif &filetype == 'javascript' | let c = '\/\/'
   elseif &filetype == 'jade' | let c = '\/\/'
   elseif &filetype == 'vim' | let c = '"'
