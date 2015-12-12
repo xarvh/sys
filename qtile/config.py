@@ -185,7 +185,7 @@ def main(qtile):
     widget.Sep(),
     widget.Notify(default_timeout=1),
     widget.Prompt(),
-    widget.Battery(),
+    widget.Battery(update_delay=1),
     widget.Systray(icon_size=25),
     widget.Clock(format='%m%d %a %I:%M%P'),
   ], 25)
