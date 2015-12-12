@@ -1,13 +1,18 @@
 export HISTCONTROL=ignoreboth
 export PYTHONSTARTUP=$HOME/.dati/sys/pythonstartup.py
 
+# Colors: http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 Red="\[\033[00;31m\]"
 LightRed="\[\033[01;31m\]"
+
+Green="\[\033[00;32m\]"
+LightGreen="\[\033[01;32m\]"
+
 Blue="\[\033[01;34m\]"
 Norm="\[\033[00m\]"
 
-PS1=$Red"\u"$LightRed"@"$Red"\h"$Red" "$Blue"\w"$Red"\$(__git_ps1)"$LightRed"\$"$Norm" "
-unset Red LightRed Blue Norm
+PS1=$Green"\u"$LightGreen"@"$Green"\h"$Green" "$Blue"\w"$Green"\$(__git_ps1)"$LightGreen"\$"$Norm" "
+unset Red LightRed Green LightGreen Blue Norm
 
 
 #===================================================================
