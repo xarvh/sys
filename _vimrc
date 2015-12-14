@@ -40,7 +40,6 @@ set gfn=Monospace\ Bold\ 11
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue
 
-nnoremap <leader>n :set nonumber!<CR>  " toggle line number
 nnoremap <leader>w :set wrap!<CR>
 
 highlight TrailingWhitespace ctermbg=red guibg=red
@@ -68,6 +67,7 @@ nnoremap <leader>z me%mw%r `wx`e
 nnoremap Y y$
 nnoremap z %
 omap z %
+vmap z %
 
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
 nnoremap \ "0p
@@ -96,6 +96,8 @@ vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
 command -nargs=1 C CoffeeCompile | :<args>
 
+" unescape \n in logs
+nnoremap <leader>n :%s/\\n/\r/g<CR>
 
 "==============================================================
 " NAVIGATION
