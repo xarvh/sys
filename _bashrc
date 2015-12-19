@@ -33,6 +33,11 @@ function arg_or_clipboard {
   fi
 }
 
+function search_package_contents {
+  if [ "$1" != "" ]; then
+    chromium-browser "http://packages.ubuntu.com/search?searchon=contents&keywords=$1&mode=exactfilename&suite=wily"
+  fi
+}
 
 #===================================================================
 # ALIASES
@@ -55,6 +60,7 @@ alias psearch='apt-cache search'
 alias premove='sudo apt-get --purge remove'
 alias pupgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt-get --purge autoremove'
 alias psizes='dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n'
+alias pcontents='search_package_contents'
 
 alias rmrm="rm -r"
 alias dd="du -sh"
