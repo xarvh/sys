@@ -3,7 +3,7 @@
   email = francesco.orsenigo@gmail.com
 
 [push]
-	default = simple
+	default = current
 
 [color]
   ui = auto

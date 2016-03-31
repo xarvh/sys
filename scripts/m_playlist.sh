@@ -70,7 +70,7 @@ done
 #
 # filter out directories, shuffle, and write output
 #
-egrep -i '(mp3|ogg)$' $TMP |shuf -o $OUT
+egrep -i '(mp3|ogg|m4a)$' $TMP |shuf -o $OUT
 
 
 
