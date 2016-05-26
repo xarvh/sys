@@ -133,6 +133,7 @@ def main(qtile):
   keys.extend([
     Key([],     'XF86MonBrightnessUp',   lazy.spawn('brightness up')),
     Key([],     'XF86MonBrightnessDown', lazy.spawn('brightness down')),
+    Key([],     'XF86MonBrightnessDown', lazy.spawn('brightness down')),
     Key(strong, 'q',              lazy.shutdown()),
     Key(normal, 'j',              lazy.layout.switchdown(0)),
     Key(strong, 'j',              lazy.layout.client_to_stack(0)),

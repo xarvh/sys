@@ -1,12 +1,12 @@
 
-python << endpy
-
-import sys
-import os
-sys.path.insert(0, "%s/.vim/" % os.getenv('HOME'))
-from vimrc import *
-
-endpy
+"python << endpy
+"
+"import sys
+"import os
+"sys.path.insert(0, "%s/.vim/" % os.getenv('HOME'))
+"from vimrc import *
+"
+"endpy
 
 
 

@@ -54,7 +54,7 @@ done
 #
 rm -f $TMP
 for d in $PLAYDIRS; do
-    find $d/* 2>/dev/null |grep -v "pacco" >>$TMP
+    find $d/* |grep -v "pacco" >>$TMP
 done
 
 #

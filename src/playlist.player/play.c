@@ -56,6 +56,14 @@ void move(char* n, char* dest)
 
 
 
+void copy(char* n, char* dest)
+{
+ sprintf(Bf, "cp \"%s\" \"%s/Musica/%s/\"", n, getenv("HOME"), dest);
+ int __r_system =  system(Bf);
+ printf("copied to %s\n", dest);
+}
+
+
 /*=============================================================================
  * MAIN LOOP
  */
@@ -77,6 +85,7 @@ int loop()
  char* dec = "mplayer -noconsolecontrols";
  char* e = strrchr(Lista[Brano], '.');
       if(e && !strcasecmp(e, ".mp3")) dec = "mplayer -really-quiet -noconsolecontrols";
+ else if(e && !strcasecmp(e, ".m4a")) dec = "mplayer -really-quiet -noconsolecontrols";
  else if(e && !strcasecmp(e, ".ogg")) dec = "ogg123 -q";
  else
  {
@@ -156,10 +165,11 @@ int loop()
 	    case 'P': move(Lista[Brano], "categories/party"); break;
 	    case 'R': move(Lista[Brano], "categories/rock"); break;
 	    case 'O': move(Lista[Brano], "categories/oldies"); break;
-	    case 'M': move(Lista[Brano], "categories/metal"); break;
 	    case '$': move(Lista[Brano], "categories/commercial"); break;
 	    case 'C': move(Lista[Brano], "categories/chill"); break;
 	    case 'L': move(Lista[Brano], "categories/latin"); break;
+
+	    case 'M': copy(Lista[Brano], "malaMadera"); break;
 
 	    default: break;
 	    }
@@ -173,7 +183,7 @@ int loop()
  {
     //kill(child_pid, SIGTERM);
     //sprintf(Bf, "kill `pidof %s`", dec);
-    sprintf(Bf, "killall mplayer ogg123", dec);
+    sprintf(Bf, "killall mplayer ogg123");
     int __r_system = system(Bf);
  }
 

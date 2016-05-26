@@ -1,0 +1,7 @@
+#!/bin/bash
+cd
+cd invoice
+./addInvoice.py ../invoices.csv
+OUT=$(./texInvoice.py config)
+cd /tmp
+pdflatex $(OUT)

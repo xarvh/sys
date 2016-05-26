@@ -1,6 +1,11 @@
 
 --ignore-dir=node_modules
 
+--ignore-dir=elm-stuff
+
+--type-set=elm=.elm
+--elm
+
 --type-set=python=.py
 --python
 
