@@ -14,13 +14,6 @@ vim-gnome
 ack-grep
 network-manager-gnome
 
-g++
-manpages-dev
-valgrind
-libsdl-mixer1.2-dev
-libjpeg-dev
-libpng12-dev
-
 gimp
 inkscape
     python-lxml
