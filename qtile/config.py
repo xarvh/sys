@@ -121,6 +121,9 @@ def main(qtile):
     'minus': 'amixer -c %d -q set Master 2dB-' % sound_card,
     'bracketleft': 'brightness down',
     'bracketright': 'brightness up',
+
+    'Escape': 'gnome-screensaver-command -l',
+    'BackSpace': 'qsh -c restart',
   }
 
   strong_commands = {
