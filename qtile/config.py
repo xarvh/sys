@@ -109,6 +109,7 @@ def main(qtile):
   term = '_terminal '
   normal_commands = {
     'b': 'chromium-browser',
+    'y': term + '-e _calendar',
     'v': 'gvim',
     't': '_tango_newsletter',
     'c': term + '-e coffee',
