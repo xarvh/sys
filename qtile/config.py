@@ -93,7 +93,7 @@ system('killall indicator-cpufreq; indicator-cpufreq &')
 #
 def main(qtile):
 
-  system('xmodmap .dati/sys/xmodmap')
+  system('_modmap us')
 
   # TODO: extend for a generic number of screens?
   dualscreen = not qtile or len(qtile.conn.pseudoscreens) > 1
@@ -128,10 +128,10 @@ def main(qtile):
   }
 
   strong_commands = {
-    's': 'setxkbmap -layout se',
-    'g': 'setxkbmap -layout gr',
-    '1': 'setxkbmap -layout it',
-    '0': 'setxkbmap -layout us',
+    's': '_modmap se',
+    'g': '_modmap gr',
+    '1': '_modmap it',
+    '0': '_modmap us',
   }
 
   keys.extend([

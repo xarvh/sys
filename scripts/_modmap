@@ -1,0 +1,3 @@
+#!/bin/bash
+setxkbmap -layout $1
+xmodmap .dati/sys/xmodmap
