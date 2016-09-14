@@ -55,6 +55,9 @@ alias md='m_playlist.sh --sort'
 alias mr='m_playlist.sh --new'
 alias ml='playlist.player $HOME/.playlist'
 
+alias em='reset; elm-make --yes'
+alias ei='elm-package install --yes'
+
 alias pinstall='sudo apt-get install'
 alias psearch='apt-cache search'
 alias premove='sudo apt-get --purge remove'
