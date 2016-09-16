@@ -1,13 +1,24 @@
 
-"python << endpy
+"===============================================================
+" GENERAL
 "
-"import sys
-"import os
-"sys.path.insert(0, "%s/.vim/" % os.getenv('HOME'))
-"from vimrc import *
-"
-"endpy
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'elmcast/elm-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+
+call plug#end()
+
+
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:elm_syntastic_show_warnings = 1
+
+let g:deoplete#omni_patterns.elm = '\.'
+let g:elm_detailed_complete = 1
 
 
 "===============================================================
@@ -51,7 +62,7 @@ match TrailingWhitespace /\s\+$/
 "
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
+    return "\<C-x>\<C-o>"
   else
     return "\<Tab>"
   endif
