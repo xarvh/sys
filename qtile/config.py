@@ -113,6 +113,7 @@ def main(qtile):
     'v': 'gvim',
     't': '_tango_newsletter',
     'c': term + '-e coffee',
+    'e': term + '-e _elm-repl',
     'a': term + '-e alsamixer -c %d' % sound_card,
     'F10': 'sh -c "import screenshot$(yymmdd_HHMMSS).png"',
     'F12': 'mount_and_open_all',
