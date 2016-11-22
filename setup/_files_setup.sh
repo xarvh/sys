@@ -1,12 +1,14 @@
 #!/bin/sh
 
-cd $HOME
+cd $(dirname $0)
+cd ..
+DIR=`pwd`
+
+cd
+
 rm -fr Music Pictures Public Templates Videos Documents
 mkdir -p .usr
 
-
-cd
-DIR=.dati/sys
 for i in $DIR/_*; do
   n=$(basename $i)
   t=.${n#_}
@@ -16,7 +18,4 @@ done
 
 
 #chmod -w -R $DIR/_fluxbox
-
-
-
 

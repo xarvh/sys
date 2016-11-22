@@ -1,5 +1,5 @@
 export HISTCONTROL=ignoreboth
-export PYTHONSTARTUP=$HOME/.dati/sys/pythonstartup.py
+export PYTHONSTARTUP=$HOME/.usr/sys/pythonstartup.py
 
 # Colors: http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 Red="\[\033[00;31m\]"
@@ -73,8 +73,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-alias cpu_performance='sudo $HOME/.dati/scripts/scale_cpu performance'
-alias cpu_conservative='sudo $HOME/.dati/scripts/scale_cpu conservative'
+alias cpu_performance='sudo $HOME/.usr/scripts/scale_cpu performance'
+alias cpu_conservative='sudo $HOME/.usr/scripts/scale_cpu conservative'
 
 alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
@@ -122,9 +122,9 @@ alias grom='git rebase origin/master'
 alias grod='git rebase origin/develop'
 alias gr-i='git rebase -i `git log --oneline |grep "Merge pull request" |head -n1 | cut -f1 -d" "`'
 
-source $HOME/.dati/sys/git-prompt
-source $HOME/.dati/sys/git-completion
-source $HOME/.dati/sys/git-completion-aliases
+source $HOME/.usr/sys/git-prompt
+source $HOME/.usr/sys/git-completion
+source $HOME/.usr/sys/git-completion-aliases
 
 unalias gpFo
 function gpFo {

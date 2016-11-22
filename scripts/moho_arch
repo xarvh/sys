@@ -3,7 +3,7 @@
 SRC=$HOME
 DEST="moho:/home/crono_bk/"
 
-EXCLUDE_FILE=$HOME/.dati/sys/rsync_exclude
+EXCLUDE_FILE=$HOME/.usr/sys/rsync_exclude
 
 OP=""
 #OP=$OP --archive			# archive mode, preserves a lot of stuff

@@ -38,7 +38,7 @@ def guessAlsaSoundCard():
   try:
     return int(subprocess.check_output(['aplay -l |grep card |grep -vi hdmi'], shell=True).split('\n')[:-1][0][5])
   except Exception as e:
-    print e
+    print(e)
     return 0
 
 sound_card = guessAlsaSoundCard()
@@ -82,7 +82,7 @@ if screen_setup:
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
 system('killall syndaemon; syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
-system('killall udiskie; udiskie &')
+system('killall udiskie; udiskie -f xcowsay &')
 system('killall nm-applet; nm-applet &')
 system('killall indicator-cpufreq; indicator-cpufreq &')
 
@@ -125,7 +125,7 @@ def main(qtile):
     'bracketright': 'brightness up',
 
     'Escape': 'gnome-screensaver-command -l',
-    'BackSpace': 'qsh -c restart',
+    'BackSpace': 'qshell -c restart',
   }
 
   strong_commands = {
