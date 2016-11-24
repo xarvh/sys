@@ -109,12 +109,12 @@ def main(qtile):
   term = '_terminal '
   normal_commands = {
     'b': 'chromium-browser',
-    'y': term + '-e _calendar',
+    'y': term + '-x _calendar',
     'v': 'gvim',
     't': '_tango_newsletter',
-    'c': term + '-e coffee',
-    'e': term + '-e _elm-repl',
-    'a': term + '-e alsamixer -c %d' % sound_card,
+    'c': term + '-x coffee',
+    'e': term + '-x _elm-repl',
+    'a': term + '-x alsamixer -c %d' % sound_card,
     'F10': 'sh -c "import screenshot$(yymmdd_HHMMSS).png"',
     'F12': 'mount_and_open_all',
     'Return': term,

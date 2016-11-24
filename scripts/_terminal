@@ -1,2 +1,3 @@
 #!/bin/bash
-xterm -fn "*-fixed-*-*-*-20-*" $@
+#xterm -fn "*-fixed-*-*-*-20-*" $@
+sakura $@
