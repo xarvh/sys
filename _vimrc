@@ -36,6 +36,9 @@ set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
+" https://github.com/webpack/webpack/issues/781#issuecomment-95523711
+set backupcopy=yes
+
 nnoremap <CR> :
 nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
@@ -89,9 +92,9 @@ nnoremap <BS> @q
 "==============================================================
 " INDENTATION
 "
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 
