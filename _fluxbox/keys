@@ -9,7 +9,7 @@ Mod4 Enter      :ExecCommand _terminal
 Control F2      :ExecCommand gvim
 #Control F3      :ExecCommand gnome-volume-control
 Control F3      :ExecCommand _terminal -e alsamixer
-#Control F4      :ExecCommand env PYTHONSTARTUP=/home/nw/.dati/sys/pythonstartup.py xterm -e python
+#Control F4      :ExecCommand env PYTHONSTARTUP=/home/nw/.usr/sys/pythonstartup.py xterm -e python
 Control F4      :ExecCommand _terminal -e coffee
 Control F5      :ExecCommand fbrun
 

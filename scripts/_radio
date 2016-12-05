@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RADIO_FILE="$HOME/.dati/radios"
+RADIO_FILE="$HOME/.usr/radios"
 
 
 if [ $(ps -e |grep mplayer) == ""]; then

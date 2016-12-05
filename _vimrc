@@ -36,6 +36,9 @@ set wildmode=longest,list
 set scrolloff=3
 set textwidth=0
 
+" https://github.com/webpack/webpack/issues/781#issuecomment-95523711
+set backupcopy=yes
+
 nnoremap <CR> :
 nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
@@ -62,7 +65,8 @@ match TrailingWhitespace /\s\+$/
 "
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-x>\<C-o>"
+    return "\<C-n>"
+    "return "\<C-x>\<C-o>"
   else
     return "\<Tab>"
   endif
@@ -89,9 +93,9 @@ nnoremap <BS> @q
 "==============================================================
 " INDENTATION
 "
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 
