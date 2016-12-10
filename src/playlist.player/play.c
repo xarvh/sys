@@ -158,16 +158,16 @@ int loop()
 	    case 'K': move(Lista[Brano], "new/trash"); Cmd = NEXT; break;
 	    case '_': move(Lista[Brano], "pacco/"); Cmd = NEXT; break;
 	    case '!': move(Lista[Brano], "new/good"); break;
-	    case 'G': move(Lista[Brano], "categories/uncategorized"); break;
+	    case 'U': move(Lista[Brano], "categories/uncategorized"); Cmd = NEXT; break;
 
 	    case 'T': move(Lista[Brano], "categories/tango"); break;
 	    case 'S': move(Lista[Brano], "categories/tango/slow"); break;
 	    case 'P': move(Lista[Brano], "categories/party"); break;
-	    case 'R': move(Lista[Brano], "categories/rock"); break;
-	    case 'O': move(Lista[Brano], "categories/oldies"); break;
-	    case '$': move(Lista[Brano], "categories/commercial"); break;
-	    case 'C': move(Lista[Brano], "categories/chill"); break;
-	    case 'L': move(Lista[Brano], "categories/latin"); break;
+	    //case 'R': move(Lista[Brano], "categories/rock"); break;
+	    //case 'O': move(Lista[Brano], "categories/oldies"); break;
+	    //case '$': move(Lista[Brano], "categories/commercial"); break;
+	    //case 'C': move(Lista[Brano], "categories/chill"); break;
+	    //case 'L': move(Lista[Brano], "categories/latin"); break;
 
 	    case 'M': copy(Lista[Brano], "malaMadera"); break;
 

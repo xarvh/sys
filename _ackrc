@@ -18,8 +18,8 @@
 --type-set=stylus=.styl
 --stylus
 
---type-set=jade=.jade
---jade
+--type-set=haskell=.hs
+--haskell
 
 --smart-case
 --sort-files
