@@ -7,7 +7,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-vinegar'
+Plug 'mileszs/ack.vim'
+"Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -88,8 +90,6 @@ vmap z %
 nnoremap \ "0p
 nnoremap \| "0P
 
-nnoremap <BS> @q
-
 "==============================================================
 " INDENTATION
 "
@@ -151,7 +151,8 @@ function! MultiComment(after_spaces)
   execute "s/^".s.c.c."/\\1/e"
 endfunction
 
-map <silent> - :call MultiComment(0)<CR>+
+" backspace comments
+map <silent> <BS> :call MultiComment(0)<CR>+
 
 
 "==============================================================
