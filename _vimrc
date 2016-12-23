@@ -106,6 +106,9 @@ set expandtab
 " Beautify JSON
 nnoremap <leader>j :%!python -mjson.tool<CR>
 
+" Format Elm
+nnoremap <leader>e :%!elm-format --stdin<CR>
+
 " Compile Coffee
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
