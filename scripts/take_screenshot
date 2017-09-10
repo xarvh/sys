@@ -1,0 +1,4 @@
+#!/bin/sh
+NAME="screenshot$(yymmdd_HHMMSS).png"
+import $NAME
+echo "<img src='data:image/png;base64,"$(base64 -w0 "$NAME")"' />" | xclip -selection clipboard -t text/html

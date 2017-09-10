@@ -4,7 +4,7 @@
 if [ $1 == "0" ]; then
     DUMP=$HOME/trash/$(date +PICS_%y%m%d)
     mkdir -p $DUMP 
-    mv $2 $DUMP
+    mv "$2" $DUMP
 fi;
 if [ $1 == "1" ]; then
     mkdir -p selected_1

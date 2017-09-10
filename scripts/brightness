@@ -5,6 +5,23 @@ import subprocess
 
 scale = [1, 2, 4, 8, 16, 32, 48, 64, 80, 90, 100]
 
+def eee(cmd):
+#    print '>>', cmd
+    r = subprocess.check_output(['bash', '-c', cmd])
+#    print '<<', r
+    return r
+
+def get_max_value():
+    return float(eee('cat /sys/class/backlight/*/max_brightness'))
+
+def get_current_value():
+    return float(eee('cat /sys/class/backlight/*/brightness'))
+
+def set_value(value):
+    eee('echo %d |sudo /usr/bin/tee /sys/class/backlight/*/brightness' % value)
+#    eee('echo %d | /usr/bin/tee xxx' % value)
+
+
 
 def main():
     try:
@@ -13,12 +30,18 @@ def main():
         print('Specify "up" or "down"')
         return
 
-    initial_value = float(subprocess.check_output(['xbacklight']))
+    max_value = get_max_value()
+    current_value = get_current_value()
 
-    closest_index = min(range(len(scale)), key = lambda i: abs(scale[i] - initial_value))
+    current_percentage = 100 * current_value / max_value
+#    print '----', current_percentage
+
+    closest_index = min(range(len(scale)), key = lambda i: abs(scale[i] - current_percentage))
     new_index = sorted((0, closest_index + direction, len(scale) - 1))[1]
 
-    subprocess.check_output(['xbacklight', '-set', str(scale[new_index])])
+    new_percentage = scale[new_index]
+    new_value = round(new_percentage * max_value / 100)
 
+    set_value(new_value)
 
 main()

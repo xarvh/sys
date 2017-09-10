@@ -15,11 +15,11 @@ call plug#end()
 
 
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:elm_syntastic_show_warnings = 1
 
-let g:deoplete#omni_patterns.elm = '\.'
+"let g:deoplete#omni_patterns.elm = '\.'
 let g:elm_detailed_complete = 1
 
 
@@ -106,6 +106,8 @@ set expandtab
 " Beautify JSON
 nnoremap <leader>j :%!python -mjson.tool<CR>
 
+nnoremap <leader>e mo:%!elm-format --stdin<CR>`o
+
 " Compile Coffee
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
@@ -167,6 +169,10 @@ set smartcase
 map <leader>f :AckFile!<space>
 map <leader>a :Ack!<space>
 map <leader>8 :Ack! <cword><CR>
+
+
+"nnoremap <silent> * normal! * | :let @/ = "\\C" . @/<cr>
+
 
 
 "===============================================================

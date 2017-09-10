@@ -47,22 +47,20 @@ unmute_command='; '.join('amixer -c %d set %s unmute' % (sound_card, control) fo
 
 
 #
-# Floats
-#
-floating_layout = layout.Floating(auto_float_types=[
-  "notification",
-  "toolbar",
-  "splash",
-  "dialog",
-])
-
-
-#
 # Hooks
 #
 @hook.subscribe.screen_change
 def restart_on_screen_change(qtile, ev):
   qtile.cmd_restart()
+
+
+
+@hook.subscribe.client_new
+def floating_dialogs(window):
+    if window.window.get_wm_class() == ('UE4Editor', 'UE4Editor'):
+        if window.window.get_name() == None:
+            window.floating = True
+
 
 
 #
@@ -111,11 +109,10 @@ def main(qtile):
     'b': 'chromium-browser',
     'y': term + '-x _calendar',
     'v': 'gvim',
-    't': '_tango_newsletter',
     'c': term + '-x coffee',
     'e': term + '-x _elm-repl',
     'a': term + '-x alsamixer -c %d' % sound_card,
-    'F10': 'sh -c "import screenshot$(yymmdd_HHMMSS).png"',
+    'F10': 'take_screenshot',
     'F12': 'mount_and_open_all',
     'Return': term,
 

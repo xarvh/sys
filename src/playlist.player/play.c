@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <termio.h>
+#include <time.h>
 #include <unistd.h>
 
 #define COMMAND	"%s \"%s\""
