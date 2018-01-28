@@ -57,10 +57,14 @@ def restart_on_screen_change(qtile, ev):
 
 @hook.subscribe.client_new
 def floating_dialogs(window):
+
     if window.window.get_wm_class() == ('UE4Editor', 'UE4Editor'):
         if window.window.get_name() == None:
             window.floating = True
 
+    if window.window.get_wm_class() == ('Unity', 'Unity'):
+        if window.window.get_name() == None:
+            window.floating = True
 
 
 #

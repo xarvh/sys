@@ -1,3 +1,5 @@
+sakura
+python
 
 qtile
 xaos
@@ -6,13 +8,11 @@ indicator-cpufreq
 qiv
 sxiv
 
-xterm
 xbacklight
 tmux
 git
 gitk
 vim-gnome
-ack-grep
 network-manager-gnome
 
 gimp

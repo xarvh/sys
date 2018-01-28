@@ -1,1 +1,1 @@
- user_name ALL=(ALL) /usr/bin/tee /sys/class/backlight/ 
+nw ALL=NOPASSWD: /usr/bin/tee /sys/class/backlight/*/brightness
