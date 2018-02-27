@@ -14,9 +14,9 @@ if [ $1 == "2" ]; then
     mkdir -p selected_2
     mv "$2" selected_2/
 fi;
-#if [ $1 == "3" ]; then
-#    gimp $2
-#fi;
+if [ $1 == "7" ]; then
+    gimp $2
+fi;
 
 #if [ $1 == "6" ]; then
 #    convert -rotate 90 $2 $2
