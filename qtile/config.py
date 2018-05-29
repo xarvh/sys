@@ -120,6 +120,9 @@ def main(qtile):
     'F12': 'mount_and_open_all',
     'Return': term,
 
+    's': '_modmap se',
+    '0': '_modmap us',
+
     'equal': 'amixer -c %d -q set Master 2dB+' % sound_card,
     'minus': 'amixer -c %d -q set Master 2dB-' % sound_card,
     'bracketleft': 'brightness down',
@@ -130,10 +133,8 @@ def main(qtile):
   }
 
   strong_commands = {
-    's': '_modmap se',
-    'g': '_modmap gr',
-    '1': '_modmap it',
-    '0': '_modmap us',
+#    'g': '_modmap gr',
+#    '1': '_modmap it',
   }
 
   keys.extend([
