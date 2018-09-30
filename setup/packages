@@ -43,7 +43,7 @@ mplayer
 xcowsay
 id3v2
 vorbis-tools
-libav-tools
+ffmpeg
 amule
 libfftw3-dev
 ussp-push

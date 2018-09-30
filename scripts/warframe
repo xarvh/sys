@@ -1,0 +1,3 @@
+#!/bin/sh
+xrandr --output eDP-1-1 --mode 1024x576
+lutris lutris:rungame/warframe

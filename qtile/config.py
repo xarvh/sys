@@ -71,6 +71,8 @@ def floating_dialogs(window):
 # Initialization commands.
 # (These run before the qtile instance is available.)
 #
+mainScreenName = 'eDP-1-1'
+
 screen_setup = {
   'pinky': 'xrandr --output LVDS1 --preferred --primary --output VGA1 --preferred --right-of LVDS1',
   'salad': 'xrandr --output DVI-0 --preferred --primary --output DisplayPort-0 --preferred --right-of DVI-0',
@@ -155,6 +157,7 @@ def main(qtile):
     Key(normal, 'apostrophe',     lazy.next_layout()),
     Key(normal, 'x',              lazy.window.kill()),
     Key(normal, 'f',              lazy.window.toggle_floating()),
+    Key(strong, 'equal',          lazy.spawn('xrandr --output ' + mainScreenName + ' --preferred')),
   ])
 
   keys.extend([Key(normal, k, lazy.spawn(v)) for k, v in normal_commands.items()])
@@ -193,7 +196,12 @@ def main(qtile):
     widget.Sep(),
     widget.Notify(default_timeout=1),
     widget.Prompt(),
-    widget.Battery(update_delay=1),
+    widget.Battery(
+        update_delay=1,
+        format='{char} {percent:2.0%}',
+        charge_char='⇶',
+        discharge_char='▼'
+        ),
     widget.Systray(icon_size=25),
     widget.Clock(format='%m%d %a %H:%M'),
   ], 25)
