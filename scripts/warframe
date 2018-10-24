@@ -1,3 +1,5 @@
 #!/bin/sh
 xrandr --output eDP-1-1 --mode 1024x576
-lutris lutris:rungame/warframe
+#lutris lutris:rungame/warframe
+#xrandr --output eDP-1-1 --mode 1360x768
+steam steam://rungameid/230410
