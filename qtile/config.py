@@ -90,6 +90,17 @@ system('killall udiskie; udiskie -f xcowsay &')
 system('killall nm-applet; nm-applet &')
 system('killall indicator-cpufreq; indicator-cpufreq &')
 
+
+
+#
+# GPU Temperatur monitor
+#
+def getTemperature():
+    cmd = "nvidia-smi -q -d TEMPERATURE |grep 'GPU Current'"
+    return subprocess.check_output([cmd], shell=True).decode('utf-8').split(':')[1].split('\n')[0]
+
+
+
 #
 # QTile initialization.
 # (main() is run when the qtile instance becomes available.
@@ -190,12 +201,19 @@ def main(qtile):
       this_current_screen_border='009900',
       disable_drag=True,
       inactive='CCCCCC'),
+    widget.GenPollText(
+        update_interval=1,
+        func=getTemperature,
+    ),
     widget.Volume(cardid=sound_card, device=None),
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),
     widget.Notify(default_timeout=1),
     widget.Prompt(),
+#    widget.KeyboardLayout(
+#        configured_keyboards=['us', 'se', 'gr'],
+#    ),
     widget.Battery(
         update_delay=1,
         format='{char} {percent:2.0%}',
