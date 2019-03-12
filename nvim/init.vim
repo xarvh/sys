@@ -51,6 +51,13 @@ filetype indent on
 "
 set termguicolors
 colorscheme darkblue
+
+syntax on
+filetype on
+autocmd BufNewFile,BufRead *.gd set filetype=python
+
+
+
 "set guioptions=acegi
 "set gfn=Monospace\ Bold\ 11
 "set cursorline

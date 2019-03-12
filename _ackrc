@@ -15,6 +15,9 @@
 --type-set=coffee=.coffee
 --coffee
 
+--type-set=cpp=.cpp
+--cpp
+
 --type-set=stylus=.styl
 --stylus
 

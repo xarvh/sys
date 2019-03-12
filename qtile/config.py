@@ -31,12 +31,21 @@ mouse = []
 hostname = uname()[1]
 
 
+
+#
+#
+#
+def commandStdout(cmd):
+    return subprocess.check_output([cmd], shell=True).decode('utf-8').split('\n')
+
+
+
 #
 # sound card
 #
 def guessAlsaSoundCard():
   try:
-    return int(subprocess.check_output(['aplay -l |grep card |grep -vi hdmi'], shell=True).split('\n')[:-1][0][5])
+    return int(commandStdout('aplay -l |grep card |grep -vi hdmi')[:-1][0][5])
   except Exception as e:
     print(e)
     return 0
@@ -71,17 +80,7 @@ def floating_dialogs(window):
 # Initialization commands.
 # (These run before the qtile instance is available.)
 #
-mainScreenName = 'eDP-1-1'
-
-screen_setup = {
-  'pinky': 'xrandr --output LVDS1 --preferred --primary --output VGA1 --preferred --right-of LVDS1',
-  'salad': 'xrandr --output DVI-0 --preferred --primary --output DisplayPort-0 --preferred --right-of DVI-0',
-  'trash': 'xrandr --output LVDS --mode 1280x720 --primary --output DFP1 --mode 640x480 --right-of LVDS',
-  'dot':   'xrandr --output LVDS1 --primary --output HDMI1 --right-of LVDS1',
-}.get(hostname)
-
-if screen_setup:
-  system(screen_setup)
+mainScreenName = commandStdout('xrandr-list')[0]
 
 system('fbsetbg -a ~/.usr/gui/bg.jpg')
 system('killall syndaemon; syndaemon -dt')
@@ -97,7 +96,7 @@ system('killall indicator-cpufreq; indicator-cpufreq &')
 #
 def getTemperature():
     cmd = "nvidia-smi -q -d TEMPERATURE |grep 'GPU Current'"
-    return subprocess.check_output([cmd], shell=True).decode('utf-8').split(':')[1].split('\n')[0]
+    return commandStdout(cmd)[0].split(':')[1]
 
 
 
@@ -168,7 +167,7 @@ def main(qtile):
     Key(normal, 'apostrophe',     lazy.next_layout()),
     Key(normal, 'x',              lazy.window.kill()),
     Key(normal, 'f',              lazy.window.toggle_floating()),
-    Key(strong, 'equal',          lazy.spawn('xrandr --output ' + mainScreenName + ' --preferred')),
+    Key(strong, 'equal',          lazy.spawn('xrandr-reset')),
   ])
 
   keys.extend([Key(normal, k, lazy.spawn(v)) for k, v in normal_commands.items()])
@@ -201,10 +200,10 @@ def main(qtile):
       this_current_screen_border='009900',
       disable_drag=True,
       inactive='CCCCCC'),
-    widget.GenPollText(
-        update_interval=1,
-        func=getTemperature,
-    ),
+#    widget.GenPollText(
+#        update_interval=1,
+#        func=getTemperature,
+#    ),
     widget.Volume(cardid=sound_card, device=None),
     widget.Sep(),
     CustomWindowName(),

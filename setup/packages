@@ -3,6 +3,7 @@ sakura
 python
 
 qtile
+arandr
 xaos
 cpufrequtils
 indicator-cpufreq
@@ -10,7 +11,6 @@ qiv
 sxiv
 
 xbacklight
-tmux
 git
 gitk
 vim-gnome
@@ -21,11 +21,8 @@ inkscape
     python-lxml
 audacious
 
-fluxbox
-
 python-setuptools
 python-pip
-libffi-dev
 
 sxiv
 curl
@@ -33,7 +30,6 @@ feh
 mpg321
 mc
 bzip2
-cdparanoia
 rar
 unrar
 unzip
@@ -46,13 +42,12 @@ id3v2
 vorbis-tools
 ffmpeg
 amule
-libfftw3-dev
-ussp-push
 xsel
 
 udiskie
 acpi
 pmount
 chromium-browser
+steam
 
 deluge

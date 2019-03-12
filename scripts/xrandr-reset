@@ -1,0 +1,4 @@
+#!/bin/sh
+for output in $(xrandr-list); do
+  xrandr --output $output --preferred --auto
+done
