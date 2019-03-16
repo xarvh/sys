@@ -1,4 +1,5 @@
 #!/bin/sh
+pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo
 for output in $(xrandr-list); do
   xrandr --output $output --preferred --auto
 done
