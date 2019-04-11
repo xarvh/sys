@@ -1,0 +1,9 @@
+[Unit]
+Description=warframe automelee
+
+[Service]
+ExecStart=/usr/local/bin/automelee
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

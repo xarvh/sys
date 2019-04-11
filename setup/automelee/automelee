@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+"""
+
+    https://github.com/boppreh/keyboard
+
+    Autofire e when e is held
+
+"""
+
+import keyboard
+import time
+
+while True:
+    time.sleep(0.2)
+    if(keyboard.is_pressed('e')):
+        keyboard.send('e')

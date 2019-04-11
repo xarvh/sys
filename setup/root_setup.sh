@@ -11,3 +11,5 @@ echo HandlePowerKey=ignore >>/etc/systemd/logind.conf
 #copy pmount.allow
 #cp pmount.allow /etc/
 cp sudoers.d/screen_brightness /etc/sudoers.d/
+
+./automelee/root_setup.sh

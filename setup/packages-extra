@@ -5,8 +5,3 @@ calibre
 
 g++
 manpages-dev
-valgrind
-libsdl-mixer1.2-dev
-libjpeg-dev
-libpng12-dev
-
