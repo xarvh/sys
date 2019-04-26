@@ -42,6 +42,7 @@ function search_package_contents {
 #===================================================================
 # ALIASES
 #
+alias psi='ps -edaf |grep -i'
 alias ls='ls -1 --human-readable --color=auto'
 alias grep='grep --color=auto'
 alias yd='youtube-dl --prefer-free-formats -t'
@@ -55,11 +56,12 @@ alias mr='m_playlist.sh --new'
 alias ml='playlist.player $HOME/.playlist'
 
 alias em='reset; elm-make --yes'
-alias ei='elm-package install --yes'
-#function ei {
-#    elm-package install --yes $@
-#    $HOME/.vim/plugged/vim-elm-help/bin/build-docs.pl >elm-docs.json
-#}
+alias er='elm reactor'
+function ei {
+    for i in $@; do
+        elm install $i
+    done
+}
 
 function bk {
     tar -cjf `date +$1%Y%m%d$2.tbz` $1/
@@ -86,8 +88,8 @@ alias cpu_conservative='sudo $HOME/.usr/scripts/scale_cpu conservative'
 alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) chromium-browser &'
 
-alias ff='find * |grep -v node_modules/ |grep --ignore-case'
-function v { sakura -e nvim "$@" 2>/dev/null & }
+alias ff='find * |grep -v node_modules/ |grep -v elm-stuff |grep --ignore-case'
+alias v='gvim'
 alias vv='xargs gvim'
 alias s='sxiv * &'
 alias q='qiv -lmf * &'

@@ -1,0 +1,1 @@
+for i in ../KoofrSync/**/*; do convert -resize 800x600 "$i" $(uuid).jpg; done
