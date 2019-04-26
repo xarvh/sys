@@ -1,6 +1,8 @@
 
 --ignore-dir=node_modules
 
+--ignore-dir=build
+
 --ignore-dir=elm-stuff
 
 --type-set=elm=.elm
