@@ -5,22 +5,19 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'elmcast/elm-vim'
+Plug 'justinmk/vim-dirvish'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 Plug 'mileszs/ack.vim'
-"Plug 'scrooloose/syntastic'
+Plug 'elmcast/elm-vim'
+
+"Plug 'tpope/vim-vinegar'
 
 call plug#end()
 
-
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:elm_syntastic_show_warnings = 1
-
 "let g:deoplete#omni_patterns.elm = '\.'
 let g:elm_detailed_complete = 1
+let g:elm_format_autosave = 0
 
 
 "===============================================================
@@ -45,6 +42,24 @@ nnoremap <CR> :
 nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
+
+
+
+"===============================================================
+" FILE & BUFFER BROWSING
+"
+"
+
+
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_autoexpand_on_split = 0
+nnoremap <Tab> :BuffergatorToggle<CR>
+
+let dirvish_mode = ':sort ,^.*/,'
+
+"nnoremap - :Explore<CR>
+"let g:netrw_banner = 0
+"https://github.com/tpope/vim-vinegar/issues/13#issuecomment-47133890
 
 
 "===============================================================
