@@ -105,6 +105,8 @@ function yo {
   youtube-dl -x --audio-format=wav "$NAME"
   echo $(ls *wav |grep $CODE)
   lame -v "$(ls *wav |grep $CODE)"
+  mv "$(ls *mp3 |grep $CODE)" $HOME/Musica/new/good/
+  rm "$(ls *wav |grep $CODE)"
 }
 
 

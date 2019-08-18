@@ -87,7 +87,7 @@ system('killall syndaemon; syndaemon -dt')
 system('xsetroot -cursor_name left_ptr')
 system('killall udiskie; udiskie -f xcowsay &')
 system('killall nm-applet; nm-applet &')
-system('killall indicator-cpufreq; indicator-cpufreq &')
+system('pkill -f indicator-cpufreq; indicator-cpufreq &')
 
 
 

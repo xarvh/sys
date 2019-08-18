@@ -20,6 +20,7 @@ gimp
 inkscape
     python-lxml
 audacious
+libimage-exiftool-perl
 
 python-setuptools
 python-pip
