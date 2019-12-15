@@ -1,10 +1,10 @@
 gnome-screensaver
+vim-gtk3
 sakura
-python
 
 qtile
+    fluxbox
 arandr
-xaos
 cpufrequtils
 indicator-cpufreq
 qiv
@@ -13,7 +13,6 @@ sxiv
 xbacklight
 git
 gitk
-vim-gnome
 network-manager-gnome
 
 gimp
@@ -48,7 +47,6 @@ xsel
 udiskie
 acpi
 pmount
-chromium-browser
 steam
 
 deluge

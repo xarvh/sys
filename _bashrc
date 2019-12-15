@@ -45,7 +45,7 @@ function search_package_contents {
 alias psi='ps -edaf |grep -i'
 alias ls='ls -1 --human-readable --color=auto'
 alias grep='grep --color=auto'
-alias yd='youtube-dl --prefer-free-formats -t'
+alias yd='youtube-dl --prefer-free-formats -o "%(title)s-%(id)s.%(ext)s"'
 alias dos='dosbox -c MOUNT . c'
 alias s2b='ussp-push GT-I9300@ "$1" "$(basename $1)"'
 alias xcsf='echo "Job finished at\n$(pwd)" |xcowsay -t 99999'

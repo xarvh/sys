@@ -33,6 +33,13 @@ hostname = uname()[1]
 
 
 #
+# Run initial scripts
+#
+system('_qtile_init')
+
+
+
+#
 #
 #
 def commandStdout(cmd):
@@ -52,7 +59,6 @@ def guessAlsaSoundCard():
 
 sound_card = guessAlsaSoundCard()
 
-unmute_command='; '.join('amixer -c %d set %s unmute' % (sound_card, control) for control in ['Master', 'Headphone', 'Speaker'])
 
 
 #
@@ -82,13 +88,6 @@ def floating_dialogs(window):
 #
 mainScreenName = commandStdout('xrandr-list')[0]
 
-system('fbsetbg -a ~/.usr/gui/bg.jpg')
-system('killall syndaemon; syndaemon -dt')
-system('xsetroot -cursor_name left_ptr')
-system('killall udiskie; udiskie -f xcowsay &')
-system('killall nm-applet; nm-applet &')
-system('pkill -f indicator-cpufreq; indicator-cpufreq &')
-
 
 
 #
@@ -113,7 +112,7 @@ def main(qtile):
   dualscreen = not qtile or len(qtile.conn.pseudoscreens) > 1
 
   # key modifiers
-  normal = ['mod4']
+  normal = ['mod1']
   strong = ['mod4', 'mod1']
 
 
@@ -122,10 +121,10 @@ def main(qtile):
   #
   term = '_terminal '
   normal_commands = {
-    'b': 'chromium-browser',
+    'b': 'google-chrome',
     'y': term + '-x _calendar',
     'v': 'gvim',
-    'c': term + '-x coffee',
+    #'c': term + '-x coffee',
     'e': term + '-x _elm-repl',
     'a': term + '-x alsamixer -c %d' % sound_card,
     'F10': 'take_screenshot',
@@ -135,8 +134,8 @@ def main(qtile):
     's': '_modmap se',
     '0': '_modmap us',
 
-    'equal': 'amixer -c %d -q set Master 2dB+' % sound_card,
-    'minus': 'amixer -c %d -q set Master 2dB-' % sound_card,
+    'equal': '_volume_up',
+    'minus': '_volume_down',
     'bracketleft': 'brightness down',
     'bracketright': 'brightness up',
 
@@ -214,6 +213,7 @@ def main(qtile):
 #        configured_keyboards=['us', 'se', 'gr'],
 #    ),
     widget.Battery(
+        battery_name='BAT1',
         update_delay=1,
         format='{char} {percent:2.0%}',
         charge_char='⇶',

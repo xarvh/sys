@@ -5,6 +5,7 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'calviken/vim-gdscript3'
 Plug 'justinmk/vim-dirvish'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'

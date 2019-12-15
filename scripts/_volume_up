@@ -1,0 +1,3 @@
+#!/bin/sh
+amixer -q set Headphone 100%
+amixer -q set Master 2dB+

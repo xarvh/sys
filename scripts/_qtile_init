@@ -1,0 +1,15 @@
+#!/bin/sh
+fbsetbg -a ~/.usr/gui/bg.jpg
+xsetroot -cursor_name left_ptr
+
+#killall syndaemon
+#syndaemon -dt
+
+killall udiskie
+udiskie -f xcowsay &
+
+killall nm-applet
+nm-applet &
+
+pkill -f indicator-cpufreq
+indicator-cpufreq &

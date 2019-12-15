@@ -1,5 +1,5 @@
 #!/bin/bash
 DIR="/tmp/guestfox"
 mkdir -p $DIR
-env HOME=$DIR chromium-browser
+env HOME=$DIR google-chrome
 rm -r $DIR
