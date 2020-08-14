@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PREFIX="$1"
+
+SOURCE="$2"
+
+DESTINATION="${SOURCE#$PREFIX}"
+
+if test -e "$DESTINATION"; then
+    >&2 echo "$DESTINATION" exists already
+else
+    mv "$SOURCE" "$DESTINATION"
+fi

@@ -35,8 +35,7 @@ hostname = uname()[1]
 #
 # Run initial scripts
 #
-system('_qtile_init')
-
+system('_qtile_init &')
 
 
 #
@@ -66,7 +65,8 @@ sound_card = guessAlsaSoundCard()
 #
 @hook.subscribe.screen_change
 def restart_on_screen_change(qtile, ev):
-  qtile.cmd_restart()
+  system('_qtile_on_screen_change &')
+  #qtile.cmd_restart()
 
 
 
@@ -126,7 +126,8 @@ def main(qtile):
     'v': 'gvim',
     #'c': term + '-x coffee',
     'e': term + '-x _elm-repl',
-    'a': term + '-x alsamixer -c %d' % sound_card,
+    #'F3': term + '-x alsamixer -c %d' % sound_card,
+    'F3': term + '-x pulsemixer',
     'F10': 'take_screenshot',
     'F12': 'mount_and_open_all',
     'Return': term,
@@ -236,7 +237,7 @@ def main(qtile):
   #
   group_def = 'n m comma:c period:p u i o p'
   if dualscreen:
-    group_def += ' slash:/'
+   group_def += ' slash:/'
 
   for key in group_def.split():
     if len(key) is 1:
@@ -249,7 +250,7 @@ def main(qtile):
     keys.append(Key(strong, key, lazy.window.togroup(name)))
 
   if dualscreen:
-    lazy.group['/'].toScreen(1)
+   lazy.group['/'].toScreen(1)
 
 
   #

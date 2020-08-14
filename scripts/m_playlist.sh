@@ -10,7 +10,7 @@
 # base paths
 #
 OUT="$HOME/.playlist"
-DIR="$HOME/Musica"
+DIR="/f/Musica"
 
 #
 # secondary directories

@@ -35,13 +35,16 @@ function arg_or_clipboard {
 
 function search_package_contents {
   if [ "$1" != "" ]; then
-    chromium-browser "http://packages.ubuntu.com/search?searchon=contents&keywords=$1&mode=exactfilename&suite=wily"
+    _browser "http://packages.ubuntu.com/search?searchon=contents&keywords=$1&mode=exactfilename&suite=wily"
   fi
 }
 
 #===================================================================
 # ALIASES
 #
+alias yarn=yarnpkg
+
+alias br=_browser
 alias psi='ps -edaf |grep -i'
 alias ls='ls -1 --human-readable --color=auto'
 alias grep='grep --color=auto'
@@ -86,7 +89,7 @@ alias cpu_performance='sudo $HOME/.usr/scripts/scale_cpu performance'
 alias cpu_conservative='sudo $HOME/.usr/scripts/scale_cpu conservative'
 
 alias executables='IFS=':'; for i in $PATH; do ls $i; done'
-alias homebrowser='env HOME=$(pwd) chromium-browser &'
+alias homebrowser='env HOME=$(pwd) _browser &'
 
 alias ff='find * |grep -v node_modules/ |grep -v elm-stuff |grep --ignore-case'
 alias v='gvim'

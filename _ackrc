@@ -8,6 +8,9 @@
 --type-set=elm=.elm
 --elm
 
+--type-set=gdscript=.gd
+--gdscript
+
 --type-set=python=.py
 --python
 

@@ -1,6 +1,6 @@
 
 "===============================================================
-" GENERAL
+" PLUGINS
 "
 
 call plug#begin('~/.vim/plugged')
@@ -11,6 +11,8 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'elmcast/elm-vim'
+Plug 'CaffeineViking/vim-glsl'
+
 
 "Plug 'tpope/vim-vinegar'
 
@@ -44,7 +46,8 @@ nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
 
-
+map <F1> <Esc>
+imap <F1> <Esc>
 
 "===============================================================
 " FILE & BUFFER BROWSING

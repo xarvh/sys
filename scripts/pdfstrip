@@ -1,2 +1,6 @@
 #!/bin/sh
-gs -dDELAYBIND -o S_"$1" -sDEVICE=pdfwrite -c "/image{pop}bind def .bindnow " -f "$1"
+
+# old version
+#gs -dDELAYBIND -o S_"$1" -sDEVICE=pdfwrite -c "/image{pop}bind def .bindnow " -f "$1"
+
+/usr/bin/gs -o S_"$1" -sDEVICE=pdfwrite -dFILTERVECTOR -dFILTERIMAGE "$1"
