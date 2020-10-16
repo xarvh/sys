@@ -48,6 +48,7 @@ alias br=_browser
 alias psi='ps -edaf |grep -i'
 alias ls='ls -1 --human-readable --color=auto'
 alias grep='grep --color=auto'
+alias gri='grep --color=auto --ignore-case'
 alias yd='youtube-dl --prefer-free-formats -o "%(title)s-%(id)s.%(ext)s"'
 alias dos='dosbox -c MOUNT . c'
 alias s2b='ussp-push GT-I9300@ "$1" "$(basename $1)"'
@@ -119,6 +120,7 @@ function yo {
 alias gl='git log HEAD~2.. --pretty=format: --name-only | sort | uniq'
 alias ga='git add'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gs='git status'
 alias gb='git branch'
 alias gco='git checkout'
@@ -149,4 +151,3 @@ function gpFo {
     git push -f origin $1
   fi
 }
-

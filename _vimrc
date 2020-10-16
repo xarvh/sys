@@ -126,8 +126,8 @@ set expandtab
 nnoremap <leader>j :%!python -mjson.tool<CR>
 
 " Format Elm
-"nnoremap <leader>e :%!elm-format --stdin<CR>
-nnoremap <leader>e mo:%!elm-format --stdin<CR>`o
+nnoremap <leader>e mo:%!elm-format --yes --stdin<CR>`o
+nnoremap <leader>h mo:%!elm-format-hack --yes --stdin<CR>`o
 
 " Compile Coffee
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>

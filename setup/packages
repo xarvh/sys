@@ -2,7 +2,6 @@ gnome-screensaver
 vim-gtk3
 sakura
 
-qtile
     fluxbox
 arandr
 cpufrequtils
@@ -22,7 +21,6 @@ audacious
 libimage-exiftool-perl
 
 python-setuptools
-python-pip
 
 sxiv
 curl
@@ -41,7 +39,6 @@ xcowsay
 id3v2
 vorbis-tools
 ffmpeg
-amule
 xsel
 
 udiskie

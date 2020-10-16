@@ -14,7 +14,7 @@ import subprocess
 
 from libqtile.config import Key, Screen, Group, Click
 from libqtile.command import lazy
-from libqtile.manager import Drag
+#from libqtile.manager import Drag
 from libqtile import layout, bar, widget, hook
 
 
@@ -112,7 +112,7 @@ def main(qtile):
   dualscreen = not qtile or len(qtile.conn.pseudoscreens) > 1
 
   # key modifiers
-  normal = ['mod1']
+  normal = ['mod4']
   strong = ['mod4', 'mod1']
 
 
@@ -141,7 +141,7 @@ def main(qtile):
     'bracketright': 'brightness up',
 
     'Escape': 'gnome-screensaver-command -l',
-    'BackSpace': 'qshell -c restart',
+    'BackSpace': 'qshell -c "restart()"',
   }
 
   strong_commands = {
@@ -214,7 +214,6 @@ def main(qtile):
 #        configured_keyboards=['us', 'se', 'gr'],
 #    ),
     widget.Battery(
-        battery_name='BAT1',
         update_delay=1,
         format='{char} {percent:2.0%}',
         charge_char='⇶',
@@ -240,7 +239,7 @@ def main(qtile):
    group_def += ' slash:/'
 
   for key in group_def.split():
-    if len(key) is 1:
+    if len(key) == 1:
       name = key.upper()
     else:
       key, name = key.split(':')
@@ -258,8 +257,8 @@ def main(qtile):
   #
   class CustomStack(layout.Stack):
     def cmd_switchdown(self, offset):
-      offset %= len(self.stacks)
-      if self.currentStackOffset is offset:
+      offset = int(offset) % len(self.stacks)
+      if self.current_stack_offset == offset:
         self.cmd_down()
       else:
         self.group.focus(self.stacks[offset].cw, True)
@@ -274,8 +273,8 @@ def main(qtile):
   # Mouse floats
   #
   mouse.extend([
-    Drag(normal, "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag(normal, "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size())
+#    Drag(normal, "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+#    Drag(normal, "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size())
   ])
 
 
