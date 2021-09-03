@@ -1,120 +1,25 @@
-"""
 
-Guidelines:
-
-  1) ALL WM keyboard commands use the Win mod.
-  2) Alt can be used in conjunction with Win to
-    - Avoid accidentally issuing especially disruptive commands, or
-    - Issue a command related to the non-modified one.
-
-"""
+from typing import List  # noqa: F401
 
 from os import system, uname
-import subprocess
+from libqtile import bar, layout, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.lazy import lazy
+from libqtile.utils import guess_terminal
 
-from libqtile.config import Key, Screen, Group, Click
-from libqtile.command import lazy
-#from libqtile.manager import Drag
-from libqtile import layout, bar, widget, hook
+
+
+# key modifiers
+normal = ['mod4']
+strong = ['mod4', 'mod1']
 
 
 #
-# exposed globals
+# Keys
 #
-screens = []
-layouts = []
-groups = []
-
 keys = []
-mouse = []
 
-hostname = uname()[1]
-
-
-
-#
-# Run initial scripts
-#
-system('_qtile_init &')
-
-
-#
-#
-#
-def commandStdout(cmd):
-    return subprocess.check_output([cmd], shell=True).decode('utf-8').split('\n')
-
-
-
-#
-# sound card
-#
-def guessAlsaSoundCard():
-  try:
-    return int(commandStdout('aplay -l |grep card |grep -vi hdmi')[:-1][0][5])
-  except Exception as e:
-    print(e)
-    return 0
-
-sound_card = guessAlsaSoundCard()
-
-
-
-#
-# Hooks
-#
-@hook.subscribe.screen_change
-def restart_on_screen_change(qtile, ev):
-  system('_qtile_on_screen_change &')
-  #qtile.cmd_restart()
-
-
-
-@hook.subscribe.client_new
-def floating_dialogs(window):
-
-    if window.window.get_wm_class() == ('UE4Editor', 'UE4Editor'):
-        if window.window.get_name() == None:
-            window.floating = True
-
-    if window.window.get_wm_class() == ('Unity', 'Unity'):
-        if window.window.get_name() == None:
-            window.floating = True
-
-
-#
-# Initialization commands.
-# (These run before the qtile instance is available.)
-#
-mainScreenName = commandStdout('xrandr-list')[0]
-
-
-
-#
-# GPU Temperatur monitor
-#
-def getTemperature():
-    cmd = "nvidia-smi -q -d TEMPERATURE |grep 'GPU Current'"
-    return commandStdout(cmd)[0].split(':')[1]
-
-
-
-#
-# QTile initialization.
-# (main() is run when the qtile instance becomes available.
-# http://docs.qtile.org/en/latest/configuration.html#main
-#
-def main(qtile):
-
-  system('_modmap us')
-
-  # TODO: extend for a generic number of screens?
-  dualscreen = not qtile or len(qtile.conn.pseudoscreens) > 1
-
-  # key modifiers
-  normal = ['mod4']
-  strong = ['mod4', 'mod1']
-
+def initKeys():
 
   #
   # commands
@@ -141,7 +46,7 @@ def main(qtile):
     'bracketright': 'brightness up',
 
     'Escape': 'gnome-screensaver-command -l',
-    'BackSpace': 'qshell -c "restart()"',
+    'BackSpace': 'qtile shell -c "restart()"',
   }
 
   strong_commands = {
@@ -174,10 +79,85 @@ def main(qtile):
   keys.extend([Key(strong, k, lazy.spawn(v)) for k, v in strong_commands.items()])
 
 
-  #
-  # Screens and bars
-  #
-  class CustomWindowName(widget.WindowName):
+
+
+
+#
+# Groups
+#
+groups = []
+
+def initGroups():
+
+  group_def = 'n m comma:c period:p u i o p'
+#  if dualscreen:
+#   group_def += ' slash:/'
+
+  for key in group_def.split():
+    if len(key) == 1:
+      name = key.upper()
+    else:
+      key, name = key.split(':')
+
+    groups.append(Group(name))
+    keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
+    keys.append(Key(strong, key, lazy.window.togroup(name)))
+
+#  if dualscreen:
+#   lazy.group['/'].toScreen(1)
+
+
+
+#
+# Layouts
+#
+class CustomStack(layout.Stack):
+    def cmd_switchdown(self, offset):
+      offset = int(offset) % len(self.stacks)
+      if self.current_stack_offset == offset:
+        self.cmd_down()
+      else:
+        self.group.focus(self.stacks[offset].cw, True)
+
+layouts = [
+        CustomStack(num_stacks=1, border_width=0),
+        CustomStack(num_stacks=2, border_width=1),
+      ]
+
+
+#layouts = [
+#    layout.Columns(border_focus_stack='#d75f5f'),
+#    layout.Max(),
+    # Try more layouts by unleashing below layouts.
+    # layout.Stack(num_stacks=2),
+    # layout.Bsp(),
+    # layout.Matrix(),
+    # layout.MonadTall(),
+    # layout.MonadWide(),
+    # layout.RatioTile(),
+    # layout.Tile(),
+    # layout.TreeTab(),
+    # layout.VerticalTile(),
+    # layout.Zoomy(),
+#]
+
+widget_defaults = dict(
+    font='sans',
+    fontsize=12,
+    padding=3,
+)
+extension_defaults = widget_defaults.copy()
+
+
+
+
+
+#
+# Screens
+#
+screens = []
+
+class CustomWindowName(widget.WindowName):
     def button_press(self, x, y, button):
       screen = self.bar.screen
       {
@@ -188,6 +168,8 @@ def main(qtile):
         5: lambda: screen.cmd_prev_group(), # wheel down
       }.get(button, lambda: '')()
 
+
+def initScreens():
 
   main_bar = bar.Bar([
     widget.GroupBox(
@@ -204,7 +186,7 @@ def main(qtile):
 #        update_interval=1,
 #        func=getTemperature,
 #    ),
-    widget.Volume(cardid=sound_card, device=None),
+    widget.Volume(), #cardid=sound_card, device=None),
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),
@@ -231,56 +213,59 @@ def main(qtile):
   screens.extend([ Screen(top = main_bar, bottom = lower_bar), Screen() ])
 
 
-  #
-  # Groups
-  #
-  group_def = 'n m comma:c period:p u i o p'
-  if dualscreen:
-   group_def += ' slash:/'
-
-  for key in group_def.split():
-    if len(key) == 1:
-      name = key.upper()
-    else:
-      key, name = key.split(':')
-
-    groups.append(Group(name))
-    keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
-    keys.append(Key(strong, key, lazy.window.togroup(name)))
-
-  if dualscreen:
-   lazy.group['/'].toScreen(1)
 
 
-  #
-  # Layouts
-  #
-  class CustomStack(layout.Stack):
-    def cmd_switchdown(self, offset):
-      offset = int(offset) % len(self.stacks)
-      if self.current_stack_offset == offset:
-        self.cmd_down()
-      else:
-        self.group.focus(self.stacks[offset].cw, True)
-
-  layouts.extend([
-    CustomStack(num_stacks=1, border_width=0),
-    CustomStack(num_stacks=2, border_width=1),
-  ])
-
-
-  #
-  # Mouse floats
-  #
-  mouse.extend([
-#    Drag(normal, "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-#    Drag(normal, "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size())
-  ])
 
 
 #
-# Execute main(), useful to test the file before restarting.
+# Mouse
 #
-if __name__ == '__main__':
-  main(None)
 
+# Drag floating layouts.
+mouse = [
+    Drag(normal, "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag(normal, "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click(normal, "Button2", lazy.window.bring_to_front())
+]
+
+
+
+
+dgroups_key_binder = None
+dgroups_app_rules = []  # type: List
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
+floating_layout = layout.Floating(float_rules=[
+    # Run the utility of `xprop` to see the wm class and name of an X client.
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirmreset'),  # gitk
+    Match(wm_class='makebranch'),  # gitk
+    Match(wm_class='maketag'),  # gitk
+    Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(title='branchdialog'),  # gitk
+    Match(title='pinentry'),  # GPG key password entry
+])
+auto_fullscreen = True
+focus_on_window_activation = "smart"
+reconfigure_screens = True
+
+# If things like steam games want to auto-minimize themselves when losing
+# focus, should we respect this or not?
+auto_minimize = True
+
+# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
+# string besides java UI toolkits; you can see several discussions on the
+# mailing lists, GitHub issues, and other WM documentation that suggest setting
+# this string if your java app doesn't work correctly. We may as well just lie
+# and say that we're a working one by default.
+#
+# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
+# java that happens to be on java's whitelist.
+wmname = "LG3D"
+
+
+initKeys()
+initScreens()
+initGroups()
+system('_qtile_init &')

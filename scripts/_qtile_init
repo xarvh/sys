@@ -2,14 +2,16 @@
 fbsetbg -a ~/.usr/gui/bg.jpg
 xsetroot -cursor_name left_ptr
 
+_modmap us
+
 #killall syndaemon
 #syndaemon -dt
 
-killall udiskie
+#killall udiskie
 udiskie -f xcowsay &
 
 killall nm-applet
 nm-applet &
 
-pkill -f indicator-cpufreq
-indicator-cpufreq &
+#pkill -f indicator-cpufreq
+#indicator-cpufreq &

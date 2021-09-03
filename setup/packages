@@ -16,7 +16,7 @@ network-manager-gnome
 
 gimp
 inkscape
-    python-lxml
+    python3-lxml
 audacious
 libimage-exiftool-perl
 
