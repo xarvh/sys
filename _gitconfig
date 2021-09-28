@@ -16,3 +16,5 @@
 [mergetool "mymeld"]
     cmd = $HOME/.usr/scripts/gitmerge $BASE $LOCAL $REMOTE $MERGED
 
+[pull]
+	ff = only

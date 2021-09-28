@@ -96,7 +96,7 @@ alias ff='find * |grep -v node_modules/ |grep -v elm-stuff |grep --ignore-case'
 alias v='gvim'
 alias vv='xargs gvim'
 alias s='sxiv * &'
-alias q='qiv -lmf * &'
+alias q='qiv -mI * &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
 function ev { evince "$@" & }
 function www { wget $(arg_or_clipboard $1) ;}
@@ -130,6 +130,7 @@ alias gpoh='git push origin HEAD'
 alias gpFo='git push origin'
 alias gpr='git pull --rebase'
 alias gp='git push'
+alias gsu='git submodule update'
 
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
