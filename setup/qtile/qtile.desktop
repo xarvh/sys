@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Qtile
+Comment=Molto Custom
+Exec=/usr/local/bin/qtile.runner
+Terminal=false
+TryExec=/usr/local/bin/qtile.runner
+Type=Application
+
+[X-Window Manager]
+SessionManaged=true

@@ -1,3 +1,4 @@
+#!/bin/sh
 
 #packages
 apt-get --purge remove command-not-found thunderbird*
@@ -12,5 +13,14 @@ apt-get upgrade
 #cp pmount.allow /etc/
 cp sudoers.d/screen_brightness /etc/sudoers.d/
 
-cd automelee
-sudo -H ./root_setup.sh
+cp qtile/qtile.runner /usr/local/bin/
+cp qtile/qtile.desktop /usr/share/xsessions/
+
+cd
+pip install xcffib
+pip install --no-cache-dir cairocffi
+pip install qtile
+
+
+#cd automelee
+#sudo -H ./root_setup.sh

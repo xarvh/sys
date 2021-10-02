@@ -1,13 +1,14 @@
 gnome-screensaver
 vim-gtk3
 sakura
+fluxbox
 
-    fluxbox
 arandr
 cpufrequtils
 indicator-cpufreq
 qiv
 sxiv
+pulsemixer
 
 xbacklight
 git
@@ -21,6 +22,7 @@ audacious
 libimage-exiftool-perl
 
 python-setuptools
+python3-pip
 
 sxiv
 curl
