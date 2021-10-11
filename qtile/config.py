@@ -65,7 +65,7 @@ def initKeys():
     Key(strong, 'k',              lazy.layout.client_to_stack(1)),
     Key(normal, 'h',              lazy.screen.prev_group()),
     Key(normal, 'l',              lazy.screen.next_group()),
-    Key(normal, 'space',          lazy.screen.togglegroup()),
+    Key(normal, 'space',          lazy.screen.toggle_group()),
     Key(normal, 'semicolon',      lazy.spawncmd()),
     Key(normal, 't',              lazy.layout.toggle_split()),
     Key(normal, 'r',              lazy.layout.rotate()),
@@ -100,7 +100,7 @@ def initGroups():
       key, name = key.split(':')
 
     groups.append(Group(name))
-    keys.append(Key(normal, key, lazy.screen.togglegroup(name)))
+    keys.append(Key(normal, key, lazy.screen.toggle_group(name)))
     keys.append(Key(strong, key, lazy.window.togroup(name)))
 
 #  if dualscreen:

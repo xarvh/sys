@@ -5,6 +5,9 @@
 
 --ignore-dir=elm-stuff
 
+--type-set=sp=.sp
+--sp
+
 --type-set=elm=.elm
 --elm
 
