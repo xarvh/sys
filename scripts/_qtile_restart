@@ -13,3 +13,4 @@ done
 
 qtile shell -c "restart()"
 
+_modmap us
