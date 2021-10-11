@@ -29,7 +29,6 @@ def initKeys():
     'b': 'google-chrome',
     'y': term + '-x _calendar',
     'v': 'gvim',
-    #'c': term + '-x coffee',
     'e': term + '-x _elm-repl',
     #'F3': term + '-x alsamixer -c %d' % sound_card,
     'F3': term + '-x pulsemixer',
@@ -46,7 +45,7 @@ def initKeys():
     'bracketright': 'brightness up',
 
     'Escape': 'gnome-screensaver-command -l',
-    'BackSpace': 'qtile shell -c "restart()"',
+    'BackSpace': '_qtile_restart',
   }
 
   strong_commands = {

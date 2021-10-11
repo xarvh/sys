@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TARGET_SCREEN=$(xrandr |grep [^s]connected |cut -d " " -f1 |tail -n1)
+DISABLE_SCREENS=$(xrandr |grep [^s]connected |cut -d " " -f1 |head -n-1)
+
+xrandr --output $TARGET_SCREEN --auto --primary
+
+for s in $DISABLE_SCREENS; do
+  xrandr --output $s --off
+done
+
+#xcowsay $TARGET_SCREEN
+
+qtile shell -c "restart()"
+
