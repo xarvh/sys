@@ -44,7 +44,7 @@ def initKeys():
     'bracketleft': 'brightness down',
     'bracketright': 'brightness up',
 
-    'Escape': 'gnome-screensaver-command -l',
+    'Escape': 'xsecurelock',
     'BackSpace': '_qtile_restart',
   }
 
