@@ -1,72 +1,89 @@
+
 "===============================================================
-" GENERAL
+" PLUGINS
 "
 
-"call plug#begin('~/.vim/plugged')
-"
-"Plug 'elmcast/elm-vim'
-"Plug 'tpope/vim-fugitive'
+call plug#begin('~/.vim/plugged')
+
+Plug 'calviken/vim-gdscript3'
+Plug 'justinmk/vim-dirvish'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'elmcast/elm-vim'
+Plug 'CaffeineViking/vim-glsl'
+
+
 "Plug 'tpope/vim-vinegar'
-"Plug 'mileszs/ack.vim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'scrooloose/syntastic'
 
-"call plug#end()
-
-
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:elm_syntastic_show_warnings = 1
+call plug#end()
 
 "let g:deoplete#omni_patterns.elm = '\.'
 let g:elm_detailed_complete = 1
+let g:elm_format_autosave = 0
 
-nnoremap - :E<CR>
+
+
+
 
 "===============================================================
 " GENERAL
 "
-
 let mapleader = ' '
-set mouse=a
-set directory=$HOME/.vim/tmp   " put swapfiles away
+"set nocompatible               " be iMproved
+"set directory=$HOME/.vim/tmp   " put swapfiles away
 
-set clipboard+=unnamedplus
-"set shortmess=atI
+map! <S-Insert> <C-R>*
 
+set clipboard=unnamedplus      " copy to clipboard
+set mouse=a                    " enable mouse scrolling
+set shortmess=atI
+
+set wildmode=longest,list
 set scrolloff=3
-"set wildmode=longest,list
-"set textwidth=0
+set textwidth=0
 
+" https://github.com/webpack/webpack/issues/781#issuecomment-95523711
+set backupcopy=yes
 
 nnoremap <CR> :
-"nnoremap <F9> :source $MYVIMRC<CR>
+nnoremap <F9> :source $MYVIMRC<CR>
 filetype plugin on
 filetype indent on
+
+map <F1> <Esc>
+imap <F1> <Esc>
+
+"===============================================================
+" FILE & BUFFER BROWSING
+"
+"
+
+
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_autoexpand_on_split = 0
+nnoremap <Tab> :BuffergatorToggle<CR>
+
+let dirvish_mode = ':sort ,^.*/,'
+
+"nnoremap - :Explore<CR>
+"let g:netrw_banner = 0
+"https://github.com/tpope/vim-vinegar/issues/13#issuecomment-47133890
 
 
 "===============================================================
 " APPEARANCE
 "
-set termguicolors
 colorscheme darkblue
-
-syntax on
-filetype on
-autocmd BufNewFile,BufRead *.gd set filetype=python
-
-
-
-"set guioptions=acegi
-"set gfn=Monospace\ Bold\ 11
-"set cursorline
+set guioptions=acegi
+set gfn=Monospace\ Bold\ 11
+set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue
-"
+
 nnoremap <leader>w :set wrap!<CR>
 
-"highlight TrailingWhitespace ctermbg=red guibg=red
-"match TrailingWhitespace /\s\+$/
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
 
 
 "===============================================================
@@ -94,17 +111,17 @@ omap z %
 vmap z %
 
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
-"nnoremap \ "0p
-"nnoremap \| "0P
+nnoremap \ "0p
+nnoremap \| "0P
 
 "==============================================================
 " INDENTATION
 "
-set expandtab "insert spaces when Tab is pressed
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
-"set tabstop=2
-"set softtabstop=2
-"set smarttab
+set smarttab
+set expandtab
 
 
 "==============================================================
@@ -114,9 +131,16 @@ set shiftwidth=2
 nnoremap <leader>j :%!python -mjson.tool<CR>
 
 " Format Elm
-"nnoremap <leader>e :%!elm-format --stdin<CR>
-nnoremap <leader>e mo:%!elm-format --stdin<CR>`o
+nnoremap <leader>e mo:%!elm-format --yes --stdin<CR>`o
+nnoremap <leader>h mo:%!elm-format-hack --yes --stdin<CR>`o
 
+" Compile Coffee
+vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
+map <leader>c :CoffeeCompile<CR>
+command -nargs=1 C CoffeeCompile | :<args>
+
+" unescape \n in logs
+nnoremap <leader>n :%s/\\n/\r/g<CR>
 
 "==============================================================
 " NAVIGATION
@@ -164,9 +188,9 @@ map <silent> <BS> :call MultiComment(0)<CR>+
 "
 nnoremap <leader>r :%s/
 vnoremap <leader>r "hy:%s/<C-r>h/
+set incsearch
 set ignorecase
 set smartcase
-set gdefault "Use 'g' flag by default with :s/foo/bar/.
 
 map <leader>f :AckFile!<space>
 map <leader>a :Ack!<space>
@@ -181,15 +205,17 @@ map <leader>8 :Ack! <cword><CR>
 " BUFFERS and WINDOWS
 "
 set hidden
-nnoremap ' <C-w>w
-nnoremap <C-L> :bnext<CR>
-nnoremap <C-H> :bprev<CR>
 
+nnoremap ' <C-w>w
+
+"save position on old buffer, change buffer, move to saved position on new buffeer
+nnoremap <silent> <C-L> mt:bnext<CR>`t
+nnoremap <silent> <C-H> mt:bprev<CR>`t
 
 "===============================================================
 " GIT
 "
 map <leader>l :Glog<CR>
-map <leader>b :Gblame<CR>
-vmap <leader>b <esc>:'<,'>:Gblame<CR>
+map <leader>b :Git blame<CR>
+vmap <leader>b <esc>:'<,'>:Git blame<CR>
 

@@ -1,16 +1,25 @@
 #!/bin/bash
 
 TARGET_SCREEN=$(xrandr |grep [^s]connected |cut -d " " -f1 |tail -n1)
-DISABLE_SCREENS=$(xrandr |grep [^s]connected |cut -d " " -f1 |head -n-1)
 
-xrandr --output $TARGET_SCREEN --auto --primary
+# xrandr --auto does not resize the virtual screen size, so I need to do this
+TARGET_RESOLUTION=$(xrandr |grep [+] | sed -e 's/[ ]*\([a-zA-Z0-9]*\).*/\1/' |tail -n1)
+
+DISABLE_SCREENS=$(xrandr |grep connected |cut -d " " -f1 |grep -v $TARGET_SCREEN)
+
+#echo target screen $TARGET_SCREEN
+#echo target res $TARGET_RESOLUTION
+#echo disable $DISABLE_SCREENS
+
+
+ARGS="--output $TARGET_SCREEN --primary --auto --pos 0x0 --rotate normal"
 
 for s in $DISABLE_SCREENS; do
-  xrandr --output $s --off
+  ARGS="$ARGS --output $s --off"
 done
 
-#xcowsay $TARGET_SCREEN
-
+#echo $ARGS
+#echo $ARGS >> ARGS
+xrandr $ARGS
 qtile shell -c "restart()"
-
 _modmap us
