@@ -33,9 +33,9 @@ let mapleader = ' '
 "set nocompatible               " be iMproved
 "set directory=$HOME/.vim/tmp   " put swapfiles away
 
-map! <S-Insert> <C-R>*
 
-set clipboard=unnamedplus      " copy to clipboard
+
+
 set mouse=a                    " enable mouse scrolling
 set shortmess=atI
 
@@ -66,10 +66,6 @@ nnoremap <Tab> :BuffergatorToggle<CR>
 
 let dirvish_mode = ':sort ,^.*/,'
 
-"nnoremap - :Explore<CR>
-"let g:netrw_banner = 0
-"https://github.com/tpope/vim-vinegar/issues/13#issuecomment-47133890
-
 
 "===============================================================
 " APPEARANCE
@@ -85,6 +81,7 @@ nnoremap <leader>w :set wrap!<CR>
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
 
+let g:neovide_cursor_vfx_mode = "railgun"
 
 "===============================================================
 " EDITING
@@ -110,16 +107,29 @@ nnoremap z %
 omap z %
 vmap z %
 
+
+"=================================================================
+" CLIPBOARDS
+
+" Paste the content of the (X11?) clipboard
+"map! <S-Insert> <C-R>*
+nnoremap <S-Insert> "*p
+
+set clipboard=unnamedplus      " copy to clipboard
+
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
 nnoremap \ "0p
 nnoremap \| "0P
 
+
+
+
 "==============================================================
 " INDENTATION
 "
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set smarttab
 set expandtab
 
@@ -209,8 +219,10 @@ set hidden
 nnoremap ' <C-w>w
 
 "save position on old buffer, change buffer, move to saved position on new buffeer
-nnoremap <silent> <C-L> mt:bnext<CR>`t
-nnoremap <silent> <C-H> mt:bprev<CR>`t
+"nnoremap <silent> <C-L> mt:bnext<CR>`t
+"nnoremap <silent> <C-H> mt:bprev<CR>`t
+nnoremap <silent> <C-L> :bnext<CR>
+nnoremap <silent> <C-H> :bprev<CR>
 
 "===============================================================
 " GIT
