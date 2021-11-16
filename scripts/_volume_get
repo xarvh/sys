@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This is used by qtile's volume widget
+
+echo [`pulsemixer --get-volume | cut -d " " -f1`%]

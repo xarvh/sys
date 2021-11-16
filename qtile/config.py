@@ -185,7 +185,12 @@ def initScreens():
 #        update_interval=1,
 #        func=getTemperature,
 #    ),
-    widget.Volume(), #cardid=sound_card, device=None),
+    widget.Volume(
+        padding=6,
+        volume_up_command='_volume_up',
+        volume_down_command='_volume_down',
+        get_volume_command='_volume_get',
+        ),
     widget.Sep(),
     CustomWindowName(),
     widget.Sep(),

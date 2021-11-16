@@ -1,2 +1,2 @@
 #!/bin/sh
-amixer -q set Master 2dB-
+pulsemixer --change-volume -3

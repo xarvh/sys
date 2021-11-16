@@ -13,9 +13,6 @@ Plug 'mileszs/ack.vim'
 Plug 'elmcast/elm-vim'
 Plug 'CaffeineViking/vim-glsl'
 
-
-"Plug 'tpope/vim-vinegar'
-
 call plug#end()
 
 "let g:deoplete#omni_patterns.elm = '\.'
