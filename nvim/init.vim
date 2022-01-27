@@ -110,9 +110,9 @@ vmap z %
 
 " Paste the content of the (X11?) clipboard
 "map! <S-Insert> <C-R>*
-nnoremap <S-Insert> "*p
+nnoremap <S-Insert> "+p
 
-set clipboard=unnamedplus      " copy to clipboard
+set clipboard+=unnamedplus      " copy to clipboard
 
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
 nnoremap \ "0p

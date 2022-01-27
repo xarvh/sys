@@ -1,2 +1,2 @@
 #!/bin/sh
-pulsemixer --change-volume -3
+pulsemixer --change-volume -2

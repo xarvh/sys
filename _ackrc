@@ -20,14 +20,11 @@
 --type-set=javascript=.js
 --javascript
 
---type-set=coffee=.coffee
---coffee
+--type-set=purs=.purs
+--purs
 
 --type-set=cpp=.cpp
 --cpp
-
---type-set=stylus=.styl
---stylus
 
 --type-set=haskell=.hs
 --haskell

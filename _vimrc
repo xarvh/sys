@@ -211,6 +211,6 @@ nnoremap <silent> <C-H> mt:bprev<CR>`t
 " GIT
 "
 map <leader>l :Glog<CR>
-map <leader>b :Gblame<CR>
-vmap <leader>b <esc>:'<,'>:Gblame<CR>
+map <leader>b :Git blame<CR>
+vmap <leader>b <esc>:'<,'>:Git blame<CR>
 
