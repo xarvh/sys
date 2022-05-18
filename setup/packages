@@ -25,6 +25,7 @@ libimage-exiftool-perl
 python-setuptools
 python3-pip
 
+ncal
 sxiv
 curl
 feh

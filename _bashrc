@@ -93,9 +93,9 @@ alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) _browser &'
 
 alias ff='find * |grep -v node_modules/ |grep -v elm-stuff |grep --ignore-case'
-#alias v='neovide'
-function v { neovide $@ >/dev/null 2>/dev/null & }
-alias vv='xargs neovide &'
+alias v='gvim'
+#function v { neovide $@ >/dev/null 2>/dev/null & }
+alias vv='xargs gvim &'
 alias s='sxiv * &'
 alias q='qiv -mI * &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
