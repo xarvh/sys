@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'elmcast/elm-vim'
 Plug 'CaffeineViking/vim-glsl'
+Plug 'prettier/vim-prettier'
 
 
 "Plug 'tpope/vim-vinegar'
@@ -202,6 +203,7 @@ map <leader>8 :Ack! <cword><CR>
 set hidden
 
 nnoremap ' <C-w>w
+nnoremap <C-space> <C-^>
 
 "save position on old buffer, change buffer, move to saved position on new buffeer
 nnoremap <silent> <C-L> mt:bnext<CR>`t
