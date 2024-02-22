@@ -26,9 +26,9 @@ def initKeys():
   #
   term = '_terminal '
   normal_commands = {
-    'b': 'google-chrome',
+    'b': '_browser',
     'y': term + '-x _calendar',
-    'v': 'gvim',
+    'v': '_editor',
     'e': term + '-x _elm-repl',
     #'F3': term + '-x alsamixer -c %d' % sound_card,
     'F3': term + '-x pulsemixer',

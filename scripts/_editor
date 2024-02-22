@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+import sys
+import subprocess
+
+subprocess.run(['sakura', '-x', 'nvim ' + ' '.join("'" + f + "'" for f in sys.argv[1:])])

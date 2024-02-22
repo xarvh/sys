@@ -1,14 +1,9 @@
-gnome-screensaver
-vim-gtk3
 sakura
 fluxbox
 xsecurelock
 
 arandr
-cpufrequtils
-indicator-cpufreq
 qiv
-sxiv
 pulsemixer
 
 xbacklight
@@ -22,7 +17,6 @@ inkscape
 audacious
 libimage-exiftool-perl
 
-python-setuptools
 python3-pip
 
 ncal
@@ -32,8 +26,6 @@ feh
 mpg321
 mc
 bzip2
-rar
-unrar
 unzip
 graphicsmagick
 lame
@@ -48,7 +40,6 @@ xsel
 udiskie
 acpi
 pmount
-steam
 
 deluge
 peek

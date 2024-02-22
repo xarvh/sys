@@ -1,5 +1,6 @@
 export HISTCONTROL=ignoreboth
 export PYTHONSTARTUP=$HOME/.usr/sys/pythonstartup.py
+export PATH=$HOME/.local/bin:$PATH
 
 # Colors: http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 Red="\[\033[00;31m\]"
@@ -49,7 +50,7 @@ alias psi='ps -edaf |grep -i'
 alias ls='ls -1 --human-readable --color=auto'
 alias grep='grep --color=auto'
 alias gri='grep --color=auto --ignore-case'
-alias yd='youtube-dl --prefer-free-formats -o "%(title)s-%(id)s.%(ext)s"'
+alias yd='yt-dlp --prefer-free-formats -o "%(title)s-%(id)s.%(ext)s"'
 #alias dos='dosbox -c MOUNT . c'
 #alias s2b='ussp-push GT-I9300@ "$1" "$(basename $1)"'
 #alias xcsf='echo "Job finished at\n$(pwd)" |xcowsay -t 99999'
@@ -93,9 +94,8 @@ alias executables='IFS=':'; for i in $PATH; do ls $i; done'
 alias homebrowser='env HOME=$(pwd) _browser &'
 
 alias ff='find * |grep -v node_modules/ |grep -v elm-stuff |grep --ignore-case'
-alias v='gvim'
-#function v { neovide $@ >/dev/null 2>/dev/null & }
-alias vv='xargs gvim &'
+function v { _editor "$@" & }
+alias vv='xargs _editor &'
 alias s='sxiv * &'
 alias q='qiv -mI * &'
 alias proddatabase='nautilus --no-desktop smb://storage.adslot.com/ProdDataBases &'
@@ -103,11 +103,11 @@ function ev { evince "$@" & }
 function www { wget $(arg_or_clipboard $1) ;}
 function show { cat $(which $1) ;}
 function yo {
-  echo to upgrade: sudo pip install --upgrade youtube_dl
+  echo to upgrade: pipx install --upgrade yt-dlp
   NAME="$(arg_or_clipboard $1)"
   X=${NAME#*v=}
   CODE=${X%%&*}
-  youtube-dl -x --audio-format=wav "$NAME"
+  yt-dlp -x --audio-format=wav "$NAME"
   echo $(ls *wav |grep $CODE)
   lame -v "$(ls *wav |grep $CODE)"
   mv "$(ls *mp3 |grep $CODE)" $HOME/Musica/new/good/
@@ -153,3 +153,4 @@ function gpFo {
     git push -f origin $1
   fi
 }
+
