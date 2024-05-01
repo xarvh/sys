@@ -1,0 +1,174 @@
+set $mod Mod4
+set $strong Mod4+Mod1
+
+workspace_layout stacking
+hide_edge_borders smart
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 12
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 12
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+bindsym $mod+Escape exec --no-startup-id loginctl lock-session
+
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#bindsym $mod+equal exec --no-startup-id _volume_up
+#bindsym $mod+minus exec --no-startup-id _volume_down
+bindsym $mod+bracketleft exec --no-startup-id brightness down
+bindsym $mod+bracketright exec --no-startup-id brightness up
+
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
+bindsym $mod+Return exec _terminal
+bindsym $mod+y exec _terminal -x _calendar
+bindsym $mod+v exec _editor
+bindsym $mod+e exec _terminal -x elm repl
+bindsym --release $mod+F10 exec take_screenshot
+
+
+# kill focused window
+bindsym $mod+x kill
+
+# start dmenu (a program launcher)
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+semicolon exec --no-startup-id dmenu_run
+
+exec --no-startup-id _modmap us
+bindsym $mod+0 exec --no-startup-id _modmap us
+bindsym $mod+s exec --no-startup-id _modmap se
+
+
+# change focus
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
+
+# move focused window
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $strong+h split h
+
+# split in vertical orientation
+bindsym $strong+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $strong+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $strong+s layout stacking
+bindsym $strong+w layout tabbed
+bindsym $strong+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+#bindsym $mod+space focus mode_toggle
+
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+bindsym $mod+space workspace back_and_forth
+bindsym $mod+l workspace next
+bindsym $mod+h workspace prev
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $wsB "1:B"
+set $wsN "2:N"
+set $wsM "3:M"
+set $wsC "4:,"
+
+set $wsU "5:U"
+set $wsI "6:I"
+set $wsO "7:O"
+set $wsP "8:P"
+
+
+# switch to workspace
+bindsym $mod+B workspace $wsB
+bindsym $mod+N workspace $wsN
+bindsym $mod+M workspace $wsM
+bindsym $mod+comma workspace $wsC
+
+bindsym $mod+U workspace $wsU
+bindsym $mod+I workspace $wsI
+bindsym $mod+O workspace $wsO
+bindsym $mod+P workspace $wsP
+
+# move focused container to workspace
+bindsym $strong+B move container to workspace $wsB
+bindsym $strong+N move container to workspace $wsN
+bindsym $strong+M move container to workspace $wsM
+bindsym $strong+comma move container to workspace $wsC
+
+bindsym $strong+U move container to workspace $wsU
+bindsym $strong+I move container to workspace $wsI
+bindsym $strong+O move container to workspace $wsO
+bindsym $strong+P move container to workspace $wsP
+
+
+
+# reload the configuration file
+bindsym $mod+BackSpace reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $strong+BackSpace restart
+# exit i3 (logs you out of your X session)
+bindsym $strong+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+bar {
+        # TODO https://github.com/polybar/polybar
+        status_command i3status
+        strip_workspace_numbers yes
+        position top
+}
