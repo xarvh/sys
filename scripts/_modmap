@@ -5,4 +5,5 @@ python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display
 
 setxkbmap -layout $1
 
-xmodmap .usr/sys/xmodmap
+xmodmap $HOME/.usr/sys/xmodmap
+

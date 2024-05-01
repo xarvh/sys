@@ -1,4 +1,5 @@
 #!/bin/sh
+cd
 fbsetbg -a ~/.usr/gui/bg.jpg
 xsetroot -cursor_name left_ptr
 

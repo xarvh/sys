@@ -1,4 +1,5 @@
 #!/bin/sh
+cd
 NAME="screenshot$(yymmdd_HHMMSS).png"
 import $NAME
 xclip -selection clipboard -t image/png -i $NAME
