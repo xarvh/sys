@@ -19,6 +19,7 @@ general {
 #order += "memory"
 order += "tztime local"
 order += "battery all"
+order += "volume master"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
@@ -35,6 +36,7 @@ battery all {
         integer_battery_capacity = true
         low_threshold = 10
         threshold_type = percentage
+        last_full_capacity = true
 
         status_chr = "⚡"
         status_bat = "🔋"
@@ -50,6 +52,12 @@ memory {
         format = "%available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
+}
+
+volume master {
+        format = "♪%volume  "
+        format_muted = "♪(%volume)  "
+        device = "default"
 }
 
 tztime local {

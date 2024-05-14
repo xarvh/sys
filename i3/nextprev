@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import subprocess
+import json
+import sys
+
+all_names = [ "1:B", "2:N", "3:M", "4:c", "5:U", "6:I", "7:O", "8:P" ]
+n = len(all_names);
+
+current_wss = json.loads(subprocess.run(["i3-msg", "-t", "get_workspaces"], capture_output=True).stdout)
+
+current_ws_name = next(ws for ws in current_wss if ws.get('visible')).get('name')
+
+next_table = {}
+for index, name in enumerate(all_names):
+    next_table[name] = all_names[(index + 1) % n];
+
+prev_table = {}
+for index, name in enumerate(all_names):
+    prev_table[name] = all_names[(index + n - 1) % n];
+
+table = next_table if sys.argv[1] == 'next' else prev_table
+
+print(table, current_ws_name)
+subprocess.run(["i3-msg", "workspace", table[current_ws_name]], capture_output=True)

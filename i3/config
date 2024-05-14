@@ -17,15 +17,16 @@ font pango:monospace 12
 exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock
 bindsym $mod+Escape exec --no-startup-id loginctl lock-session
 
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && $refresh_i3status
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 #bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -46,7 +47,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec _terminal
 bindsym $mod+y exec _terminal -x _calendar
 bindsym $mod+v exec _editor
-bindsym $mod+e exec _terminal -x elm repl
+#bindsym $mod+e exec _terminal -x elm repl
 bindsym --release $mod+F10 exec take_screenshot
 
 
@@ -62,7 +63,7 @@ bindsym $mod+x kill
 bindsym $mod+semicolon exec --no-startup-id dmenu_run
 
 exec --no-startup-id _modmap us
-bindsym $mod+0 exec --no-startup-id _modmap us
+bindsym $mod+e exec --no-startup-id _modmap us
 bindsym $mod+s exec --no-startup-id _modmap se
 
 
@@ -118,15 +119,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 bindsym $mod+space workspace back_and_forth
-bindsym $mod+l workspace next
-bindsym $mod+h workspace prev
+bindsym $mod+l exec --no-startup-id .config/i3/nextprev next
+bindsym $mod+h exec --no-startup-id .config/i3/nextprev prev
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $wsB "1:B"
 set $wsN "2:N"
 set $wsM "3:M"
-set $wsC "4:,"
+set $wsC "4:c"
 
 set $wsU "5:U"
 set $wsI "6:I"
@@ -170,5 +171,7 @@ bar {
         # TODO https://github.com/polybar/polybar
         status_command i3status
         strip_workspace_numbers yes
+        #workspace_command /home/fra/.usr/bin/i3workspaces
         position top
+        separator_symbol "  "
 }
