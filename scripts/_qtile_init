@@ -14,5 +14,7 @@ udiskie -f xcowsay &
 killall nm-applet
 nm-applet &
 
+safeeyes &
+
 #pkill -f indicator-cpufreq
 #indicator-cpufreq &

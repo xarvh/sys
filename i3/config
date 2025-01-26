@@ -21,8 +21,6 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock
 bindsym $mod+Escape exec --no-startup-id loginctl lock-session
 
-exec --no-startup-id nm-applet
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
@@ -98,7 +96,7 @@ bindsym $strong+h split h
 bindsym $strong+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $strong+f fullscreen toggle
+bindsym $mod+F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $strong+s layout stacking
@@ -164,7 +162,8 @@ bindsym $mod+BackSpace reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $strong+BackSpace restart
 # exit i3 (logs you out of your X session)
-bindsym $strong+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $strong+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $strong+q exec i3-msg exit
 
 
 bar {
@@ -175,3 +174,7 @@ bar {
         position top
         separator_symbol "  "
 }
+
+exec --no-startup-id nm-applet
+exec --no-startup-id fbsetbg -a ~/.usr/gui/bg.jpg
+exec --no-startup-id udiskie &

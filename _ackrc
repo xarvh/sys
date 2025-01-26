@@ -1,6 +1,8 @@
 
 --ignore-dir=node_modules
 
+--ignore-dir=dist
+
 --ignore-dir=build
 
 --ignore-dir=elm-stuff
@@ -16,6 +18,9 @@
 
 --type-set=python=.py
 --python
+
+--type-set=typescript=.ts
+--typescript
 
 --type-set=javascript=.js
 --javascript

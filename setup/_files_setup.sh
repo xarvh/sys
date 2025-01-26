@@ -13,6 +13,7 @@ mkdir -p .vim/tmp
 cd
 cd .config
 ln -s ../.usr/sys/qtile .
+ln -s ../.usr/sys/mc .
 
 cd
 for i in $DIR/_*; do
