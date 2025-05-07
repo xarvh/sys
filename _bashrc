@@ -104,7 +104,7 @@ function www { wget $(arg_or_clipboard $1) ;}
 function show { cat $(which $1) ;}
 function yo {
   echo to upgrade: pipx install --upgrade yt-dlp
-  NAME="$(arg_or_clipboard $1)"
+  NAME="$1" #(arg_or_clipboard $1)"
   X=${NAME#*v=}
   CODE=${X%%&*}
   yt-dlp -x --audio-format=wav "$NAME"

@@ -1,0 +1,2 @@
+#!/bin/sh
+flatpak run com.prusa3d.PrusaSlicer

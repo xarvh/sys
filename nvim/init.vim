@@ -3,15 +3,17 @@
 " PLUGINS
 "
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
-Plug 'calviken/vim-gdscript3'
 Plug 'justinmk/vim-dirvish'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
+Plug 'xarvh/ack.vim'
 Plug 'elmcast/elm-vim'
 Plug 'CaffeineViking/vim-glsl'
+Plug 'prettier/vim-prettier'
+"Plug 'tpope/vim-vinegar'
+Plug 'kbenzie/vim-spirv'
 
 call plug#end()
 
@@ -20,19 +22,15 @@ let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 0
 
 
-
-
-
 "===============================================================
 " GENERAL
 "
+set termguicolors
 let mapleader = ' '
-"set nocompatible               " be iMproved
-"set directory=$HOME/.vim/tmp   " put swapfiles away
+set nocompatible               " be iMproved
+set directory=$HOME/.vim/tmp   " put swapfiles away
 
-
-
-
+set clipboard+=unnamedplus      " copy to clipboard
 set mouse=a                    " enable mouse scrolling
 set shortmess=atI
 
@@ -63,6 +61,10 @@ nnoremap <Tab> :BuffergatorToggle<CR>
 
 let dirvish_mode = ':sort ,^.*/,'
 
+"nnoremap - :Explore<CR>
+"let g:netrw_banner = 0
+"https://github.com/tpope/vim-vinegar/issues/13#issuecomment-47133890
+
 
 "===============================================================
 " APPEARANCE
@@ -70,7 +72,7 @@ let dirvish_mode = ':sort ,^.*/,'
 colorscheme darkblue
 set guioptions=acegi
 set gfn=Monospace\ Bold\ 11
-set cursorline
+"set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkblue
 
 nnoremap <leader>w :set wrap!<CR>
@@ -78,7 +80,6 @@ nnoremap <leader>w :set wrap!<CR>
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
 
-let g:neovide_cursor_vfx_mode = "railgun"
 
 "===============================================================
 " EDITING
@@ -104,29 +105,16 @@ nnoremap z %
 omap z %
 vmap z %
 
-
-"=================================================================
-" CLIPBOARDS
-
-" Paste the content of the (X11?) clipboard
-"map! <S-Insert> <C-R>*
-nnoremap <S-Insert> "+p
-
-set clipboard+=unnamedplus      " copy to clipboard
-
 "Paste from the yank register (pipe needs to be escaped, backslash doesn't)
 nnoremap \ "0p
 nnoremap \| "0P
 
-
-
-
 "==============================================================
 " INDENTATION
 "
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 
@@ -135,11 +123,12 @@ set expandtab
 " LANGUAGE SPECIFICS
 "
 " Beautify JSON
-nnoremap <leader>j :%!python -mjson.tool<CR>
+nnoremap <leader>j :%!python3 -mjson.tool --no-ensure-ascii<CR>
 
 " Format Elm
 nnoremap <leader>e mo:%!elm-format --yes --stdin<CR>`o
 nnoremap <leader>h mo:%!elm-format-hack --yes --stdin<CR>`o
+nnoremap <leader>s mo:%!squarepants format<CR>`o
 
 " Compile Coffee
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
@@ -214,12 +203,11 @@ map <leader>8 :Ack! <cword><CR>
 set hidden
 
 nnoremap ' <C-w>w
+nnoremap <C-space> <C-^>
 
 "save position on old buffer, change buffer, move to saved position on new buffeer
-"nnoremap <silent> <C-L> mt:bnext<CR>`t
-"nnoremap <silent> <C-H> mt:bprev<CR>`t
-nnoremap <silent> <C-L> :bnext<CR>
-nnoremap <silent> <C-H> :bprev<CR>
+nnoremap <silent> <C-L> mt:bnext<CR>`t
+nnoremap <silent> <C-H> mt:bprev<CR>`t
 
 "===============================================================
 " GIT

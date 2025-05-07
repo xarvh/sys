@@ -1,0 +1,2 @@
+#!/bin/sh
+_terminal -x /home/fra/.nvm/versions/node/*/bin/node

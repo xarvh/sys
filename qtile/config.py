@@ -26,18 +26,19 @@ def initKeys():
   #
   term = '_terminal '
   normal_commands = {
-    'b': '_browser',
     'y': term + '-x _calendar',
     'v': '_editor',
-    'e': term + '-x _elm-repl',
+    'b': '_node_terminal',
+    'g': 'gimp',
     #'F3': term + '-x alsamixer -c %d' % sound_card,
     'F3': term + '-x pulsemixer',
+    'F4': 'pavucontrol',
     'F10': 'take_screenshot',
-    'F12': 'mount_and_open_all',
+    #'F12': 'mount_and_open_all',
     'Return': term,
 
     's': '_modmap se',
-    '0': '_modmap us',
+    'e': '_modmap us',
 
     'equal': '_volume_up',
     'minus': '_volume_down',
